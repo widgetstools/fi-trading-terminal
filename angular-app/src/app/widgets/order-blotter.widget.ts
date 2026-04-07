@@ -64,7 +64,7 @@ export class OrderBlotterWidget {
       field: 'time',
       headerName: 'TIME',
       flex: 0.6,
-      cellStyle: { color: 'var(--bn-t2)', fontSize: '9px' },
+      cellStyle: { color: 'var(--bn-t2)' },
     },
     {
       field: 'bond',
@@ -82,7 +82,7 @@ export class OrderBlotterWidget {
       field: 'type',
       headerName: 'TYPE',
       flex: 0.5,
-      cellStyle: { color: 'var(--bn-t1)', fontSize: '9px' },
+      cellStyle: { color: 'var(--bn-t1)' },
     },
     {
       field: 'qty',

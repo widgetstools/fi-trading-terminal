@@ -1,0 +1,80 @@
+/*
+ * FI Design System — "binance" — Light Theme
+ * Binance Spot light: white surfaces, soft gray panels, identical
+ * yellow/green/red accent palette tuned for white backgrounds.
+ */
+
+[data-ds="binance"][data-theme="light"] {
+  /* ── shadcn/ui overrides ── */
+  --background: 0 0% 100%;
+  --foreground: 222 14% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 14% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 14% 11%;
+  --primary: 45 93% 47%;
+  --primary-foreground: 222 14% 11%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 222 14% 18%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 215 9% 45%;
+  --accent: 220 14% 93%;
+  --accent-foreground: 222 14% 11%;
+  --destructive: 351 92% 52%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 89%;
+  --input: 220 13% 89%;
+  --ring: 45 93% 47%;
+  --radius: 4px;
+
+  /* ── Surface ── */
+  --bn-bg:      #FFFFFF;
+  --bn-bg1:     #FAFAFA;
+  --bn-bg2:     #F5F5F5;
+  --bn-bg3:     #EAECEF;
+
+  /* ── Text ── */
+  --bn-t0:      #1E2329;
+  --bn-t1:      #474D57;
+  --bn-t2:      #707A8A;
+  --bn-t3:      #929AA5;
+
+  /* ── Border ── */
+  --bn-border:  #EAECEF;
+  --bn-border2: #D8DCE3;
+
+  /* ── Accent ── */
+  --bn-green:   #03A66D;
+  --bn-green2:  #028858;
+  --bn-red:     #CF304A;
+  --bn-red2:    #A82639;
+  --bn-yellow:  #C99400;
+  --bn-blue:    #1976D2;
+  --bn-blue2:   #1565C0;
+  --bn-cyan:    #03A66D;
+  --bn-orange:  #E08600;
+  --bn-magenta: #CF304A;
+
+  /* ── Actions ── */
+  --bn-buy-bg:  #0ECB81;
+  --bn-sell-bg: #F6465D;
+  --bn-cta-text: #FFFFFF;
+  --bn-logo-bg: #F0B90B;
+
+  /* ── Typography ── */
+  --fi-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  --fi-sans: 'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --fi-font-xs: 10px;
+  --fi-font-sm: 12px;
+  --fi-font-md: 14px;
+  --fi-font-lg: 18px;
+
+  /* ── Order Book / Trade Ticket fills ── */
+  --ob-bid-fill:   rgba(14, 203, 129, 0.10);
+  --ob-ask-fill:   rgba(246, 70, 93, 0.10);
+  --tt-bid-strip:  rgba(14, 203, 129, 0.06);
+  --tt-ask-strip:  rgba(246, 70, 93, 0.06);
+
+  /* ── Misc ── */
+  --scrollbar-thumb: #C7CCD2;
+}

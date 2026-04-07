@@ -1,0 +1,79 @@
+/*
+ * FI Design System — "resq" — Light Theme
+ * Soft white surfaces, hot-pink primary, electric indigo accent.
+ */
+
+[data-ds="resq"][data-theme="light"] {
+  /* ── shadcn/ui overrides ── */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 8%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 8%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 8%;
+  --primary: 333 78% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 14% 96%;
+  --secondary-foreground: 240 10% 25%;
+  --muted: 240 14% 97%;
+  --muted-foreground: 240 6% 45%;
+  --accent: 240 14% 94%;
+  --accent-foreground: 240 10% 8%;
+  --destructive: 333 78% 52%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 13% 91%;
+  --input: 240 13% 91%;
+  --ring: 333 78% 52%;
+  --radius: 16px;
+
+  /* ── Surface ── */
+  --bn-bg:      #ffffff;
+  --bn-bg1:     #ffffff;
+  --bn-bg2:     #f6f7fb;
+  --bn-bg3:     #eceef5;
+
+  /* ── Text ── */
+  --bn-t0:      #0c0d10;
+  --bn-t1:      #444751;
+  --bn-t2:      #6c707b;
+  --bn-t3:      #9aa0ad;
+
+  /* ── Border ── */
+  --bn-border:  #e6e8ef;
+  --bn-border2: #d0d3dd;
+
+  /* ── Accent ── */
+  --bn-green:   #1aa67a;
+  --bn-green2:  #138a64;
+  --bn-red:     #d12f5b;
+  --bn-red2:    #b02649;
+  --bn-yellow:  #d97706;
+  --bn-blue:    #4757ee;
+  --bn-blue2:   #3543d4;
+  --bn-cyan:    #0891b2;
+  --bn-orange:  #ea580c;
+  --bn-magenta: #d12f86;
+
+  /* ── Actions ── */
+  --bn-buy-bg:  #1aa67a;
+  --bn-sell-bg: #d12f5b;
+  --bn-cta-text: #ffffff;
+  --bn-logo-bg: #d12f86;
+
+  /* ── Typography ── */
+  --fi-mono: 'JetBrains Mono', monospace;
+  --fi-sans: 'Inter', 'Geist', sans-serif;
+  --fi-font-xs: 10px;
+  --fi-font-sm: 12px;
+  --fi-font-md: 14px;
+  --fi-font-lg: 18px;
+
+  /* ── Order Book / Trade Ticket fills ── */
+  --ob-bid-fill:   rgba(26, 166, 122, 0.12);
+  --ob-ask-fill:   rgba(209, 47, 91, 0.10);
+  --tt-bid-strip:  rgba(26, 166, 122, 0.08);
+  --tt-ask-strip:  rgba(209, 47, 91, 0.08);
+
+  /* ── Misc ── */
+  --scrollbar-thumb: #c4c6d0;
+}

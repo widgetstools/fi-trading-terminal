@@ -1,0 +1,79 @@
+/*
+ * FI Design System — "wallet" — Light Theme
+ * Soft neutral surfaces, mint-teal primary, warm coral sell.
+ */
+
+[data-ds="wallet"][data-theme="light"] {
+  /* ── shadcn/ui overrides ── */
+  --background: 220 20% 98%;
+  --foreground: 220 18% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 18% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 18% 12%;
+  --primary: 168 76% 38%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 16% 95%;
+  --secondary-foreground: 220 18% 25%;
+  --muted: 220 16% 96%;
+  --muted-foreground: 220 9% 45%;
+  --accent: 220 16% 93%;
+  --accent-foreground: 220 18% 12%;
+  --destructive: 6 78% 52%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 16% 90%;
+  --input: 220 16% 90%;
+  --ring: 168 76% 38%;
+  --radius: 14px;
+
+  /* ── Surface ── */
+  --bn-bg:      #f5f7fa;
+  --bn-bg1:     #ffffff;
+  --bn-bg2:     #eef1f6;
+  --bn-bg3:     #e3e7ef;
+
+  /* ── Text ── */
+  --bn-t0:      #11141b;
+  --bn-t1:      #404756;
+  --bn-t2:      #6b7280;
+  --bn-t3:      #9ca3af;
+
+  /* ── Border ── */
+  --bn-border:  #e1e5ec;
+  --bn-border2: #cdd2dc;
+
+  /* ── Accent ── */
+  --bn-green:   #14a89a;
+  --bn-green2:  #108578;
+  --bn-red:     #e04746;
+  --bn-red2:    #c33836;
+  --bn-yellow:  #d97706;
+  --bn-blue:    #4673d8;
+  --bn-blue2:   #355cba;
+  --bn-cyan:    #14a89a;
+  --bn-orange:  #ea580c;
+  --bn-magenta: #c2417f;
+
+  /* ── Actions ── */
+  --bn-buy-bg:  #14a89a;
+  --bn-sell-bg: #e04746;
+  --bn-cta-text: #ffffff;
+  --bn-logo-bg: #14a89a;
+
+  /* ── Typography ── */
+  --fi-mono: 'JetBrains Mono', monospace;
+  --fi-sans: 'Inter', 'Geist', sans-serif;
+  --fi-font-xs: 10px;
+  --fi-font-sm: 12px;
+  --fi-font-md: 14px;
+  --fi-font-lg: 18px;
+
+  /* ── Order Book / Trade Ticket fills ── */
+  --ob-bid-fill:   rgba(20, 168, 154, 0.12);
+  --ob-ask-fill:   rgba(224, 71, 70, 0.10);
+  --tt-bid-strip:  rgba(20, 168, 154, 0.08);
+  --tt-ask-strip:  rgba(224, 71, 70, 0.08);
+
+  /* ── Misc ── */
+  --scrollbar-thumb: #c4c8d2;
+}

@@ -40,6 +40,114 @@ npx ng serve                    # → http://localhost:4200
 
 ---
 
+## Multiple Design Systems
+
+The terminal ships **seven** interchangeable design systems that can be switched at runtime in both apps. Every DS supports both `dark` and `light` modes.
+
+| ID | Label | Vibe |
+|---|---|---|
+| `fi` | FI Default | Navy ground, amber primary (Binance heritage) |
+| `binance` | Binance | Pixel-faithful Binance Spot — navy + signature yellow, sharp 4px |
+| `midnight` | Midnight | Near-black ground, electric blue, 8px radius |
+| `gemini` | Gemini | True black, sage green, 12px radius |
+| `resq` | Resq | True black, hot-pink primary, indigo accent, 16px pill radius |
+| `wallet` | Wallet | Glassy navy, mint-teal primary, soft elevated cards |
+| `powerui` | Power UI | Indigo-navy, coral / amber / indigo triad, 6px radius, Segoe UI |
+
+### How it works (one-paragraph mental model)
+
+Each design system is a single CSS file scoped to `[data-ds="<id>"][data-theme="<dark|light>"]` that defines a fixed contract of CSS variables (`--bn-bg`, `--bn-t0`, `--bn-border`, `--bn-yellow`, `--radius`, `--background`, `--primary`, etc.). The active DS is selected by setting two attributes on `<html>`: `data-ds` and `data-theme`. Every component, the AG Grid theme, the dock manager, and the shadcn/PrimeNG layers all read from the same variables — so flipping the attribute reskins the entire app instantly with zero re-renders.
+
+### Adding a new design system (4 steps)
+
+1. **Create the theme files** under `design-system/themes/`:
+   ```
+   design-system/themes/<id>-dark.css
+   design-system/themes/<id>-light.css
+   ```
+   Each file must define the full `--bn-*` contract plus the shadcn HSL triplets (`--background`, `--foreground`, `--primary`, `--card`, `--border`, `--radius`, …). Copy [`fi-dark.css`](design-system/themes/fi-dark.css) as a starting template.
+
+2. **Register it** in [`design-system/registry.ts`](design-system/registry.ts):
+   ```typescript
+   { id: '<id>', label: '<Label>', description: '<one-liner>', themes: ['dark','light'] }
+   ```
+
+3. **Import the CSS** at the top of both [`react-app/src/index.css`](react-app/src/index.css) and [`angular-app/src/styles.scss`](angular-app/src/styles.scss):
+   ```css
+   @import '../../design-system/themes/<id>-dark.css';
+   @import '../../design-system/themes/<id>-light.css';
+   ```
+
+4. **That's it.** The DS picker (top-right of both apps) reads the registry automatically. No component changes, no rebuild config, no per-DS overrides needed.
+
+### Switching at runtime
+
+**React** — via the `ThemeContext`:
+```tsx
+import { useTheme } from '@/context/ThemeContext';
+
+function Picker() {
+  const { ds, setDs, designSystems, theme, toggleTheme } = useTheme();
+  return (
+    <select value={ds} onChange={e => setDs(e.target.value)}>
+      {designSystems.map(d => <option key={d.id} value={d.id}>{d.label}</option>)}
+    </select>
+  );
+}
+```
+
+**Angular** — via the `ThemeService` signals:
+```typescript
+import { inject } from '@angular/core';
+import { ThemeService } from './services/theme.service';
+
+const theme = inject(ThemeService);
+theme.setDs('powerui');     // switch design system
+theme.toggleTheme();        // flip dark/light
+```
+
+Both implementations persist the choice to `localStorage` (`fi-ds`, `fi-theme`) and write the attributes to `<html>`:
+```html
+<html data-ds="powerui" data-theme="dark">
+```
+
+### What re-skins automatically
+
+When you switch DS or theme, the following layers all update from the same CSS variable contract:
+
+- **shadcn/ui (React)** — reads `--background`, `--card`, `--primary`, `--border`, `--radius`, etc.
+- **PrimeNG (Angular)** — Aura preset is generated from the same `--bn-*` tokens
+- **AG Grid** — `themeQuartz.withParams()` uses `var(--bn-bg1)`, `var(--bn-t0)`, etc. so the grid reskins per-DS without per-DS adapter code
+- **Dock Manager** — `--dock-*` HSL triplets are remapped to the shadcn HSL triplets globally (see [`react-app/src/index.css`](react-app/src/index.css)), so panels, splitters, tabs, hover, and overflow all match the active DS
+- **Custom components** — anything written against `var(--bn-*)`
+
+### Dock Manager theming
+
+`@widgetstools/*-dock-manager` uses shadcn-style HSL triplets (`hsl(var(--dock-bg))`, `hsl(var(--dock-border))`, etc.) and writes its built-in palette as **inline styles** on the container. To make it follow the active design system, the global stylesheet remaps every `--dock-*` variable to the equivalent shadcn HSL triplet using `!important` (which beats the inline writes):
+
+```css
+.dock-manager-root[style],
+.dock-manager-container[style] {
+  --dock-bg:             var(--background)        !important;
+  --dock-surface:        var(--card)              !important;
+  --dock-panel-header:   var(--muted)             !important;
+  --dock-tab-active:     var(--card)              !important;
+  --dock-tab-text:       var(--muted-foreground)  !important;
+  --dock-tab-text-active:var(--foreground)        !important;
+  --dock-text:           var(--foreground)        !important;
+  --dock-border:         var(--border)            !important;
+  --dock-splitter:       var(--border)            !important;
+  --dock-splitter-hover: var(--primary)           !important;
+  --dock-hover:          var(--accent)            !important;
+  --dock-primary:        var(--primary)           !important;
+  /* …full mapping in react-app/src/index.css and angular-app/src/styles.scss */
+}
+```
+
+This block is the **only** dock-manager customization needed. Switching DS automatically reskins the dock — no re-init, no JS, no per-DS code paths.
+
+---
+
 ## Design System
 
 ### Token Architecture

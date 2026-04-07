@@ -41,12 +41,22 @@ export function TopBar({ activeTab, onTabChange, selectedBond, onNewOrder, onOpe
       {/* ── Main nav bar ── */}
       <div className="flex items-center h-11 px-4 gap-0" style={{borderBottom:'1px solid var(--bn-border)'}}>
         {/* Logo */}
-        <div className="flex items-center gap-2 mr-6 flex-shrink-0">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <rect width="22" height="22" rx="4" fill="var(--bn-yellow)"/>
-            <path d="M11 4l2.5 2.5L11 9 8.5 6.5 11 4zM4 11l2.5-2.5L9 11l-2.5 2.5L4 11zM11 18l-2.5-2.5L11 13l2.5 2.5L11 18zM18 11l-2.5 2.5L13 11l2.5-2.5L18 11zM11 9.5L12.5 11 11 12.5 9.5 11 11 9.5z" fill="var(--bn-logo-bg)"/>
+        <div className="flex items-center gap-2 mr-6 flex-shrink-0" style={{color:'var(--bn-t0)'}}>
+          <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-label="MarketsUI logo">
+            {/* Hex frame */}
+            <path d="M16 2.5 L27.6 9.25 L27.6 22.75 L16 29.5 L4.4 22.75 L4.4 9.25 Z"
+                  stroke="currentColor" strokeWidth="1.25" strokeLinejoin="round" opacity="0.35"/>
+            {/* Inner micro-grid ticks */}
+            <path d="M9 16 H11 M21 16 H23 M16 8.5 V10.5 M16 21.5 V23.5"
+                  stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.25"/>
+            {/* Price-action M */}
+            <path d="M7.5 21 L11.5 12 L16 18.5 L20.5 9.5 L24.5 21"
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            {/* Breakout spark */}
+            <circle cx="20.5" cy="9.5" r="2.25" fill="var(--bn-yellow)"/>
+            <circle cx="20.5" cy="9.5" r="3.75" fill="none" stroke="var(--bn-yellow)" strokeWidth="0.75" opacity="0.5"/>
           </svg>
-          <span className="font-bold text-sm tracking-wide" style={{color:'var(--bn-t0)'}}>MarketsUI <span style={{color:'var(--bn-yellow)'}}>FI</span></span>
+          <span className="font-bold text-sm tracking-[0.14em]">MARKETS<span style={{color:'var(--bn-yellow)'}}>UI</span><span className="opacity-50 ml-1 font-normal">/ FI</span></span>
         </div>
 
         {/* Nav tabs */}

@@ -23,12 +23,12 @@ export function BondBlotter({onSelectBond}:BondBlotterProps) {
 
   const colDefs=useMemo(()=>[
     {field:'ticker',  headerName:'TICKER', width:68,  cellRenderer:TickerCellRenderer,  pinned:'left'},
-    {field:'issuer',  headerName:'ISSUER', width:140, cellStyle:{color:'var(--bn-t1)',fontSize:11}, pinned:'left'},
+    {field:'issuer',  headerName:'ISSUER', width:140, cellStyle:{color:'var(--bn-t1)'}, pinned:'left'},
     {field:'cpn',     headerName:'CPN',    width:62,  valueFormatter:p=>p.value?.toFixed(3), type:'numericColumn'},
     {field:'mat',     headerName:'MAT',    width:52,  cellStyle:{color:'var(--bn-t1)'}},
-    {field:'cusip',   headerName:'CUSIP',  width:90,  cellStyle:{color:'var(--bn-t2)',fontSize:9}},
+    {field:'cusip',   headerName:'CUSIP',  width:90,  cellStyle:{color:'var(--bn-t2)'}},
     {field:'rtg',     headerName:'RTG',    width:50,  cellRenderer:RatingBadgeRenderer},
-    {field:'sector',  headerName:'SECTOR', width:90,  cellStyle:{color:'var(--bn-t1)',fontSize:9}},
+    {field:'sector',  headerName:'SECTOR', width:90,  cellStyle:{color:'var(--bn-t1)'}},
     {field:'bid',     headerName:'BID',    width:80,  type:'numericColumn', valueFormatter:p=>p.value?.toFixed(3), cellStyle:{color:'var(--bn-blue)',fontWeight:600}},
     {field:'ask',     headerName:'ASK',    width:80,  type:'numericColumn', valueFormatter:p=>p.value?.toFixed(3), cellStyle:{color:'var(--bn-red)',fontWeight:600}},
     {colId:'mid',     headerName:'MID',    width:80,  type:'numericColumn', valueFormatter:p=>p.value?.toFixed(3), cellStyle:{color:'var(--bn-t1)'},
@@ -42,7 +42,7 @@ export function BondBlotter({onSelectBond}:BondBlotterProps) {
     {field:'cvx',     headerName:'CVX',    width:50,  valueFormatter:p=>p.value?.toFixed(2), type:'numericColumn'},
     {field:'face',    headerName:'FACE',   width:58,  cellStyle:{color:'var(--bn-t1)'}},
     {field:'side',    headerName:'SIDE',   width:56,  cellRenderer:SideCellRenderer},
-    {field:'axes',    headerName:'AXES',   width:62,  cellStyle:{color:'var(--bn-t2)',fontSize:9}},
+    {field:'axes',    headerName:'AXES',   width:62,  cellStyle:{color:'var(--bn-t2)'}},
   ] as ColDef<Bond>[],[]);
 
   const defaultColDef=useMemo<ColDef>(()=>({
@@ -107,7 +107,7 @@ export function BondBlotter({onSelectBond}:BondBlotterProps) {
           </button>
         ))}
         <div className="ml-auto relative">
-          <Search size={10} className="absolute left-2 top-1/2 -translate-y-1/2" style={{color:'var(--fi-t3)'}}/>
+          <Search size={10} className="absolute left-2 top-1/2 -translate-y-1/2" style={{color:'var(--bn-t3)'}}/>
           <Input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Ticker / CUSIP / Issuer…"
             className="font-mono-fi h-6 pl-6 pr-2 w-44 rounded-sm" style={{background:'var(--bn-bg2)',color:'var(--bn-t0)',fontSize:11,border:'1px solid var(--bn-border2)'}}/>
         </div>

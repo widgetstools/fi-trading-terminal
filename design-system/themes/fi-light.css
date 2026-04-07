@@ -17,11 +17,11 @@
 
   /* ── shadcn/ui overrides ── */
   --background: 0 0% 97%;
-  --foreground: 0 0% 23%;
+  --foreground: 0 0% 10%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 23%;
+  --card-foreground: 0 0% 10%;
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 23%;
+  --popover-foreground: 0 0% 10%;
   --primary: 38 92% 50%;
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 95%;
@@ -29,7 +29,7 @@
   --muted: 0 0% 96%;
   --muted-foreground: 0 0% 38%;
   --accent: 0 0% 95%;
-  --accent-foreground: 0 0% 23%;
+  --accent-foreground: 0 0% 10%;
   --destructive: 0 72% 51%;
   --destructive-foreground: 0 0% 100%;
   --border: 0 0% 90%;
@@ -43,7 +43,7 @@
   --bn-bg3:     #e8e8e8;
 
   /* ── Text (neutral, high contrast) ── */
-  --bn-t0:      #3b3b3b;
+  --bn-t0:      #1a1a1a;
   --bn-t1:      #616161;
   --bn-t2:      #767676;
   --bn-t3:      #a0a0a0;

@@ -1,0 +1,79 @@
+/*
+ * FI Design System — "powerui" — Light Theme
+ * Soft cool surfaces, coral primary, indigo accent.
+ */
+
+[data-ds="powerui"][data-theme="light"] {
+  /* ── shadcn/ui overrides ── */
+  --background: 235 30% 98%;
+  --foreground: 235 32% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 235 32% 14%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 235 32% 14%;
+  --primary: 346 78% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 235 24% 95%;
+  --secondary-foreground: 235 32% 25%;
+  --muted: 235 24% 96%;
+  --muted-foreground: 235 12% 45%;
+  --accent: 235 24% 93%;
+  --accent-foreground: 235 32% 14%;
+  --destructive: 346 78% 52%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 235 22% 90%;
+  --input: 235 22% 90%;
+  --ring: 346 78% 52%;
+  --radius: 6px;
+
+  /* ── Surface ── */
+  --bn-bg:      #f4f5fb;
+  --bn-bg1:     #ffffff;
+  --bn-bg2:     #ebedf6;
+  --bn-bg3:     #dfe2ef;
+
+  /* ── Text ── */
+  --bn-t0:      #1d1f3a;
+  --bn-t1:      #444761;
+  --bn-t2:      #6b6f87;
+  --bn-t3:      #9a9eb4;
+
+  /* ── Border ── */
+  --bn-border:  #e2e4f0;
+  --bn-border2: #cdd0e0;
+
+  /* ── Accent ── */
+  --bn-green:   #0f7d50;
+  --bn-green2:  #0a6440;
+  --bn-red:     #b8345f;
+  --bn-red2:    #962748;
+  --bn-yellow:  #d97706;
+  --bn-blue:    #5c6bc0;
+  --bn-blue2:   #4757a8;
+  --bn-cyan:    #0288d1;
+  --bn-orange:  #ea580c;
+  --bn-magenta: #d94a7a;
+
+  /* ── Actions ── */
+  --bn-buy-bg:  #2fa776;
+  --bn-sell-bg: #d94a7a;
+  --bn-cta-text: #ffffff;
+  --bn-logo-bg: #d94a7a;
+
+  /* ── Typography ── */
+  --fi-mono: 'JetBrains Mono', monospace;
+  --fi-sans: 'Segoe UI', 'Inter', 'Geist', sans-serif;
+  --fi-font-xs: 10px;
+  --fi-font-sm: 12px;
+  --fi-font-md: 14px;
+  --fi-font-lg: 18px;
+
+  /* ── Order Book / Trade Ticket fills ── */
+  --ob-bid-fill:   rgba(47, 167, 118, 0.12);
+  --ob-ask-fill:   rgba(217, 74, 122, 0.10);
+  --tt-bid-strip:  rgba(47, 167, 118, 0.08);
+  --tt-ask-strip:  rgba(217, 74, 122, 0.08);
+
+  /* ── Misc ── */
+  --scrollbar-thumb: #c4c8da;
+}

@@ -69,10 +69,10 @@ export function YieldCurveChart() {
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--bn-border)" vertical={false} />
-            <XAxis dataKey="tenor" tick={{ fill:'var(--fi-t3)', fontSize:8, fontFamily:'JetBrains Mono,monospace' }} axisLine={false} tickLine={false} />
+            <XAxis dataKey="tenor" tick={{ fill:'var(--bn-t3)', fontSize:8, fontFamily:'JetBrains Mono,monospace' }} axisLine={false} tickLine={false} />
             <YAxis
               domain={['auto','auto']}
-              tick={{ fill:'var(--fi-t3)', fontSize:8, fontFamily:'JetBrains Mono,monospace' }}
+              tick={{ fill:'var(--bn-t3)', fontSize:8, fontFamily:'JetBrains Mono,monospace' }}
               axisLine={false} tickLine={false}
               tickFormatter={v => `${v.toFixed(2)}`}
               width={36}

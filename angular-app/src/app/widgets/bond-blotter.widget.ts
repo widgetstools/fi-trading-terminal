@@ -27,23 +27,23 @@ LicenseManager.setLicenseKey('');
   template: `
     <!-- Toolbar -->
     <div
-      style="display:flex;align-items:center;justify-content:space-between;padding:0 12px;height:28px;border-bottom:1px solid var(--fi-border);background:var(--fi-bg1);flex-shrink:0"
+      style="display:flex;align-items:center;justify-content:space-between;padding:0 12px;height:28px;border-bottom:1px solid var(--bn-border);background:var(--bn-bg1);flex-shrink:0"
     >
       <div style="display:flex;align-items:center;gap:6px">
         <button *ngFor="let f of quickFilters" class="pact">{{ f }}</button>
-        <div style="width:1px;height:14px;background:var(--fi-border2)"></div>
+        <div style="width:1px;height:14px;background:var(--bn-border2)"></div>
         <button class="pact">CSV</button>
         <button class="pact">Cols</button>
       </div>
       <span
         class="font-mono-fi"
-        style="font-size:9px;padding:1px 6px;border-radius:2px;background:var(--fi-bg3);color:var(--fi-t1);border:1px solid var(--fi-border2)"
+        style="font-size:9px;padding:1px 6px;border-radius:2px;background:var(--bn-bg3);color:var(--bn-t1);border:1px solid var(--bn-border2)"
         >{{ filteredData.length }}</span
       >
     </div>
     <!-- Sector filters -->
     <div
-      style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-bottom:1px solid var(--fi-border);background:var(--fi-bg0);flex-shrink:0"
+      style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-bottom:1px solid var(--bn-border);background:var(--bn-bg);flex-shrink:0"
     >
       <button
         *ngFor="let s of sectors"
@@ -53,8 +53,8 @@ LicenseManager.setLicenseKey('');
         [style.padding]="'2px 8px'"
         [style.borderRadius.px]="2"
         [style.background]="sectorFilter === s ? 'rgba(61,158,255,0.1)' : 'transparent'"
-        [style.borderColor]="sectorFilter === s ? 'var(--fi-blue)' : 'var(--fi-border2)'"
-        [style.color]="sectorFilter === s ? 'var(--fi-blue)' : 'var(--bn-t2)'"
+        [style.borderColor]="sectorFilter === s ? 'var(--bn-blue)' : 'var(--bn-border2)'"
+        [style.color]="sectorFilter === s ? 'var(--bn-blue)' : 'var(--bn-t2)'"
         style="border:1px solid;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer"
       >
         {{ s }}
@@ -64,7 +64,7 @@ LicenseManager.setLicenseKey('');
           [(ngModel)]="search"
           placeholder="Ticker / CUSIP / Issuer..."
           class="font-mono-fi"
-          style="height:24px;padding:0 8px 0 24px;width:176px;border-radius:2px;background:var(--fi-bg2);color:var(--fi-t0);font-size:11px;border:1px solid var(--fi-border2);outline:none"
+          style="height:24px;padding:0 8px 0 24px;width:176px;border-radius:2px;background:var(--bn-bg2);color:var(--bn-t0);font-size:11px;border:1px solid var(--bn-border2);outline:none"
         />
       </div>
     </div>
@@ -115,7 +115,7 @@ export class BondBlotterWidget implements OnInit, OnDestroy {
       headerName: 'ISSUER',
       minWidth: 100,
       flex: 1.2,
-      cellStyle: { color: 'var(--bn-t1)', fontSize: '11px' },
+      cellStyle: { color: 'var(--bn-t1)' },
     },
     {
       field: 'cpn',
@@ -137,7 +137,7 @@ export class BondBlotterWidget implements OnInit, OnDestroy {
       headerName: 'CUSIP',
       minWidth: 80,
       flex: 0.8,
-      cellStyle: { color: 'var(--bn-t2)', fontSize: '9px' },
+      cellStyle: { color: 'var(--bn-t2)' },
     },
     {
       field: 'rtg',
@@ -151,7 +151,7 @@ export class BondBlotterWidget implements OnInit, OnDestroy {
       headerName: 'SECTOR',
       minWidth: 70,
       flex: 0.8,
-      cellStyle: { color: 'var(--bn-t1)', fontSize: '9px' },
+      cellStyle: { color: 'var(--bn-t1)' },
     },
     {
       field: 'bid',
@@ -257,7 +257,7 @@ export class BondBlotterWidget implements OnInit, OnDestroy {
       headerName: 'AXES',
       minWidth: 50,
       flex: 0.5,
-      cellStyle: { color: 'var(--bn-t2)', fontSize: '9px' },
+      cellStyle: { color: 'var(--bn-t2)' },
     },
   ];
 

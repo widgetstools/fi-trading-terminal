@@ -3,6 +3,8 @@
 //  Visual reference for all tokens, components, and patterns.
 // ─────────────────────────────────────────────────────────────
 
+import { useTheme } from '@/context/ThemeContext';
+
 const S = {
   page: {
     height: '100%',
@@ -126,15 +128,173 @@ function RadiusBox({ r, label }: { r: string; label: string }) {
 
 // ── Main Component ──
 export function DesignSystemTab() {
+  const { ds, setDs, designSystems, theme, toggleTheme } = useTheme();
   return (
     <div style={S.page}>
       {/* ━━ Header ━━ */}
       <div style={{ marginBottom: 40 }}>
         <h1 style={{ fontSize: 18, fontWeight: 700, color: 'var(--bn-t0)', margin: 0 }}>FI Design System</h1>
         <p style={{ fontSize: 11, color: 'var(--bn-t2)', marginTop: 4 }}>
-          Token reference, component examples, and usage patterns. Dark theme + VS Code Light Modern-style light theme. All values adapt via CSS custom properties.
+          Token reference, component examples, and usage patterns. Seven interchangeable design systems × dark/light themes. All values adapt via CSS custom properties.
         </p>
       </div>
+
+      {/* ━━ 0. Multiple Design Systems ━━ */}
+      <section style={S.section}>
+        <h2 style={S.sectionTitle}>0. Multiple Design Systems</h2>
+        <p style={S.sectionDesc}>
+          The terminal ships with several interchangeable design systems. Each one is a single CSS file scoped to{' '}
+          <code style={{ fontFamily: 'var(--fi-mono)', fontSize: 10, color: 'var(--bn-yellow)' }}>
+            [data-ds="&lt;id&gt;"][data-theme="&lt;dark|light&gt;"]
+          </code>{' '}
+          that defines the full <code style={{ fontFamily: 'var(--fi-mono)', fontSize: 10, color: 'var(--bn-yellow)' }}>--bn-*</code>{' '}
+          contract plus the shadcn HSL triplets. Switching DS reskins the entire app — components, AG Grid, dock manager, and shadcn/PrimeNG layers — instantly with no re-render.
+        </p>
+
+        {/* Live picker */}
+        <h3 style={S.subTitle}>Try it now</h3>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
+          {designSystems.map(d => (
+            <button
+              key={d.id}
+              onClick={() => setDs(d.id)}
+              title={d.description}
+              style={{
+                padding: '6px 12px',
+                fontSize: 11,
+                fontWeight: ds === d.id ? 700 : 500,
+                fontFamily: 'var(--fi-sans)',
+                background: ds === d.id ? 'var(--bn-yellow)' : 'var(--bn-bg2)',
+                color: ds === d.id ? 'var(--bn-bg)' : 'var(--bn-t1)',
+                border: '1px solid var(--bn-border2)',
+                borderRadius: 'var(--radius)',
+                cursor: 'pointer',
+                transition: 'all 150ms ease',
+              }}
+            >
+              {d.label}
+            </button>
+          ))}
+          <button
+            onClick={toggleTheme}
+            style={{
+              marginLeft: 8,
+              padding: '6px 12px',
+              fontSize: 11,
+              fontFamily: 'var(--fi-sans)',
+              background: 'var(--bn-bg2)',
+              color: 'var(--bn-t0)',
+              border: '1px solid var(--bn-border2)',
+              borderRadius: 'var(--radius)',
+              cursor: 'pointer',
+            }}
+          >
+            {theme === 'dark' ? '☾ Dark' : '☀ Light'}
+          </button>
+        </div>
+        <p style={{ fontSize: 10, color: 'var(--bn-t2)', marginBottom: 16 }}>
+          Active: <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-t0)' }}>data-ds="{ds}" data-theme="{theme}"</code>
+        </p>
+
+        {/* Step-by-step */}
+        <h3 style={S.subTitle}>Adding a new design system (4 steps)</h3>
+        <ol style={{ fontSize: 11, color: 'var(--bn-t1)', lineHeight: 1.7, paddingLeft: 20, marginBottom: 16 }}>
+          <li>
+            Create <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>design-system/themes/&lt;id&gt;-dark.css</code>{' '}
+            and <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>&lt;id&gt;-light.css</code>. Each file scopes its
+            variables to <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>[data-ds="&lt;id&gt;"][data-theme="..."]</code>.
+          </li>
+          <li>
+            Register it in <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>design-system/registry.ts</code>.
+          </li>
+          <li>
+            <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>@import</code> both CSS files in{' '}
+            <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>react-app/src/index.css</code> and{' '}
+            <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>angular-app/src/styles.scss</code>.
+          </li>
+          <li>Done — the picker reads the registry automatically. No component changes needed.</li>
+        </ol>
+
+        <h3 style={S.subTitle}>Variable contract every theme must define</h3>
+        <pre style={S.code}>{`[data-ds="<id>"][data-theme="dark"] {
+  /* shadcn/ui HSL triplets — drive shadcn + dock manager */
+  --background: <h s% l%>;     --foreground: <h s% l%>;
+  --card: ...;                  --card-foreground: ...;
+  --primary: ...;               --primary-foreground: ...;
+  --secondary: ...;             --muted: ...;
+  --muted-foreground: ...;      --accent: ...;
+  --border: ...;                --input: ...;
+  --radius: 4px;                /* corner radius */
+
+  /* Canonical --bn-* tokens — drive everything else */
+  --bn-bg / --bn-bg1 / --bn-bg2 / --bn-bg3   /* surface ladder */
+  --bn-t0 / --bn-t1 / --bn-t2 / --bn-t3      /* text ladder */
+  --bn-border / --bn-border2                  /* borders */
+  --bn-green / --bn-red / --bn-yellow / --bn-blue / --bn-cyan
+  --bn-buy-bg / --bn-sell-bg / --bn-cta-text  /* CTA colors */
+  --fi-mono / --fi-sans                       /* fonts */
+  --fi-font-xs / --fi-font-sm / --fi-font-md / --fi-font-lg
+  --ob-bid-fill / --ob-ask-fill               /* order book */
+  --scrollbar-thumb
+}`}</pre>
+
+        <h3 style={S.subTitle}>Switching at runtime (React)</h3>
+        <pre style={S.code}>{`import { useTheme } from '@/context/ThemeContext';
+
+function Picker() {
+  const { ds, setDs, designSystems, theme, toggleTheme } = useTheme();
+  return (
+    <select value={ds} onChange={e => setDs(e.target.value)}>
+      {designSystems.map(d => (
+        <option key={d.id} value={d.id}>{d.label}</option>
+      ))}
+    </select>
+  );
+}
+
+// Persisted to localStorage('fi-ds', 'fi-theme') and written to <html>:
+//   <html data-ds="powerui" data-theme="dark">`}</pre>
+
+        <h3 style={S.subTitle}>Dock Manager → active DS mapping</h3>
+        <p style={{ fontSize: 11, color: 'var(--bn-t1)', marginBottom: 8 }}>
+          <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>@widgetstools/react-dock-manager</code> uses
+          shadcn-style HSL triplets (<code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>hsl(var(--dock-bg))</code>)
+          and writes its built-in palette as inline styles on the container. To make it follow the active DS, the global stylesheet remaps
+          every <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>--dock-*</code> to the equivalent shadcn triplet
+          using <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>!important</code> (which beats the inline writes):
+        </p>
+        <pre style={S.code}>{`/* react-app/src/index.css */
+.dock-manager-root[style],
+.dock-manager-container[style] {
+  --dock-bg:              var(--background)        !important;
+  --dock-surface:         var(--card)              !important;
+  --dock-panel-header:    var(--muted)             !important;
+  --dock-tab-active:      var(--card)              !important;
+  --dock-tab-text:        var(--muted-foreground)  !important;
+  --dock-tab-text-active: var(--foreground)        !important;
+  --dock-text:            var(--foreground)        !important;
+  --dock-border:          var(--border)            !important;
+  --dock-splitter:        var(--border)            !important;
+  --dock-splitter-hover:  var(--primary)           !important;
+  --dock-hover:           var(--accent)            !important;
+  --dock-primary:         var(--primary)           !important;
+  /* …full mapping in the global stylesheet */
+}`}</pre>
+        <p style={{ fontSize: 11, color: 'var(--bn-t1)' }}>
+          This is the <strong>only</strong> dock-manager customization needed. Switching DS automatically reskins the dock — no re-init,
+          no JS, no per-DS code paths.
+        </p>
+
+        <h3 style={S.subTitle}>What re-skins automatically</h3>
+        <ul style={{ fontSize: 11, color: 'var(--bn-t1)', lineHeight: 1.7, paddingLeft: 20 }}>
+          <li><strong>shadcn/ui</strong> — reads <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>--background</code>, <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>--card</code>, <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>--primary</code>, <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>--radius</code></li>
+          <li><strong>AG Grid</strong> — <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>themeQuartz.withParams()</code> uses <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>var(--bn-bg1)</code>, <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>var(--bn-t0)</code> so the grid reskins per-DS without per-DS adapter code</li>
+          <li><strong>Dock Manager</strong> — global <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>--dock-*</code> remap (above)</li>
+          <li><strong>Custom components</strong> — anything written against <code style={{ fontFamily: 'var(--fi-mono)', color: 'var(--bn-yellow)' }}>var(--bn-*)</code></li>
+        </ul>
+      </section>
+
+      <div style={S.separator} />
 
       {/* ━━ 1. Color Palette ━━ */}
       <section style={S.section}>

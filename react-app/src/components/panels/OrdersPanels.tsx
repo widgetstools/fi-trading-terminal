@@ -130,10 +130,10 @@ export function OrderBlotter() {
   const filtered=useMemo(()=>orders.filter(o=>filter==='All'||o.status===filter),[orders,filter]);
 
   const colDefs = useMemo(()=>[
-    {field:'time', headerName:'TIME',   width:60, cellStyle:{fontSize:9,color:'var(--bn-t2)'}},
-    {field:'bond', headerName:'BOND',   flex:1,   cellStyle:{color:'#00bcd4'}},
+    {field:'time', headerName:'TIME',   width:60, cellStyle:{color:'var(--bn-t2)'}},
+    {field:'bond', headerName:'BOND',   flex:1,   cellStyle:{color:'var(--bn-cyan)'}},
     {field:'side', headerName:'SIDE',   width:55, cellRenderer:SideCellRenderer},
-    {field:'type',   headerName:'TYPE',   width:55, cellStyle:{fontSize:9,color:'var(--bn-t1)'}},
+    {field:'type',   headerName:'TYPE',   width:55, cellStyle:{color:'var(--bn-t1)'}},
     {field:'qty',    headerName:'QTY',    width:65, type:'numericColumn'},
     {field:'filled', headerName:'FILLED', width:65, type:'numericColumn', cellRenderer:FilledAmountRenderer},
     {field:'px',  headerName:'PX',  width:75, type:'numericColumn', valueFormatter:p=>p.value>0?p.value.toFixed(3):'—'},

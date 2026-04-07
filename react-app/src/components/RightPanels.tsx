@@ -7,14 +7,14 @@ export function WatchlistPanel() {
       <div className="flex border-b flex-shrink-0" style={{borderColor:'var(--bn-border)'}}>
         {['Watchlist','Axes','Alerts'].map((t,i)=>(
           <button key={t} className="inner-tab tab-label flex items-center gap-1" style={{color:i===0?'var(--bn-blue)':'var(--bn-t2)',borderBottomColor:i===0?'var(--bn-blue)':'transparent'}}>
-            {t}{t==='Alerts'&&<span className="px-1 rounded-sm" style={{fontSize:9,background:'rgba(245,166,35,0.1)',color:'var(--fi-amber)',border:'1px solid rgba(245,166,35,0.3)'}}>3</span>}
+            {t}{t==='Alerts'&&<span className="px-1 rounded-sm" style={{fontSize:9,background:'rgba(245,166,35,0.1)',color:'var(--bn-yellow)',border:'1px solid rgba(245,166,35,0.3)'}}>3</span>}
           </button>
         ))}
       </div>
       <div className="flex-1 overflow-y-auto">
         {WATCHLIST.map((w,i)=>(
           <div key={i} className="flex items-center gap-2 px-3 py-1.5 border-b cursor-pointer hover:bg-[var(--bn-bg3)]" style={{borderColor:'var(--bn-border)'}}>
-            <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{background:w.alert?'var(--fi-amber)':'transparent',border:w.alert?'none':'1px solid var(--bn-border2)'}}/>
+            <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{background:w.alert?'var(--bn-yellow)':'transparent',border:w.alert?'none':'1px solid var(--bn-border2)'}}/>
             <span className="font-mono-fi flex-1 truncate" style={{fontSize:11,color:'var(--bn-cyan)'}}>{w.label}</span>
             <span className="font-mono-fi" style={{fontSize:11,color:'var(--bn-t0)'}}>{w.ytm.toFixed(2)}</span>
             <span className="font-mono-fi w-10 text-right" style={{fontSize:9,color:w.change>=0?'var(--bn-green)':'var(--bn-red)'}}>{w.change>=0?'+':''}{w.change.toFixed(2)}</span>
@@ -61,7 +61,7 @@ export function BondLadderPanel() {
                 <td className="font-mono-fi px-2 py-1 text-right" style={{fontSize:11}}>{r.ytm.toFixed(3)}</td>
                 <td className="font-mono-fi px-2 py-1 text-right" style={{fontSize:11,color:'var(--bn-t2)'}}>+{r.spread}</td>
                 <td className="font-mono-fi px-2 py-1 text-right" style={{fontSize:11,color:'var(--bn-t1)'}}>{r.amtOut}</td>
-                <td className="font-mono-fi px-2 py-1 text-right" style={{fontSize:9,color:'var(--fi-t3)'}}>{r.axes}</td>
+                <td className="font-mono-fi px-2 py-1 text-right" style={{fontSize:9,color:'var(--bn-t3)'}}>{r.axes}</td>
               </tr>
             ))}
           </tbody>
@@ -93,11 +93,11 @@ export function OrderTicket({ selectedBond, onSendRfq }: OrderTicketProps) {
         ].map(f=>(
           <div key={f.label} className="flex items-center justify-between border-b py-1" style={{borderColor:'var(--bn-border)'}}>
             <span className="font-mono-fi" style={{fontSize:9,color:'var(--bn-t2)'}}>{f.label}</span>
-            <span className="font-mono-fi" style={{fontSize:9,color:f.val==='—'?'var(--fi-t3)':'var(--bn-t0)'}}>{f.val}</span>
+            <span className="font-mono-fi" style={{fontSize:9,color:f.val==='—'?'var(--bn-t3)':'var(--bn-t0)'}}>{f.val}</span>
           </div>
         ))}
         <button onClick={onSendRfq} className="font-mono-fi py-1.5 rounded-sm border mt-1 tracking-widest uppercase font-bold"
-          style={{fontSize:11,background:selectedBond?'rgba(61,158,255,0.12)':'var(--bn-bg3)',borderColor:selectedBond?'rgba(61,158,255,0.35)':'var(--bn-border2)',color:selectedBond?'var(--bn-blue)':'var(--fi-t3)',cursor:selectedBond?'pointer':'not-allowed'}}>
+          style={{fontSize:11,background:selectedBond?'rgba(61,158,255,0.12)':'var(--bn-bg3)',borderColor:selectedBond?'rgba(61,158,255,0.35)':'var(--bn-border2)',color:selectedBond?'var(--bn-blue)':'var(--bn-t3)',cursor:selectedBond?'pointer':'not-allowed'}}>
           {selectedBond ? '⚡ SEND RFQ' : 'SELECT BOND'}
         </button>
       </div>

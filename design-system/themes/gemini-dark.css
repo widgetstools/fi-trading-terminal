@@ -1,0 +1,104 @@
+/*
+ * FI Design System — "gemini" — Dark Theme
+ * Inspired by Gemini Exchange. True-black ground, sage green primary,
+ * crimson sell, generous radius, pill chrome.
+ */
+
+[data-ds="gemini"][data-theme="dark"] {
+  /* ── shadcn/ui overrides ── */
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 6%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 145 63% 42%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 92%;
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 0 0% 14%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 354 72% 52%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 16%;
+  --input: 0 0% 14%;
+  --ring: 145 63% 42%;
+  --radius: 12px;
+
+  /* ── Surface ── */
+  --bn-bg:      #000000;
+  --bn-bg1:     #0a0a0a;
+  --bn-bg2:     #141414;
+  --bn-bg3:     #1f1f1f;
+
+  /* ── Text ── */
+  --bn-t0:      #ffffff;
+  --bn-t1:      #c7c7c7;
+  --bn-t2:      #8a8a8a;
+  --bn-t3:      #555555;
+
+  /* ── Border ── */
+  --bn-border:  #1f1f1f;
+  --bn-border2: #2a2a2a;
+
+  /* ── Accent ── */
+  --bn-green:   #26a96c;
+  --bn-green2:  #1f8a58;
+  --bn-red:     #e23145;
+  --bn-red2:    #c0202f;
+  --bn-yellow:  #f5a623;
+  --bn-blue:    #3b82f6;
+  --bn-blue2:   #2563eb;
+  --bn-cyan:    #5fc7ff;
+  --bn-orange:  #ff8a3d;
+  --bn-magenta: #b16dff;
+
+  /* ── Actions ── */
+  --bn-buy-bg:  #1f6f4a;
+  --bn-sell-bg: #8b2230;
+  --bn-cta-text: #ffffff;
+  --bn-logo-bg: #26a96c;
+
+  /* ── Typography ── */
+  --fi-mono: 'JetBrains Mono', monospace;
+  --fi-sans: 'Inter', 'Geist', sans-serif;
+  --fi-font-xs: 10px;
+  --fi-font-sm: 12px;
+  --fi-font-md: 14px;
+  --fi-font-lg: 18px;
+
+  /* ── Order Book / Trade Ticket fills ── */
+  --ob-bid-fill:   rgba(38, 169, 108, 0.14);
+  --ob-ask-fill:   rgba(226, 49, 69, 0.16);
+  --tt-bid-strip:  rgba(38, 169, 108, 0.10);
+  --tt-ask-strip:  rgba(226, 49, 69, 0.10);
+
+  /* ── Misc ── */
+  --scrollbar-thumb: #2a2a2a;
+
+  /* ── Legacy aliases ── */
+  --fi-bg0: var(--bn-bg);
+  --fi-bg1: var(--bn-bg1);
+  --fi-bg2: var(--bn-bg2);
+  --fi-bg3: var(--bn-bg3);
+  --fi-bg4: var(--bn-bg3);
+  --fi-border: var(--bn-border);
+  --fi-border2: var(--bn-border2);
+  --fi-border3: var(--bn-border2);
+  --fi-t0: var(--bn-t0);
+  --fi-t1: var(--bn-t1);
+  --fi-t2: var(--bn-t2);
+  --fi-t3: var(--bn-t3);
+  --fi-green: var(--bn-green);
+  --fi-red: var(--bn-red);
+  --fi-blue: var(--bn-blue);
+  --fi-amber: var(--bn-yellow);
+  --fi-cyan: var(--bn-cyan);
+  --fi-purple: var(--bn-magenta);
+  --fi-orange: var(--bn-orange);
+  --fi-title: var(--bn-t0);
+  --fi-col-header: var(--bn-t1);
+  --divider: 1px solid var(--bn-border);
+}
