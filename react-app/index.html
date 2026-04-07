@@ -4,6 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>fi-trading-terminal</title>
+    <script>
+      // Apply stored design system + theme before first paint (no FOUC).
+      (function () {
+        try {
+          var ds = localStorage.getItem('fi-ds') || 'fi';
+          var theme = localStorage.getItem('fi-theme') || 'dark';
+          document.documentElement.dataset.ds = ds;
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {
+          document.documentElement.dataset.ds = 'fi';
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

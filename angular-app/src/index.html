@@ -1,11 +1,22 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-ds="fi">
 <head>
   <meta charset="utf-8">
   <title>FI Trading Terminal</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // Apply stored design system + theme before first paint (no FOUC).
+    (function () {
+      try {
+        var ds = localStorage.getItem('fi-ds') || 'fi';
+        var theme = localStorage.getItem('fi-theme') || 'dark';
+        document.documentElement.setAttribute('data-ds', ds);
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body data-ag-theme-mode="dark">
   <app-root></app-root>

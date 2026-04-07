@@ -1,0 +1,79 @@
+/*
+ * FI Design System — "midnight" — Light Theme
+ * Pure white surfaces, electric blue primary, vivid emerald & coral.
+ */
+
+[data-ds="midnight"][data-theme="light"] {
+  /* ── shadcn/ui overrides ── */
+  --background: 0 0% 100%;
+  --foreground: 220 13% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 13% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 13% 10%;
+  --primary: 222 100% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 220 13% 25%;
+  --muted: 220 14% 97%;
+  --muted-foreground: 220 9% 45%;
+  --accent: 220 14% 94%;
+  --accent-foreground: 220 13% 10%;
+  --destructive: 0 84% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 222 100% 52%;
+  --radius: 8px;
+
+  /* ── Surface ── */
+  --bn-bg:      #ffffff;
+  --bn-bg1:     #ffffff;
+  --bn-bg2:     #f7f8fa;
+  --bn-bg3:     #eef0f3;
+
+  /* ── Text ── */
+  --bn-t0:      #0a0b0d;
+  --bn-t1:      #4b5563;
+  --bn-t2:      #6b7280;
+  --bn-t3:      #9ca3af;
+
+  /* ── Border ── */
+  --bn-border:  #e5e7eb;
+  --bn-border2: #d1d5db;
+
+  /* ── Accent ── */
+  --bn-green:   #05b169;
+  --bn-green2:  #04935a;
+  --bn-red:     #cf202f;
+  --bn-red2:    #b01926;
+  --bn-yellow:  #d97706;
+  --bn-blue:    #1652f0;
+  --bn-blue2:   #0a46e4;
+  --bn-cyan:    #0891b2;
+  --bn-orange:  #ea580c;
+  --bn-magenta: #9333ea;
+
+  /* ── Actions ── */
+  --bn-buy-bg:  #05b169;
+  --bn-sell-bg: #cf202f;
+  --bn-cta-text: #ffffff;
+  --bn-logo-bg: #1652f0;
+
+  /* ── Typography ── */
+  --fi-mono: 'JetBrains Mono', monospace;
+  --fi-sans: 'Inter', 'Geist', sans-serif;
+  --fi-font-xs: 10px;
+  --fi-font-sm: 12px;
+  --fi-font-md: 14px;
+  --fi-font-lg: 18px;
+
+  /* ── Order Book / Trade Ticket fills ── */
+  --ob-bid-fill:   rgba(5, 177, 105, 0.12);
+  --ob-ask-fill:   rgba(207, 32, 47, 0.10);
+  --tt-bid-strip:  rgba(5, 177, 105, 0.08);
+  --tt-ask-strip:  rgba(207, 32, 47, 0.08);
+
+  /* ── Misc ── */
+  --scrollbar-thumb: #c4c4c4;
+}

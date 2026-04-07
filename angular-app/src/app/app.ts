@@ -10,6 +10,7 @@ import {
 } from '@widgetstools/dock-manager-core';
 import { TICKER_STRIP, type TickerItem } from './services/trading-data.service';
 import { SharedStateService } from './services/shared-state.service';
+import { DESIGN_SYSTEMS } from '../../../design-system/registry';
 
 // Widget imports
 import { BondBlotterWidget } from './widgets/bond-blotter.widget';
@@ -478,6 +479,16 @@ const NAV_TABS = [
               <path d="M3 3v5h5" />
             </svg>
           </button>
+          <!-- Design system picker -->
+          <select
+            class="font-mono-fi"
+            [value]="ds()"
+            (change)="setDs($any($event.target).value)"
+            title="Design system"
+            style="background:var(--bn-bg2);color:var(--bn-t0);border:1px solid var(--bn-border);border-radius:var(--radius,4px);font-size:11px;padding:4px 8px;cursor:pointer;outline:none"
+          >
+            <option *ngFor="let d of designSystems" [value]="d.id">{{ d.label }}</option>
+          </select>
           <!-- Theme toggle -->
           <button
             (click)="toggleTheme()"
@@ -593,7 +604,15 @@ export class App implements OnDestroy {
 
   navTabs = NAV_TABS;
   activeTab = signal('Trade');
-  isDark = signal(true);
+  isDark = signal(
+    isPlatformBrowser(inject(PLATFORM_ID))
+      ? (localStorage.getItem('fi-theme') ?? 'dark') !== 'light'
+      : true,
+  );
+  designSystems = DESIGN_SYSTEMS;
+  ds = signal<string>(
+    isPlatformBrowser(inject(PLATFORM_ID)) ? localStorage.getItem('fi-ds') || 'fi' : 'fi',
+  );
   layoutVersion = signal(1);
   saveFlash = signal(false);
   private lastDockState: DockManagerState | null = null;
@@ -649,8 +668,12 @@ export class App implements OnDestroy {
     effect(() => {
       if (isPlatformBrowser(this.platformId)) {
         const mode = this.isDark() ? 'dark' : 'light';
+        const dsId = this.ds();
         document.documentElement.setAttribute('data-theme', mode);
+        document.documentElement.setAttribute('data-ds', dsId);
         document.body.dataset['agThemeMode'] = mode;
+        localStorage.setItem('fi-theme', mode);
+        localStorage.setItem('fi-ds', dsId);
       }
     });
     effect(() => {
@@ -700,6 +723,10 @@ export class App implements OnDestroy {
 
   toggleTheme() {
     this.isDark.update((v) => !v);
+  }
+
+  setDs(next: string) {
+    this.ds.set(next);
   }
 
   getLayout(tab: string): DockManagerState {

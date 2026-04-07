@@ -23,6 +23,8 @@ export const agGridLightParams: Record<string, unknown> = {
   cellHorizontalPaddingScale: 0.6,
   wrapperBorder:             false,
   columnBorder:              false,
+  // Match the global app scrollbar width so AG Grid reserves correct gutter
+  // (AG Grid v33 reads --ag-scrollbar-width to size its scroll area).
 };
 
 export const agGridDarkParams: Record<string, unknown> = {
@@ -30,7 +32,7 @@ export const agGridDarkParams: Record<string, unknown> = {
   foregroundColor:           dark.text.primary,
   headerBackgroundColor:     dark.surface.secondary,
   headerForegroundColor:     dark.text.secondary,
-  oddRowBackgroundColor:     dark.surface.primary,
+  oddRowBackgroundColor:     dark.surface.secondary,
   rowHoverColor:             dark.surface.secondary,
   selectedRowBackgroundColor:`${dark.accent.warning}14`,
   borderColor:               dark.border.primary,
@@ -41,4 +43,6 @@ export const agGridDarkParams: Record<string, unknown> = {
   cellHorizontalPaddingScale: 0.6,
   wrapperBorder:             false,
   columnBorder:              false,
+  // Match the global app scrollbar width so AG Grid reserves correct gutter
+  // (AG Grid v33 reads --ag-scrollbar-width to size its scroll area).
 };

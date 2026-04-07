@@ -6,7 +6,15 @@
  * High text contrast for readability (WCAG AA on all tiers).
  */
 
-[data-theme="light"] {
+[data-ds="fi"][data-theme="light"] {
+  /* ── Typography (shared with dark) ── */
+  --fi-mono: 'JetBrains Mono', monospace;
+  --fi-sans: 'Geist', sans-serif;
+  --fi-font-sm: 11px;
+  --fi-font-md: 13px;
+  --fi-font-lg: 18px;
+  --radius: 4px;
+
   /* ── shadcn/ui overrides ── */
   --background: 0 0% 97%;
   --foreground: 0 0% 23%;

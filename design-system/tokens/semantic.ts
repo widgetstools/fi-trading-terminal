@@ -44,40 +44,42 @@ export interface ColorScheme {
 }
 
 // ── Dark Scheme ──
+// Coinbase Advanced inspired. Near-black neutral ground, electric blue
+// primary, vivid emerald/coral for trading. Generous radius, calm chrome.
 export const dark: ColorScheme = {
   surface: {
-    ground:    colors.neutral[975],  // #0b0e11
-    primary:   colors.neutral[950],  // #161a1e
-    secondary: colors.neutral[925],  // #1e2329
-    tertiary:  colors.neutral[900],  // #2b3139
+    ground:    '#0a0b0d',
+    primary:   '#111317',
+    secondary: '#181b21',
+    tertiary:  '#21252d',
   },
   text: {
-    primary:   '#eaecef',
-    secondary: '#a0a8b4',
-    muted:     colors.neutral[500],  // #7a8494
-    faint:     colors.neutral[700],  // #4a5568
+    primary:   '#ffffff',
+    secondary: '#b1b5c3',
+    muted:     '#7d8597',
+    faint:     '#4e5564',
   },
   border: {
-    primary:   colors.neutral[850],  // #313944
-    secondary: colors.neutral[800],  // #3e4754
+    primary:   '#1f232b',
+    secondary: '#2a2f39',
   },
   accent: {
-    positive:      colors.teal[400],    // #2dd4bf
-    positiveHover: colors.teal[500],    // #14b8a6
-    negative:      colors.red[400],     // #f87171
-    negativeHover: colors.red[500],     // #ef4444
-    warning:       colors.amber[500],   // #f0b90b
-    info:          colors.blue[400],    // #3da0ff
-    highlight:     colors.cyan[400],    // #22d3ee
-    purple:        colors.purple[400],  // #c084fc
+    positive:      '#05b169',   // coinbase emerald
+    positiveHover: '#04935a',
+    negative:      '#cf202f',   // coinbase coral red
+    negativeHover: '#b01926',
+    warning:       '#f7b500',
+    info:          '#1652f0',   // signature coinbase blue
+    highlight:     '#45b3ff',
+    purple:        '#b16dff',
   },
   action: {
-    buyBg:    colors.teal[600],   // #0d9488
+    buyBg:    '#05b169',
     buyText:  '#ffffff',
-    sellBg:   colors.red[600],    // #dc2626
+    sellBg:   '#cf202f',
     sellText: '#ffffff',
   },
-  scrollbar: colors.neutral[700],
+  scrollbar: '#2a2f39',
 };
 
 // ── Light Scheme (VS Code Light Modern style) ──

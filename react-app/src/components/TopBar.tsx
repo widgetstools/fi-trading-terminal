@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { TICKER_STRIP, type Bond } from '@/data/tradingData';
 import { Sun, Moon, Save, RotateCcw, Check } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
+import { DesignSystemPicker } from './DesignSystemPicker';
 
 const NAV_TABS = ['Prices','Trade','Risk','Market','Research','Orders','Analytics','Design System'];
 
@@ -106,6 +107,7 @@ export function TopBar({ activeTab, onTabChange, selectedBond, onNewOrder, onOpe
               <RotateCcw size={13} />
             </button>
           )}
+          <DesignSystemPicker />
           <button onClick={toggleTheme}
             className="flex items-center justify-center w-7 h-7 rounded transition-colors"
             style={{ background: 'var(--bn-bg3)', color: 'var(--bn-t1)' }}

@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Geist:wght@300;400;500;600&display=swap');
 
-// Import FI Design System tokens
+// Import FI Design System tokens (multi-DS)
 @import '../../design-system/themes/fi-dark.css';
 @import '../../design-system/themes/fi-light.css';
+@import '../../design-system/themes/midnight-dark.css';
+@import '../../design-system/themes/midnight-light.css';
 
 // Import dock manager styles
 @import '@widgetstools/dock-manager-core/styles.css';
@@ -22,16 +24,151 @@ body {
   font-size: var(--fi-font-sm);
 }
 
-// ── Scrollbar ──
-::-webkit-scrollbar { width: 3px; height: 3px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 2px; }
+// ── Unified scrollbars ──
+// One style for the whole app — chrome, panels, AG Grid alike.
+// Setting a non-transparent track background is what forces
+// macOS Chrome/Safari out of overlay mode so width takes effect.
+* {
+  scrollbar-width: thin;                                // Firefox
+  scrollbar-color: var(--scrollbar-thumb) var(--bn-bg2);
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--bn-bg2);                            // non-transparent → classic mode on macOS
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 2px solid var(--bn-bg2);
+  border-radius: 6px;
+  background-clip: padding-box;
+  min-height: 40px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--bn-border2);
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-corner {
+  background: var(--bn-bg2);
+}
+
+// AG Grid — hide the inner viewport scrollbar; keep only the gutter one
+.ag-body-viewport,
+.ag-center-cols-viewport {
+  scrollbar-width: none !important;
+}
+.ag-body-viewport::-webkit-scrollbar,
+.ag-center-cols-viewport::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+// AG Grid — beats Quartz theme's own scrollbar rules (gutter only)
+.ag-body-vertical-scroll-viewport,
+.ag-body-horizontal-scroll-viewport,
+.ag-body-vertical-scroll,
+.ag-body-horizontal-scroll,
+.ag-virtual-list-viewport {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--scrollbar-thumb) var(--bn-bg2) !important;
+}
+.ag-body-vertical-scroll-viewport::-webkit-scrollbar,
+.ag-body-horizontal-scroll-viewport::-webkit-scrollbar,
+.ag-body-vertical-scroll::-webkit-scrollbar,
+.ag-body-horizontal-scroll::-webkit-scrollbar,
+.ag-virtual-list-viewport::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+.ag-body-vertical-scroll-viewport::-webkit-scrollbar-track,
+.ag-body-horizontal-scroll-viewport::-webkit-scrollbar-track,
+.ag-body-vertical-scroll::-webkit-scrollbar-track,
+.ag-body-horizontal-scroll::-webkit-scrollbar-track,
+.ag-virtual-list-viewport::-webkit-scrollbar-track {
+  background: var(--bn-bg2) !important;
+}
+.ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb,
+.ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb,
+.ag-body-vertical-scroll::-webkit-scrollbar-thumb,
+.ag-body-horizontal-scroll::-webkit-scrollbar-thumb,
+.ag-virtual-list-viewport::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb) !important;
+  border: 2px solid var(--bn-bg2) !important;
+  border-radius: 6px !important;
+  background-clip: padding-box !important;
+  min-height: 40px !important;
+}
+.ag-root-wrapper {
+  --ag-scrollbar-width: 10px;
+}
 
 // ── Font utilities ──
 .font-mono-fi { font-family: var(--fi-mono); }
 .font-semibold { font-weight: 600; }
 .font-bold { font-weight: 700; }
 .font-medium { font-weight: 500; }
+
+// ── Coinbase-style typography ──
+.fi-section-label {
+  font-family: var(--fi-sans);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bn-t2);
+}
+.fi-display {
+  font-family: var(--fi-sans);
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: var(--bn-t0);
+}
+.fi-display-lg {
+  font-family: var(--fi-sans);
+  font-weight: 600;
+  font-size: 40px;
+  letter-spacing: -0.025em;
+  color: var(--bn-t0);
+}
+.fi-page-title {
+  font-family: var(--fi-sans);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--bn-t0);
+}
+.cb-tab {
+  font-family: var(--fi-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bn-t2);
+  padding: 10px 2px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  &.active { color: var(--bn-blue); border-bottom-color: var(--bn-blue); }
+}
+.cb-btn {
+  font-family: var(--fi-sans);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: var(--bn-blue);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  &:hover { background: var(--bn-blue2); }
+  &.cb-btn-ghost {
+    background: var(--bn-bg2);
+    color: var(--bn-t0);
+    &:hover { background: var(--bn-bg3); }
+  }
+}
 
 // ── Tab navigation ──
 .bn-tab {

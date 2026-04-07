@@ -84,32 +84,32 @@ export function BondBlotter({onSelectBond}:BondBlotterProps) {
   return (
     <div className="flex flex-col h-full">
       {/* Toolbar (no title — dock header has it) */}
-      <div className="flex items-center justify-between px-3 h-7 border-b flex-shrink-0" style={{background:'var(--fi-bg1)',borderColor:'var(--fi-border)'}}>
+      <div className="flex items-center justify-between px-3 h-7 border-b flex-shrink-0" style={{background:'var(--bn-bg1)',borderColor:'var(--bn-border)'}}>
         <div className="flex items-center gap-1.5">
           {['All','UST','Corp','Muni','Axes'].map(f=>(
             <button key={f} className="pact">{f}</button>
           ))}
-          <div style={{width:1,height:14,background:'var(--fi-border2)'}}/>
+          <div style={{width:1,height:14,background:'var(--bn-border2)'}}/>
           <button className="pact">↓ CSV</button>
           <button className="pact">Cols ▾</button>
         </div>
-        <Badge variant="outline" className="font-mono-fi h-4 px-1.5" style={{fontSize:9,background:'var(--fi-bg3)',color:'var(--fi-t1)',borderColor:'var(--fi-border2)'}}>
+        <Badge variant="outline" className="font-mono-fi h-4 px-1.5" style={{fontSize:9,background:'var(--bn-bg3)',color:'var(--bn-t1)',borderColor:'var(--bn-border2)'}}>
           {filteredData.length}
         </Badge>
       </div>
       {/* Filters */}
-      <div className="flex items-center gap-1.5 px-3 py-1.5 border-b flex-shrink-0" style={{background:'var(--fi-bg0)',borderColor:'var(--fi-border)'}}>
+      <div className="flex items-center gap-1.5 px-3 py-1.5 border-b flex-shrink-0" style={{background:'var(--fi-bg0)',borderColor:'var(--bn-border)'}}>
         {SECTORS.map(f=>(
           <button key={f} onClick={()=>setSectorFilter(f)}
             className="font-mono-fi px-2 py-0.5 rounded-sm border font-medium tracking-wider uppercase transition-colors"
-            style={{fontSize:9,background:sectorFilter===f?'rgba(61,158,255,0.1)':'transparent',borderColor:sectorFilter===f?'var(--fi-blue)':'var(--fi-border2)',color:sectorFilter===f?'var(--fi-blue)':'var(--bn-t2)'}}>
+            style={{fontSize:9,background:sectorFilter===f?'rgba(61,158,255,0.1)':'transparent',borderColor:sectorFilter===f?'var(--bn-blue)':'var(--bn-border2)',color:sectorFilter===f?'var(--bn-blue)':'var(--bn-t2)'}}>
             {f}
           </button>
         ))}
         <div className="ml-auto relative">
           <Search size={10} className="absolute left-2 top-1/2 -translate-y-1/2" style={{color:'var(--fi-t3)'}}/>
           <Input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Ticker / CUSIP / Issuer…"
-            className="font-mono-fi h-6 pl-6 pr-2 w-44 rounded-sm" style={{background:'var(--fi-bg2)',color:'var(--fi-t0)',fontSize:11,border:'1px solid var(--fi-border2)'}}/>
+            className="font-mono-fi h-6 pl-6 pr-2 w-44 rounded-sm" style={{background:'var(--bn-bg2)',color:'var(--bn-t0)',fontSize:11,border:'1px solid var(--bn-border2)'}}/>
         </div>
       </div>
       {/* Grid — parameter-based theming */}
