@@ -383,46 +383,52 @@ body {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--bn-bg2);
 }
-// AG Grid uses the unified app scrollbars (theme-aware via --bn-* tokens).
-// !important beats AG Grid's hard-coded .ag-body-*-scroll backgrounds.
+// AG Grid: use its default scrollbars — undo the universal scrollbar rules.
+.ag-root-wrapper,
+.ag-root-wrapper * {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
 .ag-root-wrapper ::-webkit-scrollbar,
 .ag-root-wrapper::-webkit-scrollbar {
-  width: 10px !important;
-  height: 10px !important;
+  width: revert;
+  height: revert;
+  background: revert;
 }
 .ag-root-wrapper ::-webkit-scrollbar-track,
 .ag-root-wrapper::-webkit-scrollbar-track {
-  background: var(--bn-bg2) !important;
+  background: revert;
 }
 .ag-root-wrapper ::-webkit-scrollbar-thumb,
-.ag-root-wrapper::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb) !important;
-  border: 2px solid var(--bn-bg2) !important;
-  border-radius: 6px !important;
-  background-clip: padding-box !important;
-  min-height: 40px !important;
-}
+.ag-root-wrapper::-webkit-scrollbar-thumb,
 .ag-root-wrapper ::-webkit-scrollbar-thumb:hover,
 .ag-root-wrapper::-webkit-scrollbar-thumb:hover {
-  background: var(--bn-border2) !important;
-  background-clip: padding-box !important;
+  background: revert;
+  border: revert;
+  border-radius: revert;
 }
-.ag-root-wrapper,
-.ag-root-wrapper * {
-  scrollbar-width: thin !important;
-  scrollbar-color: var(--scrollbar-thumb) var(--bn-bg2) !important;
+// Dock splitter has a 3px ::before hit zone that protrudes into adjacent
+// pane content, eating clicks on AG Grid scrollbars and other edge UI.
+// Inset the dock content slot to push widget content out of that zone.
+.dock-manager-root .dock-content-slot {
+  padding: 0 4px 4px 0;
+  box-sizing: border-box;
 }
-.ag-body-horizontal-scroll,
-.ag-body-horizontal-scroll-viewport,
-.ag-body-vertical-scroll,
-.ag-body-vertical-scroll-viewport {
-  background: var(--bn-bg2) !important;
+// Make dock splitters visibly separate panes.
+// --border is intentionally near-background; use a mid-tone instead and
+// bump the thickness so the separation reads at a glance.
+.dock-manager-root .dock-splitter {
+  background: var(--bn-t3) !important;
+  opacity: 0.85 !important;
 }
-// Keep AG Grid's scrollbars away from the dock splitter hit area
-// (both vertical right-edge and horizontal bottom-edge)
-.dock-manager-root .ag-root-wrapper {
-  margin-right: 12px;
-  margin-bottom: 14px;
+.dock-manager-root .dock-splitter[data-direction="horizontal"] {
+  width: 3px !important;
+}
+.dock-manager-root .dock-splitter[data-direction="vertical"] {
+  height: 3px !important;
+}
+.dock-manager-root .dock-splitter:hover {
+  background: var(--bn-blue) !important;
 }
 
 // ── Dock manager → active design system mapping ──
