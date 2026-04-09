@@ -55,6 +55,12 @@ export const DESIGN_SYSTEMS: DesignSystemDef[] = [
     description: 'Power BI inspired. Indigo-navy ground, coral/amber/indigo accent triad.',
     themes: ['dark', 'light'],
   },
+  {
+    id: 'marketsui',
+    label: 'Markets UI',
+    description: 'Graphite ground, electric cyan primary, razor 1px hairlines, 2px surgical radius. Polymarket × Linear.',
+    themes: ['dark', 'light'],
+  },
 ];
 
 export const DEFAULT_DS = 'fi';

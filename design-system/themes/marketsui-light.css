@@ -1,0 +1,80 @@
+/*
+ * FI Design System — "marketsui" — Light Theme
+ * Warm off-white surfaces, graphite ink, deeper lime for AA contrast.
+ * Linear-style light mode with razor hairlines and 2px radius.
+ */
+
+[data-ds="marketsui"][data-theme="light"] {
+  /* ── shadcn/ui overrides ── */
+  --background: 60 9% 98%;
+  --foreground: 220 20% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 20% 10%;
+  --primary: 189 94% 28%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 60 6% 95%;
+  --secondary-foreground: 220 15% 25%;
+  --muted: 60 6% 96%;
+  --muted-foreground: 220 10% 40%;
+  --accent: 60 6% 94%;
+  --accent-foreground: 220 20% 10%;
+  --destructive: 350 82% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 90%;
+  --input: 220 13% 90%;
+  --ring: 189 94% 28%;
+  --radius: 2px;
+
+  /* ── Surface — warm off-white ── */
+  --bn-bg:      #fafaf9;
+  --bn-bg1:     #ffffff;
+  --bn-bg2:     #f4f4f2;
+  --bn-bg3:     #ebebe8;
+
+  /* ── Text — graphite ── */
+  --bn-t0:      #0b0d10;
+  --bn-t1:      #434a58;
+  --bn-t2:      #6b7180;
+  --bn-t3:      #9aa0ad;
+
+  /* ── Border — light hairlines ── */
+  --bn-border:  #e6e6e3;
+  --bn-border2: #d4d4d0;
+
+  /* ── Accent — deeper cyan for 4.5:1 on white ── */
+  --bn-green:   #0b7a8a;
+  --bn-green2:  #085c68;
+  --bn-red:     #d81b3c;
+  --bn-red2:    #b51530;
+  --bn-yellow:  #b8750a;
+  --bn-blue:    #2554c7;
+  --bn-blue2:   #1c3fa0;
+  --bn-cyan:    #0b7a8a;
+  --bn-orange:  #c44410;
+  --bn-magenta: #9333c5;
+
+  /* ── Actions ── */
+  --bn-buy-bg:  #0b7a8a;
+  --bn-sell-bg: #d81b3c;
+  --bn-cta-text: #ffffff;
+  --bn-logo-bg: #0b0d10;
+
+  /* ── Typography ── */
+  --fi-mono: 'JetBrains Mono', monospace;
+  --fi-sans: 'Geist', 'Inter', sans-serif;
+  --fi-font-xs: 10px;
+  --fi-font-sm: 11px;
+  --fi-font-md: 13px;
+  --fi-font-lg: 17px;
+
+  /* ── Order Book / Trade Ticket fills ── */
+  --ob-bid-fill:   rgba(11, 122, 138, 0.12);
+  --ob-ask-fill:   rgba(216, 27, 60, 0.10);
+  --tt-bid-strip:  rgba(11, 122, 138, 0.08);
+  --tt-ask-strip:  rgba(216, 27, 60, 0.08);
+
+  /* ── Misc ── */
+  --scrollbar-thumb: #c8c8c4;
+}
