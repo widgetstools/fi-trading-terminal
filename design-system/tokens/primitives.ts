@@ -1,97 +1,130 @@
 // ─────────────────────────────────────────────────────────────
 //  FI Design System — Primitive Tokens
-//  Raw palette, type scale, spacing, radius, opacity, timing.
-//  No semantic meaning — just values.
+//  "Data Double" infographic aesthetic.
 //
 //  Palette direction:
-//    - Punchy, saturated accents. Nothing washed out.
-//    - No earthy tones, no browns. Warning is pure orange, not copper.
-//    - Cool-neutral charcoal for dark chrome and cool off-white
-//      for light chrome. No warm cream anywhere.
+//    - Deep aubergine-navy backgrounds (warmer than charcoal) echo
+//      the editorial infographic feel of The Data Double poster.
+//    - Cyan is the dominant data/brand color (bars, headings, links).
+//    - Warm orange for high-energy physical data (heart-rate spikes).
+//    - Lime green for positive trading / category markers.
+//    - Magenta-rose for negative. Amber retained as a minor data-
+//      category highlight, never as brand.
+//    - Warm off-white text, not pure white — editorial typography feel.
 // ─────────────────────────────────────────────────────────────
 
 export const colors = {
-  // Cool-neutral grayscale. No warm shift — surfaces read as clean
-  // cool chrome, letting the saturated accents carry all the color.
+  // Aubergine-navy grayscale — warm-shifted so surfaces read as
+  // editorial print rather than clinical dark chrome.
+  aubergine: {
+    0:   '#ffffff',
+    50:  '#f5f3ee',  // light ground (warm off-white, editorial)
+    100: '#edeae0',  // light hover
+    150: '#e3decb',  // light pressed
+    200: '#dfd9c8',  // light border primary
+    300: '#ccc5af',  // light border secondary
+    400: '#a9a5b5',  // light faint / dark secondary
+    500: '#7a7489',  // muted text both themes
+    600: '#504a62',  // light secondary / dark faint
+    700: '#4b4560',  // dark border secondary
+    800: '#38344f',  // dark tertiary surface / border primary
+    900: '#2e2b45',  // dark secondary surface (hover/header)
+    950: '#252339',  // dark primary surface (card)
+    975: '#1e1c2e',  // dark ground (deepest)
+  },
+  // Cyan/aqua — BRAND. The dominant Data Double data-viz color.
+  cyan: {
+    50:  '#e8f6fb',
+    100: '#c5e8f3',
+    200: '#91d1e5',
+    300: '#5ec0e8',
+    400: '#42b0df',  // dark brand
+    500: '#2589b8',  // dark hover / light brand
+    600: '#1d6e93',  // light hover
+    700: '#145270',
+    800: '#0d3a52',
+  },
+  // Lime green — positive / buy / category-A marker.
+  lime: {
+    50:  '#f2f9d6',
+    100: '#def1a0',
+    200: '#c9e667',
+    300: '#b6dc28',
+    400: '#a8d229',  // dark positive
+    500: '#8cb01c',  // dark hover / buy bg
+    600: '#6b8c18',  // light positive / buy bg
+    700: '#527012',  // light hover
+    800: '#3d530d',
+  },
+  // Warm orange — warning and high-energy data spikes.
+  orange: {
+    300: '#f2ab78',
+    400: '#ec8039',  // dark warning (echoes heart-rate spikes)
+    500: '#d26a22',
+    600: '#b65420',  // light warning
+    700: '#8e3f14',
+  },
+  // Rose / magenta — negative / sell. Distinct from orange,
+  // distinct from red-neon, fits the Data Double dot palette.
+  rose: {
+    50:  '#fbe7f1',
+    100: '#f2c0da',
+    200: '#e58fbc',
+    300: '#db5b9b',  // dot marker
+    400: '#db3880',  // dark negative
+    500: '#b51f60',  // dark hover / light negative
+    600: '#8e1048',  // light hover
+    700: '#6a0a34',
+  },
+  // Amber — tertiary data-category highlight (NEVER brand).
+  amber: {
+    300: '#f2d977',
+    400: '#e9c230',  // dark highlight
+    500: '#c29d1a',
+    600: '#a88918',  // light highlight
+    700: '#7f6610',
+  },
+  // Muted purple — quaternary accent.
+  purple: {
+    300: '#c4b0de',
+    400: '#9b7fc5',  // dark
+    500: '#7e5eae',
+    600: '#6b4a96',  // light
+  },
+  // ── Aliases so shadcn/primeng adapters keep compiling without
+  // cross-cutting rewrites. The Data Double palette is canonically
+  // named (aubergine/lime/cyan/rose); these aliases just re-expose
+  // the same scales under the adapter's expected keys.
   charcoal: {
     0:   '#ffffff',
-    50:  '#f3f5f9',  // light theme ground (cool off-white)
-    100: '#ebeef3',  // light hover
-    150: '#dde2ea',  // light pressed
-    200: '#d9dee8',  // light border primary
-    300: '#c3cad7',  // light border secondary
-    400: '#9ca3af',  // light faint text
-    500: '#6b7280',  // muted text (both themes)
-    600: '#4f5665',  // light secondary text
-    700: '#4d586a',  // dark faint text
-    800: '#323b49',  // dark border secondary
-    850: '#2e3744',  // dark border primary
-    900: '#242c38',  // dark tertiary surface
-    925: '#1a212b',  // dark secondary surface
-    950: '#121820',  // dark primary surface (card)
-    975: '#0a0e14',  // dark ground
+    50:  '#f5f3ee',
+    100: '#edeae0',
+    150: '#e3decb',
+    200: '#dfd9c8',
+    300: '#ccc5af',
+    400: '#a9a5b5',
+    500: '#7a7489',
+    600: '#504a62',
+    700: '#4b4560',
+    800: '#38344f',
+    900: '#2e2b45',
+    950: '#252339',
+    975: '#1e1c2e',
   },
-  // Vibrant teal-green — reads clearly positive, no neon haze.
   teal: {
-    50:  '#e6fbf3',
-    100: '#c1f5de',
-    200: '#8cecc3',
-    300: '#4ee1a5',
-    400: '#14d9a0',  // dark theme positive (punchy)
-    500: '#0fb88a',  // dark hover / buy bg
-    600: '#0ea870',  // light theme positive
-    700: '#0b8959',  // light hover
-    800: '#086b47',
-    900: '#065234',
+    500: '#8cb01c',  // positive semantic alias
   },
-  // Vivid coral-pink-red. Saturated but not fire-engine.
-  red: {
-    50:  '#ffe8ed',
-    100: '#ffc5d0',
-    200: '#ff94a7',
-    300: '#ff6c86',
-    400: '#ff4d6d',  // dark negative (punchy)
-    500: '#e8304e',  // dark hover / sell bg
-    600: '#e02e47',  // light negative
-    700: '#b81e37',  // light hover
-    800: '#91162b',
-    900: '#6e1020',
-  },
-  // PURE ORANGE — warning semantic. Deliberately NOT copper, NOT
-  // brown. Clearly distinct from red (hue ≈22°) and unmistakably
-  // orange (no yellow character).
-  orange: {
-    300: '#ffc195',
-    400: '#ffa872',
-    500: '#ff8c42',  // dark warning (vivid)
-    600: '#e86a1c',  // dark hover / light warning
-    700: '#c75b18',  // light hover
-  },
-  // Punchy saturated blue — brand accent. Replaces Binance yellow.
   blue: {
-    50:  '#eaf3ff',
-    100: '#d0e2ff',
-    200: '#a1c4ff',
-    300: '#6fa5fc',
-    400: '#60a5fa',
-    500: '#3b82f6',  // dark brand (punchy)
-    600: '#2563eb',  // light brand / dark hover
-    700: '#1d4ed8',  // light hover
-  },
-  // Bright cyan for highlights and selected states.
-  cyan: {
-    300: '#67e8f9',
-    400: '#22d3ee',  // dark highlight
-    500: '#06b6d4',  // light highlight
-    600: '#0891b2',
-    700: '#0e7490',
-  },
-  // Saturated purple — tertiary accent.
-  purple: {
-    300: '#c4b5fd',
-    400: '#a855f7',  // dark
-    500: '#9333ea',
-    600: '#7c3aed',  // light
+    50:  '#e8f6fb',
+    100: '#c5e8f3',
+    200: '#91d1e5',
+    300: '#5ec0e8',
+    400: '#42b0df',
+    500: '#2589b8',
+    600: '#1d6e93',
+    700: '#145270',
+    800: '#0d3a52',
+    900: '#09283a',
   },
 } as const;
 
@@ -101,10 +134,10 @@ export const typography = {
     sans: "'Geist', sans-serif",
   },
   fontSize: {
-    xs: '10px',  // column headers, badges, timestamps, captions
-    sm: '11px',  // body text, table cells, data values (DEFAULT)
-    md: '13px',  // section titles, nav tabs, CTA buttons
-    lg: '18px',  // KPI headline numbers
+    xs: '10px',
+    sm: '11px',
+    md: '13px',
+    lg: '18px',
   },
   fontWeight: {
     regular:  400,
@@ -115,8 +148,8 @@ export const typography = {
   letterSpacing: {
     tight:  '0.02em',
     normal: '0.03em',
-    wide:   '0.04em',
-    wider:  '0.05em',
+    wide:   '0.05em',  // editorial all-caps labels lean slightly wider
+    wider:  '0.08em',
   },
   lineHeight: {
     none:    1,
@@ -168,9 +201,9 @@ export const transition = {
 
 export const shadow = {
   none: 'none',
-  sm:   '0 1px 2px rgba(0,0,0,0.15)',
-  md:   '0 2px 6px rgba(0,0,0,0.2)',
-  lg:   '0 4px 12px rgba(0,0,0,0.25)',
+  sm:   '0 1px 2px rgba(0,0,0,0.22)',
+  md:   '0 2px 8px rgba(0,0,0,0.32)',
+  lg:   '0 4px 16px rgba(0,0,0,0.42)',
 } as const;
 
 export const primitives = {

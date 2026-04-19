@@ -1,46 +1,45 @@
 // ─────────────────────────────────────────────────────────────
-//  FI Design System — Semantic Tokens
-//  Maps primitives to purpose-driven roles.
-//  Each color scheme (dark/light) gets its own mappings.
+//  FI Design System — Semantic Tokens (Data Double variant)
 //
-//  Design intent:
-//    - Punchy, saturated accents — colors pop against neutral chrome.
-//    - No earthy tones or brown/copper. Warning is pure orange.
-//    - Dark: cool charcoal grounds, vivid accents.
-//    - Light: cool off-white (never cream), charcoal text, vivid
-//      accents that stay WCAG AA on the light ground.
+//  Role mappings:
+//    accent.info      → cyan  (brand: primary buttons, active tabs,
+//                              focus rings, logo, intraday line)
+//    accent.positive  → lime  (buy / gain)
+//    accent.negative  → rose/magenta  (sell / loss)
+//    accent.warning   → orange  (warning, high-energy data spikes)
+//    accent.highlight → amber  (minor data-category emphasis, never brand)
+//    accent.purple    → muted purple (quaternary)
 // ─────────────────────────────────────────────────────────────
 
 import { colors, typography, radius, spacing, opacity, transition } from './primitives';
 
-// ── Color Scheme Type ──
 export interface ColorScheme {
   surface: {
-    ground:    string;  // page/app background
-    primary:   string;  // card/panel background
-    secondary: string;  // hover, header background
-    tertiary:  string;  // active/pressed, accent bg
+    ground:    string;
+    primary:   string;
+    secondary: string;
+    tertiary:  string;
   };
   text: {
-    primary:   string;  // main body text
-    secondary: string;  // labels, descriptions
-    muted:     string;  // captions, timestamps
-    faint:     string;  // disabled, placeholder
+    primary:   string;
+    secondary: string;
+    muted:     string;
+    faint:     string;
   };
   border: {
-    primary:   string;  // panel borders, dividers
-    secondary: string;  // interactive borders (inputs, buttons)
+    primary:   string;
+    secondary: string;
   };
   accent: {
-    positive:      string;  // buy, gain, success
+    positive:      string;
     positiveHover: string;
-    negative:      string;  // sell, loss, error
+    negative:      string;
     negativeHover: string;
-    warning:       string;  // caution, pending (pure orange, never brown)
-    info:          string;  // BRAND / primary / informational / links
+    warning:       string;
+    info:          string;  // BRAND (cyan)
     infoHover:     string;
-    highlight:     string;  // emphasis, selected
-    purple:        string;  // tertiary accent
+    highlight:     string;  // amber — minor data highlight
+    purple:        string;
   };
   action: {
     buyBg:    string;
@@ -71,123 +70,121 @@ export interface ColorScheme {
 }
 
 // ── Dark Scheme ─────────────────────────────────────────────
-// Deep cool charcoal chrome + vibrant saturated accents.
 export const dark: ColorScheme = {
   surface: {
-    ground:    colors.charcoal[975],  // #0a0e14
-    primary:   colors.charcoal[950],  // #121820 — card
-    secondary: colors.charcoal[925],  // #1a212b — hover/header
-    tertiary:  colors.charcoal[900],  // #242c38 — pressed
+    ground:    colors.aubergine[975],  // #1e1c2e
+    primary:   colors.aubergine[950],  // #252339
+    secondary: colors.aubergine[900],  // #2e2b45
+    tertiary:  colors.aubergine[800],  // #38344f
   },
   text: {
-    primary:   '#e6e9ef',             // warm off-white (never pure white)
-    secondary: '#a7b0bd',
-    muted:     colors.charcoal[500],  // #6b7280
-    faint:     colors.charcoal[700],  // #4d586a
+    primary:   '#e8e4d8',              // warm editorial off-white
+    secondary: colors.aubergine[400],  // #a9a5b5
+    muted:     colors.aubergine[500],  // #7a7489
+    faint:     colors.aubergine[600],  // #504a62
   },
   border: {
-    primary:   colors.charcoal[850],  // #2e3744
-    secondary: colors.charcoal[800],  // #323b49
+    primary:   colors.aubergine[800],  // #38344f
+    secondary: colors.aubergine[700],  // #4b4560
   },
   accent: {
-    positive:      colors.teal[400],   // #14d9a0 — vivid teal
-    positiveHover: colors.teal[500],   // #0fb88a
-    negative:      colors.red[400],    // #ff4d6d — vivid coral
-    negativeHover: colors.red[500],    // #e8304e
-    warning:       colors.orange[500], // #ff8c42 — pure orange
-    info:          colors.blue[500],   // #3b82f6 — punchy brand
-    infoHover:     colors.blue[600],   // #2563eb
-    highlight:     colors.cyan[400],   // #22d3ee — bright cyan
-    purple:        colors.purple[400], // #a855f7
+    positive:      colors.lime[400],    // #a8d229 — lime buy
+    positiveHover: colors.lime[500],    // #8cb01c
+    negative:      colors.rose[400],    // #db3880 — magenta sell
+    negativeHover: colors.rose[500],    // #b51f60
+    warning:       colors.orange[400],  // #ec8039 — warm orange warning
+    info:          colors.cyan[400],    // #42b0df — CYAN BRAND
+    infoHover:     colors.cyan[500],    // #2589b8
+    highlight:     colors.amber[400],   // #e9c230 — amber highlight
+    purple:        colors.purple[400],  // #9b7fc5
   },
   action: {
-    buyBg:    colors.teal[500],   // #0fb88a
-    buyText:  '#ffffff',
-    sellBg:   colors.red[500],    // #e8304e
+    buyBg:    colors.lime[500],    // #8cb01c
+    buyText:  '#1e1c2e',           // dark text on lime — better contrast
+    sellBg:   colors.rose[400],    // #db3880
     sellText: '#ffffff',
   },
   state: {
-    focusRing:    colors.blue[500],
-    focusRingBg:  'rgba(59,130,246,0.30)',       // blue-500 @ 30%
-    disabledBg:   colors.charcoal[900],
-    disabledFg:   colors.charcoal[700],
-    hoverOverlay: 'rgba(255,255,255,0.05)',
+    focusRing:    colors.cyan[400],
+    focusRingBg:  'rgba(66,176,223,0.30)',       // cyan @ 30%
+    disabledBg:   colors.aubergine[800],
+    disabledFg:   colors.aubergine[600],
+    hoverOverlay: 'rgba(232,228,216,0.05)',
   },
   overlay: {
-    positiveSoft:  'rgba(20,217,160,0.15)',  // teal-400 @ 15%
-    positiveRing:  'rgba(20,217,160,0.35)',
-    negativeSoft:  'rgba(255,77,109,0.15)',  // red-400 @ 15%
-    negativeRing:  'rgba(255,77,109,0.35)',
-    warningSoft:   'rgba(255,140,66,0.15)',  // orange-500 @ 15%
-    warningRing:   'rgba(255,140,66,0.38)',
-    infoSoft:      'rgba(59,130,246,0.15)',  // blue-500 @ 15%
-    infoRing:      'rgba(59,130,246,0.35)',
-    neutralSoft:   'rgba(107,114,128,0.20)', // charcoal-500 @ 20%
-    neutralRing:   'rgba(107,114,128,0.30)',
+    positiveSoft:  'rgba(168,210,41,0.14)',    // lime @ 14%
+    positiveRing:  'rgba(168,210,41,0.35)',
+    negativeSoft:  'rgba(219,56,128,0.14)',    // rose @ 14%
+    negativeRing:  'rgba(219,56,128,0.38)',
+    warningSoft:   'rgba(236,128,57,0.14)',    // orange @ 14%
+    warningRing:   'rgba(236,128,57,0.38)',
+    infoSoft:      'rgba(66,176,223,0.14)',    // cyan @ 14%
+    infoRing:      'rgba(66,176,223,0.35)',
+    neutralSoft:   'rgba(122,116,137,0.18)',   // aubergine-500 @ 18%
+    neutralRing:   'rgba(122,116,137,0.28)',
   },
-  scrollbar: colors.charcoal[800],
+  scrollbar: colors.aubergine[700],
 };
 
 // ── Light Scheme ────────────────────────────────────────────
-// Cool off-white (NOT cream, NOT warm) + charcoal text + vivid
-// accents that pop without glare. WCAG AA across all text tiers.
+// Warm off-white editorial paper feel. Deeper accent variants for
+// WCAG AA contrast on the light ground.
 export const light: ColorScheme = {
   surface: {
-    ground:    colors.charcoal[50],   // #f3f5f9 — cool off-white
-    primary:   '#fbfcfd',             // soft paper-cool (not pure #fff)
-    secondary: colors.charcoal[100],  // #ebeef3
-    tertiary:  colors.charcoal[150],  // #dde2ea
+    ground:    colors.aubergine[50],   // #f5f3ee — editorial warm off-white
+    primary:   '#fdfbf5',              // paper-cream card
+    secondary: colors.aubergine[100],  // #edeae0
+    tertiary:  colors.aubergine[150],  // #e3decb
   },
   text: {
-    primary:   '#1a1f2e',             // deep cool charcoal (never pure black)
-    secondary: colors.charcoal[600],  // #4f5665
-    muted:     colors.charcoal[500],  // #6b7280 — AA on off-white
-    faint:     colors.charcoal[400],  // #9ca3af
+    primary:   colors.aubergine[975],  // #1e1c2e — echoes dark ground
+    secondary: colors.aubergine[600],  // #504a62
+    muted:     colors.aubergine[500],  // #7a7489
+    faint:     colors.aubergine[400],  // #a9a5b5
   },
   border: {
-    primary:   colors.charcoal[200],  // #d9dee8
-    secondary: colors.charcoal[300],  // #c3cad7
+    primary:   colors.aubergine[200],  // #dfd9c8
+    secondary: colors.aubergine[300],  // #ccc5af
   },
   accent: {
-    positive:      colors.teal[600],   // #0ea870 — vivid emerald
-    positiveHover: colors.teal[700],   // #0b8959
-    negative:      colors.red[600],    // #e02e47 — vivid pink-red
-    negativeHover: colors.red[700],    // #b81e37
-    warning:       colors.orange[600], // #e86a1c — vivid orange (no brown)
-    info:          colors.blue[600],   // #2563eb — punchy brand
-    infoHover:     colors.blue[700],   // #1d4ed8
-    highlight:     colors.cyan[500],   // #06b6d4
-    purple:        colors.purple[600], // #7c3aed
+    positive:      colors.lime[600],    // #6b8c18
+    positiveHover: colors.lime[700],    // #527012
+    negative:      colors.rose[500],    // #b51f60
+    negativeHover: colors.rose[600],    // #8e1048
+    warning:       colors.orange[600],  // #b65420
+    info:          colors.cyan[500],    // #2589b8 — CYAN BRAND (light)
+    infoHover:     colors.cyan[600],    // #1d6e93
+    highlight:     colors.amber[600],   // #a88918
+    purple:        colors.purple[600],  // #6b4a96
   },
   action: {
-    buyBg:    colors.teal[600],   // #0ea870
+    buyBg:    colors.lime[600],    // #6b8c18
     buyText:  '#ffffff',
-    sellBg:   colors.red[600],    // #e02e47
+    sellBg:   colors.rose[500],    // #b51f60
     sellText: '#ffffff',
   },
   state: {
-    focusRing:    colors.blue[600],
-    focusRingBg:  'rgba(37,99,235,0.22)',       // blue-600 @ 22%
-    disabledBg:   colors.charcoal[100],
-    disabledFg:   colors.charcoal[400],
-    hoverOverlay: 'rgba(0,0,0,0.045)',
+    focusRing:    colors.cyan[500],
+    focusRingBg:  'rgba(37,137,184,0.22)',       // cyan-500 @ 22%
+    disabledBg:   colors.aubergine[100],
+    disabledFg:   colors.aubergine[400],
+    hoverOverlay: 'rgba(30,28,46,0.04)',
   },
   overlay: {
-    positiveSoft:  'rgba(14,168,112,0.12)',  // teal-600 @ 12%
-    positiveRing:  'rgba(14,168,112,0.32)',
-    negativeSoft:  'rgba(224,46,71,0.10)',   // red-600 @ 10%
-    negativeRing:  'rgba(224,46,71,0.32)',
-    warningSoft:   'rgba(232,106,28,0.12)',  // orange-600 @ 12%
-    warningRing:   'rgba(232,106,28,0.35)',
-    infoSoft:      'rgba(37,99,235,0.10)',   // blue-600 @ 10%
-    infoRing:      'rgba(37,99,235,0.32)',
-    neutralSoft:   'rgba(79,86,101,0.08)',   // charcoal-600 @ 8%
-    neutralRing:   'rgba(79,86,101,0.22)',
+    positiveSoft:  'rgba(107,140,24,0.10)',    // lime-600 @ 10%
+    positiveRing:  'rgba(107,140,24,0.32)',
+    negativeSoft:  'rgba(181,31,96,0.10)',     // rose-500 @ 10%
+    negativeRing:  'rgba(181,31,96,0.32)',
+    warningSoft:   'rgba(182,84,32,0.12)',     // orange-600 @ 12%
+    warningRing:   'rgba(182,84,32,0.35)',
+    infoSoft:      'rgba(37,137,184,0.10)',    // cyan-500 @ 10%
+    infoRing:      'rgba(37,137,184,0.32)',
+    neutralSoft:   'rgba(80,74,98,0.08)',      // aubergine-600 @ 8%
+    neutralRing:   'rgba(80,74,98,0.22)',
   },
-  scrollbar: '#c3cad7',
+  scrollbar: colors.aubergine[300],
 };
 
-// ── Shared (non-theme-dependent) ──
 export const shared = {
   typography,
   radius,

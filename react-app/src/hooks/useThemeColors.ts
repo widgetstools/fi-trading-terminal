@@ -8,25 +8,24 @@ export function useThemeColors() {
     const get = (name: string) =>
       getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
-    // Fallbacks mirror the new design-system palette (fi-dark.css / fi-light.css).
-    // Renamed `yellow` → `amber` to reflect the burnt-copper warning hue.
+    // Fallbacks mirror the Data Double palette in fi-dark.css / fi-light.css.
     return {
-      bg: get('--bn-bg') || (isDark ? '#0a0e14' : '#f3f5f9'),
-      bg1: get('--bn-bg1') || (isDark ? '#121820' : '#fbfcfd'),
-      bg2: get('--bn-bg2') || (isDark ? '#1a212b' : '#ebeef3'),
-      bg3: get('--bn-bg3') || (isDark ? '#242c38' : '#dde2ea'),
-      border: get('--bn-border') || (isDark ? '#2e3744' : '#d9dee8'),
-      border2: get('--bn-border2') || (isDark ? '#323b49' : '#c3cad7'),
-      t0: get('--bn-t0') || (isDark ? '#e6e9ef' : '#1a1f2e'),
-      t1: get('--bn-t1') || (isDark ? '#a7b0bd' : '#4f5665'),
-      t2: get('--bn-t2') || '#6b7280',
-      t3: get('--bn-t3') || (isDark ? '#4d586a' : '#9ca3af'),
-      green: get('--bn-green') || (isDark ? '#14d9a0' : '#0ea870'),
-      red: get('--bn-red') || (isDark ? '#ff4d6d' : '#e02e47'),
-      amber: get('--bn-amber') || (isDark ? '#ff8c42' : '#e86a1c'),
-      blue: get('--bn-blue') || (isDark ? '#3b82f6' : '#2563eb'),
-      cyan: get('--bn-cyan') || (isDark ? '#22d3ee' : '#06b6d4'),
-      gridLine: isDark ? '#1a212b' : '#ebeef3',
+      bg: get('--bn-bg') || (isDark ? '#1e1c2e' : '#f5f3ee'),
+      bg1: get('--bn-bg1') || (isDark ? '#252339' : '#fdfbf5'),
+      bg2: get('--bn-bg2') || (isDark ? '#2e2b45' : '#edeae0'),
+      bg3: get('--bn-bg3') || (isDark ? '#38344f' : '#e3decb'),
+      border: get('--bn-border') || (isDark ? '#38344f' : '#dfd9c8'),
+      border2: get('--bn-border2') || (isDark ? '#4b4560' : '#ccc5af'),
+      t0: get('--bn-t0') || (isDark ? '#e8e4d8' : '#1e1c2e'),
+      t1: get('--bn-t1') || (isDark ? '#a9a5b5' : '#504a62'),
+      t2: get('--bn-t2') || '#7a7489',
+      t3: get('--bn-t3') || (isDark ? '#504a62' : '#a9a5b5'),
+      green: get('--bn-green') || (isDark ? '#a8d229' : '#6b8c18'),
+      red: get('--bn-red') || (isDark ? '#db3880' : '#b51f60'),
+      amber: get('--bn-amber') || (isDark ? '#ec8039' : '#b65420'),
+      blue: get('--bn-blue') || (isDark ? '#42b0df' : '#2589b8'),
+      cyan: get('--bn-cyan') || (isDark ? '#e9c230' : '#a88918'),
+      gridLine: isDark ? '#2e2b45' : '#edeae0',
       isDark,
     };
   }, [isDark]);

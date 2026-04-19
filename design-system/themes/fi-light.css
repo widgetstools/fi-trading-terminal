@@ -1,88 +1,87 @@
 /*
- * FI Design System — Light Theme
- * Generated from design-system/tokens/semantic.ts
+ * FI Design System — Light Theme ("Data Double")
  *
- * Cool off-white chrome (NOT cream, NOT warm) + deep charcoal text
- * + saturated vivid accents. No earthy tones, no brown, no yellow.
- * WCAG AA across all text tiers.
+ * Editorial warm off-white paper feel. Deep accent variants for
+ * WCAG AA contrast. Cyan brand, lime buy, magenta-rose sell, warm
+ * orange warning, amber highlight.
  */
 
 [data-theme="light"] {
   /* ── shadcn/ui overrides ── */
-  --background: 219 27% 96%;         /* #f3f5f9 */
-  --foreground: 223 28% 14%;         /* #1a1f2e */
-  --card: 216 25% 99%;               /* #fbfcfd */
-  --card-foreground: 223 28% 14%;
-  --popover: 216 25% 99%;
-  --popover-foreground: 223 28% 14%;
-  --primary: 221 83% 53%;            /* #2563eb — punchy blue brand */
+  --background: 42 20% 95%;          /* #f5f3ee */
+  --foreground: 245 23% 14%;         /* #1e1c2e */
+  --card: 45 57% 98%;                /* #fdfbf5 */
+  --card-foreground: 245 23% 14%;
+  --popover: 45 57% 98%;
+  --popover-foreground: 245 23% 14%;
+  --primary: 200 66% 43%;            /* #2589b8 — CYAN BRAND */
   --primary-foreground: 0 0% 100%;
-  --secondary: 219 22% 93%;          /* #ebeef3 */
-  --secondary-foreground: 220 13% 35%;
-  --muted: 219 22% 93%;
-  --muted-foreground: 220 9% 46%;    /* #6b7280 */
-  --accent: 219 22% 93%;
-  --accent-foreground: 223 28% 14%;
-  --destructive: 350 75% 52%;        /* #e02e47 */
+  --secondary: 42 21% 90%;           /* #edeae0 */
+  --secondary-foreground: 253 13% 34%;
+  --muted: 42 21% 90%;
+  --muted-foreground: 253 8% 50%;    /* #7a7489 */
+  --accent: 42 21% 90%;
+  --accent-foreground: 245 23% 14%;
+  --destructive: 331 71% 41%;        /* #b51f60 */
   --destructive-foreground: 0 0% 100%;
-  --border: 218 22% 88%;             /* #d9dee8 */
-  --input: 218 22% 88%;
-  --ring: 221 83% 53%;
+  --border: 41 30% 83%;              /* #dfd9c8 */
+  --input: 41 30% 83%;
+  --ring: 200 66% 43%;               /* cyan focus */
   --radius: 4px;
 
-  /* ── Surface (cool off-white; never cream) ── */
-  --bn-bg:      #f3f5f9;
-  --bn-bg1:     #fbfcfd;
-  --bn-bg2:     #ebeef3;
-  --bn-bg3:     #dde2ea;
+  /* ── Surface (warm editorial off-white) ── */
+  --bn-bg:      #f5f3ee;
+  --bn-bg1:     #fdfbf5;
+  --bn-bg2:     #edeae0;
+  --bn-bg3:     #e3decb;
 
-  /* ── Text (deep charcoal; never pure black) ── */
-  --bn-t0:      #1a1f2e;
-  --bn-t1:      #4f5665;
-  --bn-t2:      #6b7280;
-  --bn-t3:      #9ca3af;
+  /* ── Text (aubergine-toned dark) ── */
+  --bn-t0:      #1e1c2e;
+  --bn-t1:      #504a62;
+  --bn-t2:      #7a7489;
+  --bn-t3:      #a9a5b5;
 
-  /* ── Border (cool neutral) ── */
-  --bn-border:  #d9dee8;
-  --bn-border2: #c3cad7;
+  /* ── Border ── */
+  --bn-border:  #dfd9c8;
+  --bn-border2: #ccc5af;
 
-  /* ── Accent (vivid; WCAG AA on off-white) ── */
-  --bn-green:   #0ea870;
-  --bn-green2:  #0b8959;
-  --bn-red:     #e02e47;
-  --bn-red2:    #b81e37;
-  --bn-amber:   #e86a1c;    /* pure orange — warning semantic only */
-  --bn-blue:    #2563eb;    /* BRAND */
-  --bn-blue2:   #1d4ed8;
-  --bn-cyan:    #06b6d4;
-  --bn-purple:  #7c3aed;
+  /* ── Accent (Data Double light) ── */
+  --bn-green:   #6b8c18;     /* deep lime */
+  --bn-green2:  #527012;
+  --bn-red:     #b51f60;     /* deep rose */
+  --bn-red2:    #8e1048;
+  --bn-amber:   #b65420;     /* deep orange — warning */
+  --bn-blue:    #2589b8;     /* CYAN BRAND */
+  --bn-blue2:   #1d6e93;
+  --bn-cyan:    #a88918;     /* deep amber — tertiary highlight */
+  --bn-purple:  #6b4a96;
 
   /* ── Actions ── */
-  --bn-buy-bg:   #0ea870;
-  --bn-sell-bg:  #e02e47;
+  --bn-buy-bg:   #6b8c18;
+  --bn-sell-bg:  #b51f60;
   --bn-cta-text: #ffffff;
-  --bn-logo-bg:  #fbfcfd;
+  --bn-logo-bg:  #fdfbf5;
 
   /* ── Interactive states ── */
-  --bn-focus-ring:    #2563eb;
-  --bn-focus-ring-bg: rgba(37,99,235,0.22);
-  --bn-disabled-bg:   #ebeef3;
-  --bn-disabled-fg:   #9ca3af;
-  --bn-hover-overlay: rgba(0,0,0,0.045);
+  --bn-focus-ring:    #2589b8;
+  --bn-focus-ring-bg: rgba(37,137,184,0.22);
+  --bn-disabled-bg:   #edeae0;
+  --bn-disabled-fg:   #a9a5b5;
+  --bn-hover-overlay: rgba(30,28,46,0.04);
 
   /* ── Overlay tints ── */
-  --bn-positive-soft: rgba(14,168,112,0.12);
-  --bn-positive-ring: rgba(14,168,112,0.32);
-  --bn-negative-soft: rgba(224,46,71,0.10);
-  --bn-negative-ring: rgba(224,46,71,0.32);
-  --bn-warning-soft:  rgba(232,106,28,0.12);
-  --bn-warning-ring:  rgba(232,106,28,0.35);
-  --bn-info-soft:     rgba(37,99,235,0.10);
-  --bn-info-ring:     rgba(37,99,235,0.32);
-  --bn-neutral-soft:  rgba(79,86,101,0.08);
-  --bn-neutral-ring:  rgba(79,86,101,0.22);
+  --bn-positive-soft: rgba(107,140,24,0.10);
+  --bn-positive-ring: rgba(107,140,24,0.32);
+  --bn-negative-soft: rgba(181,31,96,0.10);
+  --bn-negative-ring: rgba(181,31,96,0.32);
+  --bn-warning-soft:  rgba(182,84,32,0.12);
+  --bn-warning-ring:  rgba(182,84,32,0.35);
+  --bn-info-soft:     rgba(37,137,184,0.10);
+  --bn-info-ring:     rgba(37,137,184,0.32);
+  --bn-neutral-soft:  rgba(80,74,98,0.08);
+  --bn-neutral-ring:  rgba(80,74,98,0.22);
 
-  /* ── Typography (parity with dark theme) ── */
+  /* ── Typography (parity with dark) ── */
   --fi-mono: 'JetBrains Mono', monospace;
   --fi-sans: 'Geist', sans-serif;
   --fi-font-xs: 10px;
@@ -91,15 +90,15 @@
   --fi-font-lg: 18px;
 
   /* ── Order Book / Trade Ticket fills ── */
-  --ob-bid-fill:   rgba(14,168,112,0.14);
-  --ob-ask-fill:   rgba(224,46,71,0.12);
-  --tt-bid-strip:  rgba(37,99,235,0.10);
-  --tt-ask-strip:  rgba(224,46,71,0.10);
+  --ob-bid-fill:   rgba(107,140,24,0.12);
+  --ob-ask-fill:   rgba(181,31,96,0.10);
+  --tt-bid-strip:  rgba(37,137,184,0.08);
+  --tt-ask-strip:  rgba(181,31,96,0.08);
 
   /* ── Misc ── */
-  --scrollbar-thumb: #c3cad7;
+  --scrollbar-thumb: #ccc5af;
 
-  /* ── Legacy aliases (parity with dark theme) ── */
+  /* ── Legacy aliases ── */
   --fi-bg0: var(--bn-bg);
   --fi-bg1: var(--bn-bg1);
   --fi-bg2: var(--bn-bg2);
@@ -116,8 +115,8 @@
   --fi-red: var(--bn-red);
   --fi-blue: var(--bn-blue);
   --fi-amber: var(--bn-amber);
-  --fi-yellow: var(--bn-amber);
-  --bn-yellow: var(--bn-amber);
+  --fi-yellow: var(--bn-cyan);
+  --bn-yellow: var(--bn-cyan);
   --fi-cyan: var(--bn-cyan);
   --fi-purple: var(--bn-purple);
   --fi-title: var(--bn-t0);

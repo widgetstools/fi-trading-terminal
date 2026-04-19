@@ -53,7 +53,7 @@ export class EconCalendarWidget {
   @Input() panel: any;
   events = ECON_EVENTS;
   impactColor(i: string) {
-    return i === 'High' ? 'var(--bn-red)' : i === 'Med' ? '#ff8c42' : 'var(--bn-green)';
+    return i === 'High' ? 'var(--bn-red)' : i === 'Med' ? '#ec8039' : 'var(--bn-green)';
   }
   impactBg(i: string) {
     return this.impactColor(i) + '20';

@@ -12,10 +12,10 @@ const SCATTER_DATA = BONDS.map((b) => ({
 }));
 
 const RTG_COLOR: Record<string, string> = {
-  aaa: '#3b82f6',
-  aa: '#22d3ee',
+  aaa: '#42b0df',
+  aa: '#e9c230',
   a: '#2dd4bf',
-  bbb: '#ff8c42',
+  bbb: '#ec8039',
   hy: '#f87171',
 };
 
