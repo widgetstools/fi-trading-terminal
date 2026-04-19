@@ -5,6 +5,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ModuleRegistry, type ColDef, type GridApi, type GridReadyEvent } from 'ag-grid-community';
 import { AllEnterpriseModule, LicenseManager } from 'ag-grid-enterprise';
 import { fiGridTheme } from '../services/ag-grid-theme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import { MARKET_INDICES, type MarketIndex } from '../services/trading-data.service';
 import { ChangeValueRenderer, YtdValueRenderer } from '../services/cell-renderers';
 
@@ -45,7 +46,7 @@ export class MarketIndicesWidget implements OnInit, OnDestroy {
   indices: MarketIndex[] = [];
   private tickId: any;
 
-  colDefs: ColDef<MarketIndex>[] = [
+  colDefs: ColDef<MarketIndex>[] = alignColumns<ColDef<MarketIndex>>([
     {
       field: 'name',
       headerName: 'INDEX',
@@ -73,7 +74,7 @@ export class MarketIndicesWidget implements OnInit, OnDestroy {
       type: 'numericColumn',
       cellRenderer: YtdValueRenderer,
     },
-  ];
+  ]);
 
   defaultColDef: ColDef = {
     sortable: true,

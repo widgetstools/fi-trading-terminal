@@ -6,6 +6,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ModuleRegistry, type ColDef, type GridApi, type GridReadyEvent } from 'ag-grid-community';
 import { AllEnterpriseModule, LicenseManager } from 'ag-grid-enterprise';
 import { fiGridTheme } from '../services/ag-grid-theme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import { BONDS, type Bond } from '../services/trading-data.service';
 import { SharedStateService } from '../services/shared-state.service';
 import {
@@ -101,7 +102,7 @@ export class BondBlotterWidget implements OnInit, OnDestroy {
   quickFilters = ['All', 'UST', 'Corp', 'Muni', 'Axes'];
   sectors = ['All', 'Government', 'Financials', 'Technology', 'Healthcare', 'Consumer', 'Telecom'];
 
-  colDefs: ColDef<Bond>[] = [
+  colDefs: ColDef<Bond>[] = alignColumns<ColDef<Bond>>([
     {
       field: 'ticker',
       headerName: 'TICKER',
@@ -259,7 +260,7 @@ export class BondBlotterWidget implements OnInit, OnDestroy {
       flex: 0.5,
       cellStyle: { color: 'var(--bn-t2)', fontSize: '9px' },
     },
-  ];
+  ]);
 
   defaultColDef: ColDef = {
     sortable: true,

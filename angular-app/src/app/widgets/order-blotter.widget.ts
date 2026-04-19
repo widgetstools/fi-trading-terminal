@@ -5,6 +5,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ModuleRegistry, type ColDef } from 'ag-grid-community';
 import { AllEnterpriseModule, LicenseManager } from 'ag-grid-enterprise';
 import { fiGridTheme } from '../services/ag-grid-theme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import { SharedStateService } from '../services/shared-state.service';
 import {
   SideCellRenderer,
@@ -59,7 +60,7 @@ export class OrderBlotterWidget {
   filters = ['All', 'Filled', 'Partial', 'Pending', 'Cancelled'];
 
   gridTheme = fiGridTheme;
-  colDefs: ColDef[] = [
+  colDefs: ColDef[] = alignColumns<ColDef>([
     {
       field: 'time',
       headerName: 'TIME',
@@ -118,7 +119,7 @@ export class OrderBlotterWidget {
       flex: 0.7,
       cellRenderer: StatusBadgeRenderer,
     },
-  ];
+  ]);
 
   defaultColDef: ColDef = {
     sortable: true,

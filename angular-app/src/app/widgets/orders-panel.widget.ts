@@ -5,6 +5,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ModuleRegistry, type ColDef } from 'ag-grid-community';
 import { AllEnterpriseModule, LicenseManager } from 'ag-grid-enterprise';
 import { fiGridTheme } from '../services/ag-grid-theme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import { INITIAL_ORDERS, INITIAL_TRADES } from '../services/trading-data.service';
 import {
   SideCellRenderer,
@@ -104,7 +105,7 @@ export class OrdersPanelWidget {
     { asset: 'AAPL', avail: '0.00', locked: '0.00' },
   ];
 
-  orderColDefs: ColDef[] = [
+  orderColDefs: ColDef[] = alignColumns<ColDef>([
     {
       field: 'time',
       headerName: 'Date',
@@ -165,9 +166,9 @@ export class OrdersPanelWidget {
       flex: 0.6,
       cellRenderer: StatusBadgeRenderer,
     },
-  ];
+  ]);
 
-  tradeColDefs: ColDef[] = [
+  tradeColDefs: ColDef[] = alignColumns<ColDef>([
     {
       field: 'time',
       headerName: 'Date',
@@ -218,7 +219,7 @@ export class OrdersPanelWidget {
       flex: 0.6,
       cellRenderer: StatusBadgeRenderer,
     },
-  ];
+  ]);
 
   defaultColDef: ColDef = {
     sortable: true,

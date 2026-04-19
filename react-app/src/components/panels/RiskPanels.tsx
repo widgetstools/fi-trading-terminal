@@ -5,6 +5,7 @@ import { ModuleRegistry } from 'ag-grid-community';
 import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import type { ColDef, ICellRendererParams } from 'ag-grid-community';
 import { fiGridTheme } from '@/lib/agGridTheme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import { RISK_POSITIONS, BONDS } from '@/data/tradingData';
 import { BookNameRenderer, OasValueRenderer, PnlValueRenderer } from '@/lib/cell-renderers';
 
@@ -54,13 +55,13 @@ export function RiskKpiStrip() {
 }
 
 export function BookRiskSummary() {
-  const colDefs = useMemo<ColDef[]>(()=>[
+  const colDefs = useMemo<ColDef[]>(()=>alignColumns<ColDef>([
     {field:'book', headerName:'BOOK', flex:1, cellRenderer:BookNameRenderer},
     {field:'mv',   headerName:'MV',   width:70, type:'numericColumn'},
     {field:'dv01', headerName:'DV01', width:80, type:'numericColumn', valueFormatter:p=>p.value?.toLocaleString(), cellStyle:{color:'#1e90ff'}},
     {field:'oas',  headerName:'OAS',  width:70, type:'numericColumn', cellRenderer:OasValueRenderer},
     {field:'pnl',  headerName:'P&L',  width:80, type:'numericColumn', cellRenderer:PnlValueRenderer},
-  ],[]);
+  ]),[]);
   const defaultColDef = useMemo<ColDef>(()=>({
     suppressMovable:true,
     cellStyle:{fontFamily:'JetBrains Mono,monospace',fontSize:11},

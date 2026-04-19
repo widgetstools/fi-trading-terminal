@@ -5,6 +5,7 @@ import { ModuleRegistry } from 'ag-grid-community';
 import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import type { ColDef, GridApi, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
 import { fiGridTheme } from '@/lib/agGridTheme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import { MARKET_INDICES, YC_CHART_DATA } from '@/data/tradingData';
 import { ChangeValueRenderer, YtdValueRenderer } from '@/lib/cell-renderers';
 
@@ -60,12 +61,12 @@ export function MarketIndices() {
 
   const getRowId = useCallback((p:{data:MarketIndex})=>p.data.name,[]);
 
-  const colDefs = useMemo<ColDef<MarketIndex>[]>(()=>[
+  const colDefs = useMemo<ColDef<MarketIndex>[]>(()=>alignColumns<ColDef<MarketIndex>>([
     {field:'name', headerName:'INDEX', flex:1},
     {field:'val',  headerName:'LAST',  width:90, type:'numericColumn', valueFormatter:p=>p.value?.toFixed(2)},
     {field:'chg',  headerName:'CHG',   width:80, type:'numericColumn', cellRenderer:ChangeValueRenderer},
     {field:'ytd',  headerName:'YTD',   width:80, type:'numericColumn', cellRenderer:YtdValueRenderer},
-  ],[]);
+  ]),[]);
 
   const defaultColDef = useMemo<ColDef>(()=>({
     suppressMovable:true,

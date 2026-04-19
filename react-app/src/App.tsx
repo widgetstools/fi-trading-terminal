@@ -1,22 +1,60 @@
 import { useState, useCallback, useRef, useMemo } from 'react';
 import { DockManagerCore, type WidgetProps, type DockManagerCoreHandle } from '@widgetstools/react-dock-manager';
-import { type DockManagerState, slateDark, vsCodeLight } from '@widgetstools/dock-manager-core';
+import {
+  type DockManagerState,
+  slateDark,
+  vsCodeLight,
+  validateState,
+  checkLayoutInvariants,
+  serialize,
+  deserialize,
+} from '@widgetstools/dock-manager-core';
 
 // ── Layout persistence helpers ──
 const STORAGE_PREFIX = 'fi-dock-';
 
+// Refuses to load or persist a layout that violates structural invariants
+// (empty nested tab groups, orphan panels, duplicate placements). A prior
+// buggy dock version could have saved one of these to localStorage, so we
+// must guard both sides of the persistence boundary.
 function getSavedLayout(tab: string): DockManagerState | null {
+  const raw = localStorage.getItem(STORAGE_PREFIX + tab);
+  if (!raw) return null;
+
+  let parsed: DockManagerState;
   try {
-    const saved = localStorage.getItem(STORAGE_PREFIX + tab);
-    if (saved) return JSON.parse(saved);
-  } catch { /* ignore malformed data */ }
-  return null;
+    const { state, warnings } = deserialize(raw);
+    if (warnings.length > 0) {
+      console.warn(`[fi-dock] deserialization warnings for tab "${tab}":`, warnings);
+    }
+    parsed = state;
+  } catch (err) {
+    console.warn(`[fi-dock] discarding malformed saved layout for tab "${tab}"`, err);
+    localStorage.removeItem(STORAGE_PREFIX + tab);
+    return null;
+  }
+
+  const validated = validateState(parsed);
+  const violations = checkLayoutInvariants(validated);
+  if (violations.length > 0) {
+    console.warn(`[fi-dock] discarding corrupted saved layout for tab "${tab}":`, violations);
+    localStorage.removeItem(STORAGE_PREFIX + tab);
+    return null;
+  }
+  return validated;
 }
 
 function saveLayout(tab: string, state: DockManagerState) {
+  const violations = checkLayoutInvariants(state);
+  if (violations.length > 0) {
+    console.warn(`[fi-dock] refusing to save corrupted layout for tab "${tab}":`, violations, state);
+    return;
+  }
   try {
-    localStorage.setItem(STORAGE_PREFIX + tab, JSON.stringify(state));
-  } catch { /* ignore quota errors */ }
+    localStorage.setItem(STORAGE_PREFIX + tab, serialize(state));
+  } catch (err) {
+    console.warn(`[fi-dock] failed to persist layout for tab "${tab}"`, err);
+  }
 }
 import '@widgetstools/react-dock-manager/styles.css';
 
@@ -106,8 +144,8 @@ const WIDGETS: Record<string, React.ComponentType<WidgetProps>> = {
 const p = (id: string, title: string, wt: string, closable = false) => ({ id, title, widgetType: wt, closable });
 const tg = (id: string, panels: string[], active?: string) => ({ type: 'tabgroup' as const, id, panels, activePanel: active || panels[0] });
 const sp = (id: string, dir: 'horizontal' | 'vertical', sizes: number[], children: any[]) => ({ type: 'split' as const, id, direction: dir, sizes, children });
-const base = (layout: any, panels: Record<string, any>, active: string): DockManagerState => ({
-  layout, panels, floatingPanels: [], popoutPanels: [], unpinnedPanels: [], nextZIndex: 100, activePaneId: active,
+const base = (layout: any, panels: Map<string, any>, active: string): DockManagerState => ({
+  layout, panels: Object.fromEntries(panels), floatingPanels: [], popoutPanels: [], unpinnedPanels: [], nextZIndex: 100, activePaneId: active,
 });
 
 // ── Per-tab layouts ──
@@ -135,12 +173,12 @@ function tradeLayout(): DockManagerState {
         tg('tg-orders', ['blotter']),
       ]),
     ]),
-    {
-      bondBlotter: p('bondBlotter','Bond Blotter','bondBlotter'),
-      chart: p('chart','Chart','chart'),
-      orderBook: p('orderBook','Order Book','orderBook'),
-      blotter: p('blotter','Orders','blotter'),
-    },
+    new Map([
+      ['bondBlotter', p('bondBlotter','Bond Blotter','bondBlotter')],
+      ['chart', p('chart','Chart','chart')],
+      ['orderBook', p('orderBook','Order Book','orderBook')],
+      ['blotter', p('blotter','Orders','blotter')],
+    ]),
     'bondBlotter',
   );
 }
@@ -154,7 +192,7 @@ function pricesLayout(): DockManagerState {
         tg('tg-ob', ['orderBook']),
       ]),
     ]),
-    { bondBlotter: p('bondBlotter','Bond Blotter','bondBlotter'), chart: p('chart','Chart','chart'), orderBook: p('orderBook','Order Book','orderBook') },
+    new Map([['bondBlotter', p('bondBlotter','Bond Blotter','bondBlotter')], ['chart', p('chart','Chart','chart')], ['orderBook', p('orderBook','Order Book','orderBook')]]),
     'bondBlotter',
   );
 }
@@ -175,7 +213,7 @@ function riskLayout(): DockManagerState {
         tg('tg-limits', ['riskLimits']),
       ]),
     ]),
-    { riskKpi: p('riskKpi','Risk KPIs','riskKpi'), bookRisk: p('bookRisk','Book Risk & Heatmap','bookRisk'), dv01: p('dv01','DV01 by Book','dv01'), scenario: p('scenario','Rate Scenarios','scenario'), varTrend: p('varTrend','VaR Trend','varTrend'), riskLimits: p('riskLimits','Risk Limits','riskLimits') },
+    new Map([['riskKpi', p('riskKpi','Risk KPIs','riskKpi')], ['bookRisk', p('bookRisk','Book Risk & Heatmap','bookRisk')], ['dv01', p('dv01','DV01 by Book','dv01')], ['scenario', p('scenario','Rate Scenarios','scenario')], ['varTrend', p('varTrend','VaR Trend','varTrend')], ['riskLimits', p('riskLimits','Risk Limits','riskLimits')]]),
     'riskKpi',
   );
 }
@@ -192,7 +230,7 @@ function marketLayout(): DockManagerState {
         tg('tg-yc', ['yieldCurve']),
       ]),
     ]),
-    { indices: p('indices','Market Indices','indices'), econCal: p('econCal','Economic Calendar','econCal'), intraday: p('intraday','Intraday Chart','intraday'), yieldCurve: p('yieldCurve','Yield Curve','yieldCurve') },
+    new Map([['indices', p('indices','Market Indices','indices')], ['econCal', p('econCal','Economic Calendar','econCal')], ['intraday', p('intraday','Intraday Chart','intraday')], ['yieldCurve', p('yieldCurve','Yield Curve','yieldCurve')]]),
     'indices',
   );
 }
@@ -206,7 +244,7 @@ function ordersLayout(): DockManagerState {
         tg('tg-det', ['orderDetail']),
       ]),
     ]),
-    { orderKpi: p('orderKpi','Order KPIs','orderKpi'), orderBlotter: p('orderBlotter','Order Blotter','orderBlotter'), orderDetail: p('orderDetail','Order Detail','orderDetail') },
+    new Map([['orderKpi', p('orderKpi','Order KPIs','orderKpi')], ['orderBlotter', p('orderBlotter','Order Blotter','orderBlotter')], ['orderDetail', p('orderDetail','Order Detail','orderDetail')]]),
     'orderBlotter',
   );
 }
@@ -225,7 +263,7 @@ function analyticsLayout(): DockManagerState {
         tg('tg-pnl', ['pnl']),
       ]),
     ]),
-    { oasDur: p('oasDur','OAS vs Duration','oasDur'), durBuckets: p('durBuckets','Duration Buckets','durBuckets'), sectors: p('sectors','Sector Allocation','sectors'), histOas: p('histOas','CDX IG/HY Historical','histOas'), oasDist: p('oasDist','OAS Distribution','oasDist'), pnl: p('pnl','P&L Attribution','pnl') },
+    new Map([['oasDur', p('oasDur','OAS vs Duration','oasDur')], ['durBuckets', p('durBuckets','Duration Buckets','durBuckets')], ['sectors', p('sectors','Sector Allocation','sectors')], ['histOas', p('histOas','CDX IG/HY Historical','histOas')], ['oasDist', p('oasDist','OAS Distribution','oasDist')], ['pnl', p('pnl','P&L Attribution','pnl')]]),
     'oasDur',
   );
 }
@@ -236,7 +274,7 @@ function researchLayout(): DockManagerState {
       tg('tg-list', ['researchList']),
       tg('tg-detail', ['noteDetail']),
     ]),
-    { researchList: p('researchList','Research Notes','researchList'), noteDetail: p('noteDetail','Note Detail','noteDetail') },
+    new Map([['researchList', p('researchList','Research Notes','researchList')], ['noteDetail', p('noteDetail','Note Detail','noteDetail')]]),
     'researchList',
   );
 }
@@ -244,7 +282,7 @@ function researchLayout(): DockManagerState {
 function designSystemLayout(): DockManagerState {
   return base(
     tg('tg-ds', ['designSystem']),
-    { designSystem: p('designSystem', 'Design System', 'designSystem') },
+    new Map([['designSystem', p('designSystem', 'Design System', 'designSystem')]]),
     'designSystem',
   );
 }
@@ -284,9 +322,10 @@ export default function App() {
 
   const handleTabChange = useCallback((t: string) => { setActiveTab(t); if (t !== 'Trade') setShowRfq(false); }, []);
 
-  const handleStateChange = useCallback((state: DockManagerState) => {
-    saveLayout(activeTab, state);
-  }, [activeTab]);
+  const handleStateChange = useCallback((_state: DockManagerState) => {
+    // No auto-save: layout is only persisted on explicit user action
+    // (context menu "Save Layout" or top bar button).
+  }, []);
 
   const handleSaveLayout = useCallback(() => {
     const state = dockRef.current?.getState();
@@ -340,7 +379,7 @@ export default function App() {
       <TopBar activeTab={activeTab} onTabChange={handleTabChange} selectedBond={selectedBond} onNewOrder={isTrading ? handleNewOrder : undefined} onOpenRfq={isTrading ? handleOpenRfq : undefined} onSaveLayout={handleSaveLayout} onResetLayout={handleResetLayout} />
       <Wrapper>
         <div className="dock-manager-container" style={{ flex: 1, overflow: 'hidden' }}>
-          <DockManagerCore key={`${activeTab}-${layoutVersion}`} ref={dockRef} initialState={currentLayout} widgets={WIDGETS} theme={dockTheme} onStateChange={handleStateChange} />
+          <DockManagerCore key={`${activeTab}-${layoutVersion}`} ref={dockRef} initialState={currentLayout} widgets={WIDGETS} theme={dockTheme} onStateChange={handleStateChange} onSaveLayout={() => handleSaveLayout()} />
         </div>
       </Wrapper>
     </div>

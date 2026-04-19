@@ -161,3 +161,24 @@ button:focus-visible,
   --dock-tab-color: var(--bn-t1);
   --dock-tab-active-color: var(--bn-t0);
 }
+
+/* ─────────────────────────────────────────────────────────────
+   AG Grid — cell/header alignment helper classes.
+   ag-grid ships ag-right-aligned-* natively; left/center are ours.
+   Header alignment is driven by cell alignment via design-system
+   alignColumn(); users override with col.headerAlign / headerClass.
+   ───────────────────────────────────────────────────────────── */
+.ag-center-aligned-header .ag-header-cell-label { justify-content: center; }
+.ag-center-aligned-header .ag-header-cell-text  { text-align: center; }
+.ag-left-aligned-header   .ag-header-cell-label { justify-content: flex-start; }
+.ag-left-aligned-header   .ag-header-cell-text  { text-align: left; }
+
+.ag-ltr .ag-center-aligned-cell,
+.ag-rtl .ag-center-aligned-cell { text-align: center; justify-content: center; }
+.ag-center-aligned-cell .ag-cell-value,
+.ag-center-aligned-cell .ag-group-value { text-align: center; }
+
+.ag-ltr .ag-left-aligned-cell,
+.ag-rtl .ag-left-aligned-cell { text-align: left; justify-content: flex-start; }
+.ag-left-aligned-cell .ag-cell-value,
+.ag-left-aligned-cell .ag-group-value { text-align: left; }

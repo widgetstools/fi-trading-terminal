@@ -4,6 +4,7 @@ import { ModuleRegistry } from 'ag-grid-community';
 import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import type { ColDef, ICellRendererParams } from 'ag-grid-community';
 import { fiGridTheme } from '@/lib/agGridTheme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import type { Bond } from '@/data/tradingData';
 import { INITIAL_ORDERS, INITIAL_TRADES } from '@/data/tradingData';
 import { SideCellRenderer, StatusBadgeRenderer, FilledAmountRenderer } from '@/lib/cell-renderers';
@@ -16,7 +17,7 @@ export function BottomOrderPanel({ bond }: BottomOrderPanelProps) {
   const [tab, setTab] = useState('Order History');
   const TABS = ['Order History', 'Trade History', 'Open Orders (0)', 'Funds'];
 
-  const orderColDefs = useMemo<ColDef[]>(() => [
+  const orderColDefs = useMemo<ColDef[]>(() => alignColumns<ColDef>([
     { field: 'time',   headerName: 'Date',    width: 70,  cellStyle: { color: 'var(--bn-t1)' } },
     { field: 'bond',   headerName: 'Pair',    flex: 1,    cellStyle: { color: 'var(--bn-t0)' } },
     { field: 'type',   headerName: 'Type',    width: 60,  cellStyle: { color: 'var(--bn-t1)' } },
@@ -28,9 +29,9 @@ export function BottomOrderPanel({ bond }: BottomOrderPanelProps) {
       valueGetter: p => p.data?.px > 0 ? (+p.data.px * parseFloat(p.data.qty.replace('$', ''))).toFixed(0) : '—',
       cellStyle: { color: 'var(--bn-t1)' } },
     { field: 'status', headerName: 'Status',  width: 85,  cellRenderer: StatusBadgeRenderer },
-  ], []);
+  ]), []);
 
-  const tradeColDefs = useMemo<ColDef[]>(() => [
+  const tradeColDefs = useMemo<ColDef[]>(() => alignColumns<ColDef>([
     { field: 'time',   headerName: 'Date',   width: 70,  cellStyle: { color: 'var(--bn-t1)' } },
     { field: 'bond',   headerName: 'Pair',   flex: 1,    cellStyle: { color: 'var(--bn-t0)' } },
     { field: 'side',   headerName: 'Side',   width: 55,  cellRenderer: SideCellRenderer },
@@ -39,7 +40,7 @@ export function BottomOrderPanel({ bond }: BottomOrderPanelProps) {
     { colId: 'total',  headerName: 'Total',  width: 80,  type: 'numericColumn', valueGetter: () => '—', cellStyle: { color: 'var(--bn-t1)' } },
     { colId: 'fee',    headerName: 'Fee',    width: 60,  type: 'numericColumn', valueGetter: () => '—', cellStyle: { color: 'var(--bn-t1)' } },
     { field: 'status', headerName: 'Status', width: 85,  cellRenderer: StatusBadgeRenderer },
-  ], []);
+  ]), []);
 
   const defaultColDef = useMemo<ColDef>(() => ({
     suppressMovable: true,

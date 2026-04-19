@@ -5,6 +5,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ModuleRegistry, type ColDef } from 'ag-grid-community';
 import { AllEnterpriseModule, LicenseManager } from 'ag-grid-enterprise';
 import { fiGridTheme } from '../services/ag-grid-theme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import { RISK_POSITIONS, BONDS } from '../services/trading-data.service';
 import { BookNameRenderer, OasValueRenderer, PnlValueRenderer } from '../services/cell-renderers';
 
@@ -67,7 +68,7 @@ export class BookRiskWidget {
   positions = RISK_POSITIONS;
   heatBonds = BONDS.slice(0, 16);
 
-  colDefs: ColDef[] = [
+  colDefs: ColDef[] = alignColumns<ColDef>([
     {
       field: 'book',
       headerName: 'BOOK',
@@ -102,7 +103,7 @@ export class BookRiskWidget {
       type: 'numericColumn',
       cellRenderer: PnlValueRenderer,
     },
-  ];
+  ]);
 
   defaultColDef: ColDef = {
     sortable: true,

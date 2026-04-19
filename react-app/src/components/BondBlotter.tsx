@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Search } from 'lucide-react';
 import { fiGridTheme } from '@/lib/agGridTheme';
+import { alignColumns } from '@design-system/adapters/ag-grid';
 import { TickerCellRenderer, RatingBadgeRenderer, SideCellRenderer, OasValueRenderer, SignedValueRenderer } from '@/lib/cell-renderers';
 
 ModuleRegistry.registerModules([AllEnterpriseModule]);
@@ -21,7 +22,7 @@ export function BondBlotter({onSelectBond}:BondBlotterProps) {
   const [search,setSearch]=useState('');
   const [sectorFilter,setSectorFilter]=useState('All');
 
-  const colDefs=useMemo(()=>[
+  const colDefs=useMemo(()=>alignColumns<ColDef<Bond>>([
     {field:'ticker',  headerName:'TICKER', width:68,  cellRenderer:TickerCellRenderer,  pinned:'left'},
     {field:'issuer',  headerName:'ISSUER', width:140, cellStyle:{color:'var(--bn-t1)',fontSize:11}, pinned:'left'},
     {field:'cpn',     headerName:'CPN',    width:62,  valueFormatter:p=>p.value?.toFixed(3), type:'numericColumn'},
@@ -43,7 +44,7 @@ export function BondBlotter({onSelectBond}:BondBlotterProps) {
     {field:'face',    headerName:'FACE',   width:58,  cellStyle:{color:'var(--bn-t1)'}},
     {field:'side',    headerName:'SIDE',   width:56,  cellRenderer:SideCellRenderer},
     {field:'axes',    headerName:'AXES',   width:62,  cellStyle:{color:'var(--bn-t2)',fontSize:9}},
-  ] as ColDef<Bond>[],[]);
+  ] as ColDef<Bond>[]),[]);
 
   const defaultColDef=useMemo<ColDef>(()=>({
     sortable:true,resizable:true,suppressMovable:false,

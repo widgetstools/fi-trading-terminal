@@ -7,6 +7,8 @@ import {
   type DockviewApi,
   slateDark,
   vsCodeLight,
+  serialize,
+  deserialize,
 } from '@widgetstools/dock-manager-core';
 import { TICKER_STRIP, type TickerItem } from './services/trading-data.service';
 import { SharedStateService } from './services/shared-state.service';
@@ -93,12 +95,10 @@ const sp = (id: string, dir: 'horizontal' | 'vertical', sizes: number[], childre
   sizes,
   children,
 });
-const base = (layout: any, panels: Record<string, any>, active: string): DockManagerState => ({
+const base = (layout: any, panels: Map<string, any>, active: string): DockManagerState => ({
   layout,
   panels,
-  floatingPanels: [],
-  popoutPanels: [],
-  unpinnedPanels: [],
+  placements: new Map(),
   nextZIndex: 100,
   activePaneId: active,
 });
@@ -125,12 +125,12 @@ function tradeLayout(): DockManagerState {
         ),
       ],
     ),
-    {
-      bondBlotter: p('bondBlotter', 'Bond Blotter', 'bondBlotter'),
-      chart: p('chart', 'Chart', 'chart'),
-      orderBook: p('orderBook', 'Order Book', 'orderBook'),
-      blotter: p('blotter', 'Orders', 'blotter'),
-    },
+    new Map([
+      ['bondBlotter', p('bondBlotter', 'Bond Blotter', 'bondBlotter')],
+      ['chart', p('chart', 'Chart', 'chart')],
+      ['orderBook', p('orderBook', 'Order Book', 'orderBook')],
+      ['blotter', p('blotter', 'Orders', 'blotter')],
+    ]),
     'bondBlotter',
   );
 }
@@ -150,11 +150,11 @@ function pricesLayout(): DockManagerState {
         ),
       ],
     ),
-    {
-      bondBlotter: p('bondBlotter', 'Bond Blotter', 'bondBlotter'),
-      chart: p('chart', 'Chart', 'chart'),
-      orderBook: p('orderBook', 'Order Book', 'orderBook'),
-    },
+    new Map([
+      ['bondBlotter', p('bondBlotter', 'Bond Blotter', 'bondBlotter')],
+      ['chart', p('chart', 'Chart', 'chart')],
+      ['orderBook', p('orderBook', 'Order Book', 'orderBook')],
+    ]),
     'bondBlotter',
   );
 }
@@ -191,14 +191,14 @@ function riskLayout(): DockManagerState {
         ),
       ],
     ),
-    {
-      riskKpi: p('riskKpi', 'Risk KPIs', 'riskKpi'),
-      bookRisk: p('bookRisk', 'Book Risk & Heatmap', 'bookRisk'),
-      dv01: p('dv01', 'DV01 by Book', 'dv01'),
-      scenario: p('scenario', 'Rate Scenarios', 'scenario'),
-      varTrend: p('varTrend', 'VaR Trend', 'varTrend'),
-      riskLimits: p('riskLimits', 'Risk Limits', 'riskLimits'),
-    },
+    new Map([
+      ['riskKpi', p('riskKpi', 'Risk KPIs', 'riskKpi')],
+      ['bookRisk', p('bookRisk', 'Book Risk & Heatmap', 'bookRisk')],
+      ['dv01', p('dv01', 'DV01 by Book', 'dv01')],
+      ['scenario', p('scenario', 'Rate Scenarios', 'scenario')],
+      ['varTrend', p('varTrend', 'VaR Trend', 'varTrend')],
+      ['riskLimits', p('riskLimits', 'Risk Limits', 'riskLimits')],
+    ]),
     'riskKpi',
   );
 }
@@ -218,12 +218,12 @@ function marketLayout(): DockManagerState {
         ),
       ],
     ),
-    {
-      indices: p('indices', 'Market Indices', 'indices'),
-      econCal: p('econCal', 'Economic Calendar', 'econCal'),
-      intraday: p('intraday', 'Intraday Chart', 'intraday'),
-      yieldCurve: p('yieldCurve', 'Yield Curve', 'yieldCurve'),
-    },
+    new Map([
+      ['indices', p('indices', 'Market Indices', 'indices')],
+      ['econCal', p('econCal', 'Economic Calendar', 'econCal')],
+      ['intraday', p('intraday', 'Intraday Chart', 'intraday')],
+      ['yieldCurve', p('yieldCurve', 'Yield Curve', 'yieldCurve')],
+    ]),
     'indices',
   );
 }
@@ -243,11 +243,11 @@ function ordersLayout(): DockManagerState {
         ),
       ],
     ),
-    {
-      orderKpi: p('orderKpi', 'Order KPIs', 'orderKpi'),
-      orderBlotter: p('orderBlotter', 'Order Blotter', 'orderBlotter'),
-      orderDetail: p('orderDetail', 'Order Detail', 'orderDetail'),
-    },
+    new Map([
+      ['orderKpi', p('orderKpi', 'Order KPIs', 'orderKpi')],
+      ['orderBlotter', p('orderBlotter', 'Order Blotter', 'orderBlotter')],
+      ['orderDetail', p('orderDetail', 'Order Detail', 'orderDetail')],
+    ]),
     'orderBlotter',
   );
 }
@@ -272,14 +272,14 @@ function analyticsLayout(): DockManagerState {
         ),
       ],
     ),
-    {
-      oasDur: p('oasDur', 'OAS vs Duration', 'oasDur'),
-      durBuckets: p('durBuckets', 'Duration Buckets', 'durBuckets'),
-      sectors: p('sectors', 'Sector Allocation', 'sectors'),
-      histOas: p('histOas', 'CDX IG/HY Historical', 'histOas'),
-      oasDist: p('oasDist', 'OAS Distribution', 'oasDist'),
-      pnl: p('pnl', 'P&L Attribution', 'pnl'),
-    },
+    new Map([
+      ['oasDur', p('oasDur', 'OAS vs Duration', 'oasDur')],
+      ['durBuckets', p('durBuckets', 'Duration Buckets', 'durBuckets')],
+      ['sectors', p('sectors', 'Sector Allocation', 'sectors')],
+      ['histOas', p('histOas', 'CDX IG/HY Historical', 'histOas')],
+      ['oasDist', p('oasDist', 'OAS Distribution', 'oasDist')],
+      ['pnl', p('pnl', 'P&L Attribution', 'pnl')],
+    ]),
     'oasDur',
   );
 }
@@ -291,10 +291,10 @@ function researchLayout(): DockManagerState {
       [30, 70],
       [tg('tg-list', ['researchList']), tg('tg-detail', ['noteDetail'])],
     ),
-    {
-      researchList: p('researchList', 'Research Notes', 'researchList'),
-      noteDetail: p('noteDetail', 'Note Detail', 'noteDetail'),
-    },
+    new Map([
+      ['researchList', p('researchList', 'Research Notes', 'researchList')],
+      ['noteDetail', p('noteDetail', 'Note Detail', 'noteDetail')],
+    ]),
     'researchList',
   );
 }
@@ -302,9 +302,9 @@ function researchLayout(): DockManagerState {
 function designSystemLayout(): DockManagerState {
   return base(
     tg('tg-ds', ['designSystem']),
-    {
-      designSystem: p('designSystem', 'Design System', 'designSystem'),
-    },
+    new Map([
+      ['designSystem', p('designSystem', 'Design System', 'designSystem')],
+    ]),
     'designSystem',
   );
 }
@@ -314,13 +314,16 @@ const STORAGE_PREFIX = 'fi-dock-';
 function getSavedLayout(tab: string): DockManagerState | null {
   try {
     const saved = localStorage.getItem(STORAGE_PREFIX + tab);
-    if (saved) return JSON.parse(saved);
+    if (saved) {
+      const { state } = deserialize(saved);
+      return state;
+    }
   } catch {}
   return null;
 }
 function saveLayoutToStorage(tab: string, state: DockManagerState) {
   try {
-    localStorage.setItem(STORAGE_PREFIX + tab, JSON.stringify(state));
+    localStorage.setItem(STORAGE_PREFIX + tab, serialize(state));
   } catch {}
 }
 function clearSavedLayout(tab: string) {
