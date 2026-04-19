@@ -35,9 +35,9 @@ export class SideCellRenderer implements ICellRendererComp {
 const STATUS_STYLES: Record<string, { bg: string; color: string; border: string }> = {
   Filled:    { bg: 'rgba(0,166,118,0.12)',  color: 'var(--bn-green)',  border: 'rgba(0,166,118,0.3)' },
   Partial:   { bg: 'rgba(255,107,53,0.12)',  color: 'var(--bn-amber)', border: 'rgba(255,107,53,0.3)' },
-  Pending:   { bg: 'rgba(201,205,212,0.12)',  color: 'var(--bn-blue)',   border: 'rgba(201,205,212,0.3)' },
-  Cancelled: { bg: 'rgba(227,38,54,0.10)', color: 'var(--bn-red)',    border: 'rgba(227,38,54,0.3)' },
-  Working:   { bg: 'rgba(201,205,212,0.12)',  color: 'var(--bn-blue)',   border: 'rgba(201,205,212,0.3)' },
+  Pending:   { bg: 'rgba(227,38,54,0.12)',  color: 'var(--bn-blue)',   border: 'rgba(227,38,54,0.3)' },
+  Cancelled: { bg: 'rgba(230,57,128,0.10)', color: 'var(--bn-red)',    border: 'rgba(230,57,128,0.3)' },
+  Working:   { bg: 'rgba(227,38,54,0.12)',  color: 'var(--bn-blue)',   border: 'rgba(227,38,54,0.3)' },
 };
 
 export class StatusBadgeRenderer implements ICellRendererComp {
@@ -109,7 +109,7 @@ const RTG_STYLES: Record<string, { bg: string; color: string; border: string }> 
   aa:  { bg: 'rgba(0,166,118,0.06)',  color: 'var(--bn-green)',  border: 'rgba(0,166,118,0.2)' },
   a:   { bg: 'rgba(190,242,100,0.08)', color: '#00a676',          border: 'rgba(132,204,22,0.25)' },
   bbb: { bg: 'rgba(255,107,53,0.08)',  color: 'var(--bn-amber)', border: 'rgba(255,107,53,0.25)' },
-  hy:  { bg: 'rgba(227,38,54,0.08)', color: 'var(--bn-red)',    border: 'rgba(227,38,54,0.25)' },
+  hy:  { bg: 'rgba(230,57,128,0.08)', color: 'var(--bn-red)',    border: 'rgba(230,57,128,0.25)' },
 };
 
 export class RatingBadgeRenderer implements ICellRendererComp {
@@ -189,7 +189,7 @@ export class YtdValueRenderer implements ICellRendererComp {
 
 // ── RFQ Status (LIVE / DONE / STALE) ──
 const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: string }> = {
-  live:  { bg: 'rgba(201,205,212,0.1)',  color: 'var(--bn-blue)',  border: 'rgba(201,205,212,0.25)' },
+  live:  { bg: 'rgba(227,38,54,0.1)',  color: 'var(--bn-blue)',  border: 'rgba(227,38,54,0.25)' },
   done:  { bg: 'rgba(0,166,118,0.12)', color: 'var(--bn-green)', border: 'rgba(0,166,118,0.25)' },
   stale: { bg: 'rgba(74,82,117,0.2)',   color: 'var(--bn-t2)',    border: 'rgba(74,82,117,0.25)' },
 };

@@ -93,20 +93,20 @@ export class YieldCurveWidget implements AfterViewInit, OnDestroy {
     };
     drawLine('month', g('--bn-bg2'), 1, [2, 4]);
     drawLine('week', g('--bn-border'), 1.2, [4, 4]);
-    drawLine('today', '#c9cdd4', 2, []);
+    drawLine('today', '#e32636', 2, []);
 
     // Today dots
     data.forEach((d, i) => {
       ctx.beginPath();
       ctx.arc(xOf(i), yOf(d.today), 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = '#c9cdd4';
+      ctx.fillStyle = '#e32636';
       ctx.fill();
     });
 
     // Legend
     ctx.textAlign = 'left';
     [
-      ['Today', '#c9cdd4'],
+      ['Today', '#e32636'],
       ['-1 Week', g('--bn-border')],
       ['-1 Month', g('--bn-bg2')],
     ].forEach(([label, color], idx) => {

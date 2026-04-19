@@ -1,10 +1,10 @@
 /*
- * FI Design System — Dark Theme (Ferrari Luce variant)
+ * FI Design System — Dark Theme (Ferrari Luce V2 — red brand)
  *
- * Jet-black-leaning chrome with platinum/silver brand accents and
- * Rosso Corsa red reserved exclusively for sell / loss semantics.
- * Monochromatic luxury feel; reds only appear where they carry
- * trading meaning.
+ * Rosso Corsa is the hero brand (primary buttons, active tabs, focus
+ * rings, logo). Sell uses a rose-shifted red (#E63980) — still
+ * red-family loss semantic but distinct hue from brand. Silver
+ * recedes to a secondary chrome accent.
  */
 
 :root, [data-theme="dark"] {
@@ -15,19 +15,19 @@
   --card-foreground: 0 0% 96%;
   --popover: 0 0% 8%;
   --popover-foreground: 0 0% 96%;
-  --primary: 220 11% 82%;            /* #c9cdd4 — platinum brand */
-  --primary-foreground: 0 0% 8%;
+  --primary: 354 78% 52%;            /* #e32636 — ROSSO CORSA BRAND */
+  --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 16%;             /* #2a2a2a */
   --secondary-foreground: 0 0% 72%;
   --muted: 0 0% 12%;                 /* #1e1e1e */
   --muted-foreground: 0 0% 48%;      /* #7a7a7a */
   --accent: 0 0% 16%;
   --accent-foreground: 0 0% 96%;
-  --destructive: 354 78% 52%;        /* #e32636 — Rosso Corsa */
+  --destructive: 335 75% 56%;        /* #e63980 — rose sell */
   --destructive-foreground: 0 0% 100%;
   --border: 0 0% 21%;                /* #353535 */
   --input: 0 0% 21%;
-  --ring: 220 11% 82%;               /* platinum focus */
+  --ring: 354 78% 52%;               /* Rosso Corsa focus */
   --radius: 4px;
 
   /* ── Surface ── */
@@ -46,26 +46,26 @@
   --bn-border:  #252525;
   --bn-border2: #353535;
 
-  /* ── Accent (Ferrari Luce) ── */
+  /* ── Accent (Ferrari Luce V2) ── */
   --bn-green:   #00a676;     /* racing green */
   --bn-green2:  #008a61;
-  --bn-red:     #e32636;     /* Rosso Corsa */
-  --bn-red2:    #c01020;
-  --bn-amber:   #ff6b35;     /* pure orange — warning only */
-  --bn-blue:    #c9cdd4;     /* PLATINUM — BRAND */
-  --bn-blue2:   #e1e4ea;     /* lighter silver — brand hover */
-  --bn-cyan:    #e1e4ea;     /* silver highlight */
+  --bn-red:     #e63980;     /* ROSE — sell (hue-shifted from brand) */
+  --bn-red2:    #c01f63;
+  --bn-amber:   #ff6b35;     /* orange — warning */
+  --bn-blue:    #e32636;     /* ROSSO CORSA — BRAND */
+  --bn-blue2:   #c01020;     /* brand hover */
+  --bn-cyan:    #e1e4ea;     /* silver — secondary highlight */
   --bn-purple:  #8b5cf6;
 
   /* ── Actions ── */
   --bn-buy-bg:   #008a61;
-  --bn-sell-bg:  #e32636;
+  --bn-sell-bg:  #e63980;    /* rose sell button */
   --bn-cta-text: #ffffff;
   --bn-logo-bg:  #0a0a0a;
 
   /* ── Interactive states ── */
-  --bn-focus-ring:    #c9cdd4;
-  --bn-focus-ring-bg: rgba(201,205,212,0.28);
+  --bn-focus-ring:    #e32636;
+  --bn-focus-ring-bg: rgba(227,38,54,0.30);
   --bn-disabled-bg:   #2a2a2a;
   --bn-disabled-fg:   #4a4a4a;
   --bn-hover-overlay: rgba(255,255,255,0.05);
@@ -73,12 +73,12 @@
   /* ── Overlay tints ── */
   --bn-positive-soft: rgba(0,166,118,0.14);
   --bn-positive-ring: rgba(0,166,118,0.35);
-  --bn-negative-soft: rgba(227,38,54,0.14);
-  --bn-negative-ring: rgba(227,38,54,0.38);
+  --bn-negative-soft: rgba(230,57,128,0.14);
+  --bn-negative-ring: rgba(230,57,128,0.38);
   --bn-warning-soft:  rgba(255,107,53,0.14);
   --bn-warning-ring:  rgba(255,107,53,0.38);
-  --bn-info-soft:     rgba(201,205,212,0.12);
-  --bn-info-ring:     rgba(201,205,212,0.32);
+  --bn-info-soft:     rgba(227,38,54,0.14);
+  --bn-info-ring:     rgba(227,38,54,0.38);
   --bn-neutral-soft:  rgba(122,122,122,0.18);
   --bn-neutral-ring:  rgba(122,122,122,0.28);
 
@@ -92,9 +92,9 @@
 
   /* ── Order Book / Trade Ticket fills ── */
   --ob-bid-fill:   rgba(0,166,118,0.18);
-  --ob-ask-fill:   rgba(227,38,54,0.18);
-  --tt-bid-strip:  rgba(201,205,212,0.10);
-  --tt-ask-strip:  rgba(227,38,54,0.14);
+  --ob-ask-fill:   rgba(230,57,128,0.18);
+  --tt-bid-strip:  rgba(227,38,54,0.10);
+  --tt-ask-strip:  rgba(230,57,128,0.14);
 
   /* ── Misc ── */
   --scrollbar-thumb: #353535;

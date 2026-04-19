@@ -6,7 +6,7 @@ const BD = '1px solid var(--bn-border)';
 
 // Gradient low→high: soft blue → cyan → copper → deeper copper → coral → brick.
 // Hex literals (not CSS vars) because usage concatenates alpha: `color + '1a'`.
-const HEAT_COLORS = ['#c9cdd4','#e1e4ea','#ff6b35','#d15427','#e32636','#c01020'];
+const HEAT_COLORS = ['#e32636','#c01020','#ff6b35','#d15427','#e63980','#c01f63'];
 const heatLevel = (oas:number) => oas<20?0:oas<50?1:oas<100?2:oas<150?3:oas<250?4:5;
 const DV01_DATA = RISK_POSITIONS.map(p=>({name:p.book,dv01:p.dv01,pnl:p.pnl}));
 const SCENARIO_DATA = [
@@ -106,7 +106,7 @@ export function RiskTab() {
                     <YAxis tick={{fill:'var(--bn-t2)',fontSize:9,fontFamily:'JetBrains Mono'}} axisLine={false} tickLine={false} tickFormatter={v=>`$${(v/1000).toFixed(0)}K`}/>
                     <Tooltip content={<TT/>}/>
                     <Bar dataKey="dv01" name="DV01" radius={[2,2,0,0]}>
-                      {DV01_DATA.map((_,i)=><Cell key={i} fill={['#c9cdd4','#e32636','#c9cdd4','#e1e4ea','#8b5cf6'][i%5]}/>)}
+                      {DV01_DATA.map((_,i)=><Cell key={i} fill={['#e32636','#e63980','#e32636','#c01020','#8b5cf6'][i%5]}/>)}
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
@@ -123,7 +123,7 @@ export function RiskTab() {
                     <YAxis tick={{fill:'var(--bn-t2)',fontSize:9,fontFamily:'JetBrains Mono'}} axisLine={false} tickLine={false}/>
                     <Tooltip content={<TT/>}/>
                     <Bar dataKey="total" name="Total P&L" radius={[2,2,0,0]}>
-                      {SCENARIO_DATA.map((d,i)=><Cell key={i} fill={d.total>=0?'#c9cdd4':'#e32636'}/>)}
+                      {SCENARIO_DATA.map((d,i)=><Cell key={i} fill={d.total>=0?'#e32636':'#e63980'}/>)}
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>

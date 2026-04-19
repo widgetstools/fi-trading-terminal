@@ -47,8 +47,8 @@ export class DurationBucketsWidget {
   @Input() panel: any;
 
   summary = [
-    { l: 'Total DV01', v: `$${(totalDv01All / 1000).toFixed(1)}K`, c: '#c9cdd4' },
-    { l: 'Avg Dur', v: '4.82yr', c: '#e1e4ea' },
+    { l: 'Total DV01', v: `$${(totalDv01All / 1000).toFixed(1)}K`, c: '#e32636' },
+    { l: 'Avg Dur', v: '4.82yr', c: '#c01020' },
     { l: 'Bonds', v: String(BUCKET_DETAIL.reduce((a, d) => a + d.bonds, 0)), c: 'var(--bn-t0)' },
     {
       l: 'Wt Avg OAS',
@@ -63,7 +63,7 @@ export class DurationBucketsWidget {
       {
         label: 'DV01',
         data: BUCKET_DETAIL.map((d) => d.dv01),
-        backgroundColor: 'rgba(201,205,212,0.8)',
+        backgroundColor: 'rgba(227,38,54,0.8)',
         borderRadius: 3,
         barPercentage: 0.6,
         yAxisID: 'dv01',

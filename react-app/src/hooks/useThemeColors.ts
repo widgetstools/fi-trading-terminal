@@ -22,10 +22,10 @@ export function useThemeColors() {
       t2: get('--bn-t2') || (isDark ? '#7a7a7a' : '#6f6f6f'),
       t3: get('--bn-t3') || (isDark ? '#4a4a4a' : '#a0a0a0'),
       green: get('--bn-green') || (isDark ? '#00a676' : '#007f5c'),
-      red: get('--bn-red') || (isDark ? '#e32636' : '#c8102e'),
+      red: get('--bn-red') || (isDark ? '#e63980' : '#cb1f66'),
       amber: get('--bn-amber') || (isDark ? '#ff6b35' : '#d15427'),
-      blue: get('--bn-blue') || (isDark ? '#c9cdd4' : '#4f5661'),
-      cyan: get('--bn-cyan') || (isDark ? '#e1e4ea' : '#5a6370'),
+      blue: get('--bn-blue') || (isDark ? '#e32636' : '#c8102e'),
+      cyan: get('--bn-cyan') || (isDark ? '#c01020' : '#5a6370'),
       gridLine: isDark ? '#1e1e1e' : '#f2f2f2',
       isDark,
     };

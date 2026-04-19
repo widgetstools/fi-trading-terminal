@@ -59,7 +59,7 @@ import { SharedStateService } from '../services/shared-state.service';
           (click)="side = 'SELL'"
           style="padding:8px;font-size:11px;font-weight:700;letter-spacing:0.06em;border:none;cursor:pointer;transition:all 150ms"
           [style.color]="side === 'SELL' ? 'var(--bn-red)' : 'var(--bn-t2)'"
-          [style.background]="side === 'SELL' ? 'rgba(227,38,54,0.08)' : 'transparent'"
+          [style.background]="side === 'SELL' ? 'rgba(230,57,128,0.08)' : 'transparent'"
           [style.borderBottom]="
             side === 'SELL' ? '2px solid var(--bn-red)' : '2px solid transparent'
           "

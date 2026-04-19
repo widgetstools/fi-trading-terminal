@@ -50,7 +50,7 @@ import { RESEARCH_NOTES } from '../services/trading-data.service';
           >
             <div>
               <span
-                style="font-size:11px;font-weight:700;color:#e1e4ea;font-family:JetBrains Mono,monospace"
+                style="font-size:11px;font-weight:700;color:#c01020;font-family:JetBrains Mono,monospace"
                 >{{ note.ticker }}</span
               >
               <span
@@ -107,14 +107,14 @@ export class ResearchListWidget {
     return r === 'Overweight'
       ? 'rgba(0,166,118,0.1)'
       : r === 'Underweight'
-        ? 'rgba(227,38,54,0.1)'
+        ? 'rgba(230,57,128,0.1)'
         : 'rgba(255,107,53,0.1)';
   }
   ratingBorder(r: string) {
     return r === 'Overweight'
       ? 'rgba(0,166,118,0.3)'
       : r === 'Underweight'
-        ? 'rgba(227,38,54,0.3)'
+        ? 'rgba(230,57,128,0.3)'
         : 'rgba(255,107,53,0.3)';
   }
 }

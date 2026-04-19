@@ -74,11 +74,11 @@ export const WATCHLIST:WatchItem[]=[
 ];
 
 export const OAS_DATA=[
-  {name:'UST 4.625',oas:0,  color:'#c9cdd4'},{name:'MSFT 2.40',oas:22, color:'#c9cdd4'},
-  {name:'AAPL 2.05',oas:18, color:'#c9cdd4'},{name:'JNJ 3.40', oas:48, color:'#e1e4ea'},
-  {name:'PG 3.00',  oas:52, color:'#e1e4ea'},{name:'JPM 4.50', oas:58, color:'#e1e4ea'},
+  {name:'UST 4.625',oas:0,  color:'#e32636'},{name:'MSFT 2.40',oas:22, color:'#e32636'},
+  {name:'AAPL 2.05',oas:18, color:'#e32636'},{name:'JNJ 3.40', oas:48, color:'#c01020'},
+  {name:'PG 3.00',  oas:52, color:'#c01020'},{name:'JPM 4.50', oas:58, color:'#c01020'},
   {name:'MSFT 3.45',oas:85, color:'#ff6b35'},{name:'AAPL 4.10',oas:132,color:'#ff6b35'},
-  {name:'JPM 5.04', oas:98, color:'#ff6b35'},{name:'JPM 5.35', oas:125,color:'#e32636'},
+  {name:'JPM 5.04', oas:98, color:'#ff6b35'},{name:'JPM 5.35', oas:125,color:'#e63980'},
 ];
 export const SPREADS=[
   {label:'2s5s',  value:'-39 bp',  change:'+4',   up:true },

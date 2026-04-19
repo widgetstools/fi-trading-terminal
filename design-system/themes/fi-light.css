@@ -1,9 +1,9 @@
 /*
- * FI Design System — Light Theme (Ferrari Luce variant)
+ * FI Design System — Light Theme (Ferrari Luce V2 — red brand)
  *
- * Pure neutral off-white chrome, gunmetal brand accent, Ferrari GT
- * red reserved for sell/loss. Clean, editorial, cinematic.
- * WCAG AA across all text tiers.
+ * Ferrari GT red is the hero brand on editorial-white surfaces.
+ * Rose-shifted red for sell, distinct from brand red. WCAG AA on
+ * all text tiers.
  */
 
 [data-theme="light"] {
@@ -14,7 +14,7 @@
   --card-foreground: 0 0% 10%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 10%;
-  --primary: 221 10% 34%;            /* #4f5661 — gunmetal brand */
+  --primary: 349 77% 43%;            /* #c8102e — FERRARI GT BRAND */
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 95%;             /* #f2f2f2 */
   --secondary-foreground: 0 0% 31%;
@@ -22,20 +22,20 @@
   --muted-foreground: 0 0% 44%;      /* #6f6f6f */
   --accent: 0 0% 95%;
   --accent-foreground: 0 0% 10%;
-  --destructive: 349 77% 43%;        /* #c8102e */
+  --destructive: 335 73% 46%;        /* #cb1f66 — rose sell */
   --destructive-foreground: 0 0% 100%;
   --border: 0 0% 89%;                /* #e2e2e2 */
   --input: 0 0% 89%;
-  --ring: 221 10% 34%;               /* gunmetal focus */
+  --ring: 349 77% 43%;               /* Ferrari GT focus */
   --radius: 4px;
 
-  /* ── Surface (pure neutral, no warm tones) ── */
+  /* ── Surface ── */
   --bn-bg:      #fafafa;
   --bn-bg1:     #ffffff;
   --bn-bg2:     #f2f2f2;
   --bn-bg3:     #e5e5e5;
 
-  /* ── Text (near-black, never pure) ── */
+  /* ── Text ── */
   --bn-t0:      #1a1a1a;
   --bn-t1:      #4f4f4f;
   --bn-t2:      #6f6f6f;
@@ -45,26 +45,26 @@
   --bn-border:  #e2e2e2;
   --bn-border2: #cccccc;
 
-  /* ── Accent (Ferrari Luce light) ── */
-  --bn-green:   #007f5c;     /* deep racing green */
+  /* ── Accent (Ferrari Luce V2 light) ── */
+  --bn-green:   #007f5c;
   --bn-green2:  #006046;
-  --bn-red:     #c8102e;     /* Ferrari GT red */
-  --bn-red2:    #9e0821;
-  --bn-amber:   #d15427;     /* deep vivid orange */
-  --bn-blue:    #4f5661;     /* GUNMETAL — BRAND */
-  --bn-blue2:   #34383f;
-  --bn-cyan:    #5a6370;     /* light gunmetal highlight */
+  --bn-red:     #cb1f66;     /* ROSE — sell */
+  --bn-red2:    #9e0f4a;
+  --bn-amber:   #d15427;
+  --bn-blue:    #c8102e;     /* FERRARI GT — BRAND */
+  --bn-blue2:   #9e0821;
+  --bn-cyan:    #5a6370;     /* silver — secondary highlight */
   --bn-purple:  #6d28d9;
 
   /* ── Actions ── */
   --bn-buy-bg:   #007f5c;
-  --bn-sell-bg:  #c8102e;
+  --bn-sell-bg:  #cb1f66;
   --bn-cta-text: #ffffff;
   --bn-logo-bg:  #ffffff;
 
   /* ── Interactive states ── */
-  --bn-focus-ring:    #4f5661;
-  --bn-focus-ring-bg: rgba(79,86,97,0.22);
+  --bn-focus-ring:    #c8102e;
+  --bn-focus-ring-bg: rgba(200,16,46,0.22);
   --bn-disabled-bg:   #f2f2f2;
   --bn-disabled-fg:   #a0a0a0;
   --bn-hover-overlay: rgba(0,0,0,0.04);
@@ -72,12 +72,12 @@
   /* ── Overlay tints ── */
   --bn-positive-soft: rgba(0,127,92,0.10);
   --bn-positive-ring: rgba(0,127,92,0.32);
-  --bn-negative-soft: rgba(200,16,46,0.10);
-  --bn-negative-ring: rgba(200,16,46,0.32);
+  --bn-negative-soft: rgba(203,31,102,0.10);
+  --bn-negative-ring: rgba(203,31,102,0.32);
   --bn-warning-soft:  rgba(209,84,39,0.12);
   --bn-warning-ring:  rgba(209,84,39,0.35);
-  --bn-info-soft:     rgba(79,86,97,0.08);
-  --bn-info-ring:     rgba(79,86,97,0.25);
+  --bn-info-soft:     rgba(200,16,46,0.10);
+  --bn-info-ring:     rgba(200,16,46,0.32);
   --bn-neutral-soft:  rgba(111,111,111,0.08);
   --bn-neutral-ring:  rgba(111,111,111,0.22);
 
@@ -91,9 +91,9 @@
 
   /* ── Order Book / Trade Ticket fills ── */
   --ob-bid-fill:   rgba(0,127,92,0.12);
-  --ob-ask-fill:   rgba(200,16,46,0.10);
-  --tt-bid-strip:  rgba(79,86,97,0.08);
-  --tt-ask-strip:  rgba(200,16,46,0.08);
+  --ob-ask-fill:   rgba(203,31,102,0.10);
+  --tt-bid-strip:  rgba(200,16,46,0.08);
+  --tt-ask-strip:  rgba(203,31,102,0.08);
 
   /* ── Misc ── */
   --scrollbar-thumb: #cccccc;

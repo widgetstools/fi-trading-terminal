@@ -29,7 +29,7 @@ function makeQuote(bond: Bond, side: 'Buy' | 'Sell', dealer: string): RfqQuote {
 }
 
 const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: string }> = {
-  live: { bg: 'rgba(201,205,212,0.1)', color: 'var(--fi-blue)', border: 'rgba(201,205,212,0.25)' },
+  live: { bg: 'rgba(227,38,54,0.1)', color: 'var(--fi-blue)', border: 'rgba(227,38,54,0.25)' },
   done: { bg: 'rgba(0,166,118,0.12)', color: 'var(--fi-green)', border: 'rgba(0,166,118,0.25)' },
   stale: { bg: 'rgba(74,82,117,0.2)', color: 'var(--fi-t2)', border: 'rgba(74,82,117,0.25)' },
 };
@@ -58,7 +58,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
       >
         <span
           class="font-mono-fi"
-          style="font-size:9px;padding:1px 6px;border-radius:2px;background:rgba(201,205,212,0.08);color:var(--fi-blue);border:1px solid rgba(201,205,212,0.2)"
+          style="font-size:9px;padding:1px 6px;border-radius:2px;background:rgba(227,38,54,0.08);color:var(--fi-blue);border:1px solid rgba(227,38,54,0.2)"
           >{{ liveCount }} live</span
         >
       </div>
@@ -68,7 +68,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
           style="display:flex;flex-direction:column;flex-shrink:0;width:220px;background:var(--fi-bg2)"
         >
           <div
-            style="display:flex;align-items:center;padding:0 12px;height:28px;border-bottom:1px solid var(--fi-border);background:rgba(201,205,212,0.06)"
+            style="display:flex;align-items:center;padding:0 12px;height:28px;border-bottom:1px solid var(--fi-border);background:rgba(227,38,54,0.06)"
           >
             <svg
               width="10"
@@ -138,7 +138,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
             >
               <div
                 class="font-mono-fi"
-                style="font-size:11px;font-weight:600;padding:4px 8px;border-radius:2px;background:rgba(201,205,212,0.08);color:var(--fi-blue);text-align:right;border:1px solid rgba(201,205,212,0.15)"
+                style="font-size:11px;font-weight:600;padding:4px 8px;border-radius:2px;background:rgba(227,38,54,0.08);color:var(--fi-blue);text-align:right;border:1px solid rgba(227,38,54,0.15)"
               >
                 <span style="font-size:9px;color:var(--fi-t2);display:block;margin-bottom:1px"
                   >BID</span
@@ -147,7 +147,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
               </div>
               <div
                 class="font-mono-fi"
-                style="font-size:11px;font-weight:600;padding:4px 8px;border-radius:2px;background:rgba(227,38,54,0.08);color:var(--fi-red);text-align:right;border:1px solid rgba(227,38,54,0.15)"
+                style="font-size:11px;font-weight:600;padding:4px 8px;border-radius:2px;background:rgba(230,57,128,0.08);color:var(--fi-red);text-align:right;border:1px solid rgba(230,57,128,0.15)"
               >
                 <span style="font-size:9px;color:var(--fi-t2);display:block;margin-bottom:1px"
                   >ASK</span
@@ -168,7 +168,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
                     rfqSide === s
                       ? s === 'Buy'
                         ? 'rgba(0,166,118,0.15)'
-                        : 'rgba(227,38,54,0.15)'
+                        : 'rgba(230,57,128,0.15)'
                       : 'transparent'
                   "
                   [style.border]="
@@ -176,7 +176,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
                     (rfqSide === s
                       ? s === 'Buy'
                         ? 'rgba(0,166,118,0.4)'
-                        : 'rgba(227,38,54,0.4)'
+                        : 'rgba(230,57,128,0.4)'
                       : 'var(--fi-border2)')
                   "
                   [style.color]="
@@ -202,7 +202,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
                   (click)="rfqSize = v"
                   class="font-mono-fi"
                   style="padding:4px;border-radius:2px;font-size:9px;cursor:pointer"
-                  [style.background]="rfqSize === v ? 'rgba(201,205,212,0.12)' : 'var(--fi-bg3)'"
+                  [style.background]="rfqSize === v ? 'rgba(227,38,54,0.12)' : 'var(--fi-bg3)'"
                   [style.border]="
                     '1px solid ' + (rfqSize === v ? 'var(--fi-blue)' : 'var(--fi-border2)')
                   "
@@ -225,7 +225,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
                 <span
                   *ngFor="let d of dealers"
                   class="font-mono-fi"
-                  style="font-size:9px;padding:2px 6px;border-radius:2px;background:rgba(201,205,212,0.08);color:var(--fi-blue);border:1px solid rgba(201,205,212,0.2)"
+                  style="font-size:9px;padding:2px 6px;border-radius:2px;background:rgba(227,38,54,0.08);color:var(--fi-blue);border:1px solid rgba(227,38,54,0.2)"
                   >{{ d }}</span
                 >
               </div>
@@ -438,7 +438,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
                 <button
                   (click)="cancelRfq(activeReq.id)"
                   class="font-mono-fi"
-                  style="font-size:9px;padding:2px 8px;border-radius:2px;background:rgba(227,38,54,0.08);border:1px solid rgba(227,38,54,0.3);color:var(--fi-red);cursor:pointer"
+                  style="font-size:9px;padding:2px 8px;border-radius:2px;background:rgba(230,57,128,0.08);border:1px solid rgba(230,57,128,0.3);color:var(--fi-red);cursor:pointer"
                 >
                   Cancel
                 </button>
@@ -610,7 +610,7 @@ const RFQ_STATUS_STYLES: Record<string, { bg: string; color: string; border: str
                             <button
                               class="font-mono-fi font-bold"
                               (click)="hitLift(activeReq!.id, q.dealer, 'hit')"
-                              style="font-size:11px;padding:4px 10px;border-radius:2px;background:rgba(201,205,212,0.15);color:var(--fi-blue);border:1px solid rgba(201,205,212,0.35);cursor:pointer"
+                              style="font-size:11px;padding:4px 10px;border-radius:2px;background:rgba(227,38,54,0.15);color:var(--fi-blue);border:1px solid rgba(227,38,54,0.35);cursor:pointer"
                             >
                               HIT
                             </button>
@@ -864,12 +864,12 @@ export class RfqWidget implements OnInit, OnDestroy {
 
   statusBg(s: string) {
     return s === 'pending'
-      ? 'rgba(201,205,212,0.1)'
+      ? 'rgba(227,38,54,0.1)'
       : s === 'quoted'
         ? 'rgba(255,107,53,0.1)'
         : s === 'done'
           ? 'rgba(0,166,118,0.1)'
-          : 'rgba(227,38,54,0.1)';
+          : 'rgba(230,57,128,0.1)';
   }
   statusColor(s: string) {
     return s === 'pending'
@@ -882,11 +882,11 @@ export class RfqWidget implements OnInit, OnDestroy {
   }
   statusBorder(s: string) {
     return s === 'pending'
-      ? 'rgba(201,205,212,0.25)'
+      ? 'rgba(227,38,54,0.25)'
       : s === 'quoted'
         ? 'rgba(255,107,53,0.25)'
         : s === 'done'
           ? 'rgba(0,166,118,0.25)'
-          : 'rgba(227,38,54,0.25)';
+          : 'rgba(230,57,128,0.25)';
   }
 }

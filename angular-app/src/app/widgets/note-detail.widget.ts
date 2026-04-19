@@ -23,7 +23,7 @@ import { SharedStateService } from '../services/shared-state.service';
       <div style="flex:1;overflow-y:auto;padding:24px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
           <span
-            style="font-size:18px;font-weight:700;color:#e1e4ea;font-family:JetBrains Mono,monospace"
+            style="font-size:18px;font-weight:700;color:#c01020;font-family:JetBrains Mono,monospace"
             >{{ note.ticker }}</span
           >
           <span
@@ -131,14 +131,14 @@ export class NoteDetailWidget {
     return r === 'Overweight'
       ? 'rgba(0,166,118,0.1)'
       : r === 'Underweight'
-        ? 'rgba(227,38,54,0.1)'
+        ? 'rgba(230,57,128,0.1)'
         : 'rgba(255,107,53,0.1)';
   }
   ratingBorder(r: string) {
     return r === 'Overweight'
       ? 'rgba(0,166,118,0.3)'
       : r === 'Underweight'
-        ? 'rgba(227,38,54,0.3)'
+        ? 'rgba(230,57,128,0.3)'
         : 'rgba(255,107,53,0.3)';
   }
 }

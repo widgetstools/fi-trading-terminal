@@ -344,13 +344,13 @@ import { CommonModule } from '@angular/common';
             <span class="ds-badge" style="background:rgba(0,166,118,0.15);color:var(--bn-green)"
               >Filled</span
             >
-            <span class="ds-badge" style="background:rgba(201,205,212,0.15);color:var(--bn-blue)"
+            <span class="ds-badge" style="background:rgba(227,38,54,0.15);color:var(--bn-blue)"
               >Partial</span
             >
             <span class="ds-badge" style="background:rgba(255,107,53,0.15);color:var(--bn-amber)"
               >Pending</span
             >
-            <span class="ds-badge" style="background:rgba(227,38,54,0.15);color:var(--bn-red)"
+            <span class="ds-badge" style="background:rgba(230,57,128,0.15);color:var(--bn-red)"
               >Cancelled</span
             >
             <span class="ds-badge" style="background:rgba(0,188,212,0.15);color:var(--bn-cyan)"
@@ -502,7 +502,7 @@ import { CommonModule } from '@angular/common';
                 >
                 <span class="font-mono-fi" style="font-size:9px"
                   ><span style="color:var(--bn-t2)">DUR </span
-                  ><span style="color:#c9cdd4;font-weight:600">1.85</span></span
+                  ><span style="color:#e32636;font-weight:600">1.85</span></span
                 >
               </div>
             </div>
@@ -550,7 +550,7 @@ import { CommonModule } from '@angular/common';
               >
               <span
                 class="font-mono-fi"
-                style="font-size:11px;color:#c9cdd4;text-align:right;position:relative;z-index:1"
+                style="font-size:11px;color:#e32636;text-align:right;position:relative;z-index:1"
                 >{{ r.dv01 }}</span
               >
               <span style="text-align:center;position:relative;z-index:1">
@@ -565,7 +565,7 @@ import { CommonModule } from '@angular/common';
             </div>
             <!-- Spread bar -->
             <div
-              style="display:flex;align-items:center;padding:6px 8px;border-top:1px solid var(--bn-border);border-bottom:1px solid var(--bn-border);background:linear-gradient(90deg, rgba(0,166,118,0.08), var(--bn-bg2), rgba(227,38,54,0.08))"
+              style="display:flex;align-items:center;padding:6px 8px;border-top:1px solid var(--bn-border);border-bottom:1px solid var(--bn-border);background:linear-gradient(90deg, rgba(0,166,118,0.08), var(--bn-bg2), rgba(230,57,128,0.08))"
             >
               <span
                 class="font-mono-fi"
@@ -582,7 +582,7 @@ import { CommonModule } from '@angular/common';
                 >
                 <span class="font-mono-fi" style="font-size:9px"
                   ><span style="color:var(--bn-t2)">Mid Yld </span
-                  ><span style="color:#e1e4ea;font-weight:600">4.520</span></span
+                  ><span style="color:#c01020;font-weight:600">4.520</span></span
                 >
                 <span class="font-mono-fi" style="font-size:9px"
                   ><span style="color:var(--bn-t2)">Z-Spd </span
@@ -625,7 +625,7 @@ import { CommonModule } from '@angular/common';
               >
               <span
                 class="font-mono-fi"
-                style="font-size:11px;color:#c9cdd4;text-align:right;position:relative;z-index:1"
+                style="font-size:11px;color:#e32636;text-align:right;position:relative;z-index:1"
                 >{{ r.dv01 }}</span
               >
               <span style="text-align:center;position:relative;z-index:1">
@@ -695,7 +695,7 @@ import { CommonModule } from '@angular/common';
               >
               <span class="font-mono-fi" style="font-size:9px"
                 ><span style="color:var(--bn-t2)">DUR </span
-                ><span style="color:#c9cdd4;font-weight:600">2.68</span></span
+                ><span style="color:#e32636;font-weight:600">2.68</span></span
               >
             </div>
           </div>
@@ -1028,9 +1028,9 @@ export class DesignSystemWidget {
 
   semanticColors = [
     { name: 'Racing Green (Buy)', hex: 'D:#00a676 L:#007f5c', var: 'var(--bn-green)' },
-    { name: 'Rosso Corsa (Sell)', hex: 'D:#e32636 L:#c8102e', var: 'var(--bn-red)' },
+    { name: 'Rose (Sell)', hex: 'D:#e63980 L:#cb1f66', var: 'var(--bn-red)' },
     { name: 'Orange (Warn)', hex: 'D:#ff6b35 L:#d15427', var: 'var(--bn-amber)' },
-    { name: 'Platinum (Brand)', hex: 'D:#c9cdd4 L:#4f5661', var: 'var(--bn-blue)' },
+    { name: 'Rosso Corsa (Brand)', hex: 'D:#e32636 L:#c8102e', var: 'var(--bn-blue)' },
     { name: 'Silver (HL)', hex: 'D:#e1e4ea L:#5a6370', var: 'var(--bn-cyan)' },
     { name: 'Purple', hex: 'D:#8b5cf6 L:#6d28d9', var: 'var(--fi-purple)' },
   ];
@@ -1133,7 +1133,7 @@ export class DesignSystemWidget {
     },
     {
       label: 'RFQ',
-      bg: 'rgba(201,205,212,0.12)',
+      bg: 'rgba(227,38,54,0.12)',
       color: 'var(--bn-blue)',
       desc: 'Request for quote',
     },
@@ -1149,7 +1149,7 @@ export class DesignSystemWidget {
     return type === 'STREAM'
       ? 'rgba(0,166,118,0.12)'
       : type === 'RFQ'
-        ? 'rgba(201,205,212,0.12)'
+        ? 'rgba(227,38,54,0.12)'
         : 'rgba(255,107,53,0.12)';
   }
   qtBadgeColor(type: string) {

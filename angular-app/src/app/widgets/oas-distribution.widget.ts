@@ -36,7 +36,7 @@ export class OasDistributionWidget implements OnInit {
   ngOnInit() {
     const colors = sorted.map((d) => {
       if ((d as any).color && !(d as any).color.startsWith('var(')) return (d as any).color;
-      return '#c9cdd4';
+      return '#e32636';
     });
 
     this.chartData = {

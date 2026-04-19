@@ -111,15 +111,15 @@ export function MarketTab() {
               <AreaChart data={series} margin={{top:12,right:16,bottom:8,left:8}}>
                 <defs>
                   <linearGradient id="ig" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#c9cdd4" stopOpacity={0.15}/>
-                    <stop offset="95%" stopColor="#c9cdd4" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#e32636" stopOpacity={0.15}/>
+                    <stop offset="95%" stopColor="#e32636" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--bn-bg2)" vertical={false}/>
                 <XAxis dataKey="t" tick={{fill:'var(--bn-t2)',fontSize:8,fontFamily:'JetBrains Mono'}} axisLine={false} tickLine={false} interval={15}/>
                 <YAxis domain={['auto','auto']} tick={{fill:'var(--bn-t2)',fontSize:8,fontFamily:'JetBrains Mono'}} axisLine={false} tickLine={false} tickFormatter={v=>v.toFixed(2)} width={38}/>
                 <Tooltip content={<TT/>}/>
-                <Area type="monotone" dataKey="v" name={selected} stroke="#c9cdd4" strokeWidth={1.8} fill="url(#ig)" dot={false} activeDot={{r:3}}/>
+                <Area type="monotone" dataKey="v" name={selected} stroke="#e32636" strokeWidth={1.8} fill="url(#ig)" dot={false} activeDot={{r:3}}/>
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -134,7 +134,7 @@ export function MarketTab() {
                 <XAxis dataKey="tenor" tick={{fill:'var(--bn-t2)',fontSize:9,fontFamily:'JetBrains Mono'}} axisLine={false} tickLine={false}/>
                 <YAxis domain={['auto','auto']} tick={{fill:'var(--bn-t2)',fontSize:9,fontFamily:'JetBrains Mono'}} axisLine={false} tickLine={false} tickFormatter={v=>v.toFixed(2)} width={36}/>
                 <Tooltip content={<TT/>}/>
-                <Line type="monotone" dataKey="today" name="Today"   stroke="#c9cdd4" strokeWidth={2} dot={{r:2.5,fill:'#c9cdd4'}}/>
+                <Line type="monotone" dataKey="today" name="Today"   stroke="#e32636" strokeWidth={2} dot={{r:2.5,fill:'#e32636'}}/>
                 <Line type="monotone" dataKey="week"  name="-1 Week" stroke="var(--bn-border)" strokeWidth={1.2} strokeDasharray="4 4" dot={false}/>
                 <Line type="monotone" dataKey="month" name="-1 Month"stroke="var(--bn-bg2)" strokeWidth={1} strokeDasharray="2 4" dot={false}/>
               </LineChart>

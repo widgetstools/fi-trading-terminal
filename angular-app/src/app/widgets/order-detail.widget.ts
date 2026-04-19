@@ -19,7 +19,7 @@ import { SharedStateService } from '../services/shared-state.service';
             style="padding:12px;border-radius:3px;border:1px solid var(--bn-border);background:var(--bn-bg2)"
           >
             <div
-              style="font-family:JetBrains Mono,monospace;font-weight:700;font-size:11px;color:#e1e4ea;margin-bottom:5px"
+              style="font-family:JetBrains Mono,monospace;font-weight:700;font-size:11px;color:#c01020;margin-bottom:5px"
             >
               {{ sel.bond }}
             </div>
@@ -51,7 +51,7 @@ import { SharedStateService } from '../services/shared-state.service';
           </div>
           <button
             *ngIf="sel.status === 'Pending' || sel.status === 'Partial'"
-            style="width:100%;padding:7px;border-radius:3px;border:1px solid rgba(227,38,54,0.3);background:rgba(227,38,54,0.1);color:var(--bn-red);font-family:JetBrains Mono,monospace;font-weight:700;font-size:11px;cursor:pointer;margin-top:4px"
+            style="width:100%;padding:7px;border-radius:3px;border:1px solid rgba(230,57,128,0.3);background:rgba(230,57,128,0.1);color:var(--bn-red);font-family:JetBrains Mono,monospace;font-weight:700;font-size:11px;cursor:pointer;margin-top:4px"
           >
             CANCEL ORDER
           </button>

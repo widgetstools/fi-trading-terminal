@@ -93,8 +93,8 @@ export class IntradayChartWidget implements AfterViewInit, OnDestroy {
 
     // Area fill
     const grad = ctx.createLinearGradient(0, pad.t, 0, H - pad.b);
-    grad.addColorStop(0, 'rgba(201,205,212,0.15)');
-    grad.addColorStop(1, 'rgba(201,205,212,0)');
+    grad.addColorStop(0, 'rgba(227,38,54,0.15)');
+    grad.addColorStop(1, 'rgba(227,38,54,0)');
     ctx.beginPath();
     series.forEach((s, i) => {
       i === 0 ? ctx.moveTo(xOf(i), yOf(s.v)) : ctx.lineTo(xOf(i), yOf(s.v));
@@ -107,7 +107,7 @@ export class IntradayChartWidget implements AfterViewInit, OnDestroy {
 
     // Line
     ctx.beginPath();
-    ctx.strokeStyle = '#c9cdd4';
+    ctx.strokeStyle = '#e32636';
     ctx.lineWidth = 1.8;
     series.forEach((s, i) => {
       i === 0 ? ctx.moveTo(xOf(i), yOf(s.v)) : ctx.lineTo(xOf(i), yOf(s.v));

@@ -162,10 +162,10 @@ export function DesignSystemTab() {
         <div style={S.row}>
           <Swatch bg="var(--bn-green)" label="Racing Green (Buy)" hex="D:#00a676 L:#007f5c" />
           <Swatch bg="var(--bn-green2)" label="Green Hover" hex="D:#008a61 L:#006046" />
-          <Swatch bg="var(--bn-red)" label="Rosso Corsa (Sell)" hex="D:#e32636 L:#c8102e" />
-          <Swatch bg="var(--bn-red2)" label="Red Hover" hex="D:#c01020 L:#9e0821" />
+          <Swatch bg="var(--bn-red)" label="Rose (Sell)" hex="D:#e63980 L:#cb1f66" />
+          <Swatch bg="var(--bn-red2)" label="Rose Hover" hex="D:#c01f63 L:#9e0f4a" />
           <Swatch bg="var(--bn-amber)" label="Orange (Warning)" hex="D:#ff6b35 L:#d15427" />
-          <Swatch bg="var(--bn-blue)" label="Platinum (Brand)" hex="D:#c9cdd4 L:#4f5661" />
+          <Swatch bg="var(--bn-blue)" label="Rosso Corsa (Brand)" hex="D:#e32636 L:#c8102e" />
           <Swatch bg="var(--bn-cyan)" label="Silver (Highlight)" hex="D:#e1e4ea L:#5a6370" />
           <Swatch bg="var(--bn-purple)" label="Purple (Accent)" hex="D:#8b5cf6 L:#6d28d9" />
         </div>
@@ -485,7 +485,7 @@ export function DesignSystemTab() {
             </div>
           ))}
           {/* Spread bar */}
-          <div style={{ display: 'flex', alignItems: 'center', padding: '6px 8px', borderTop: '1px solid var(--bn-border)', borderBottom: '1px solid var(--bn-border)', background: 'linear-gradient(90deg, rgba(0,166,118,0.08), var(--bn-bg2), rgba(227,38,54,0.08))' }}>
+          <div style={{ display: 'flex', alignItems: 'center', padding: '6px 8px', borderTop: '1px solid var(--bn-border)', borderBottom: '1px solid var(--bn-border)', background: 'linear-gradient(90deg, rgba(0,166,118,0.08), var(--bn-bg2), rgba(230,57,128,0.08))' }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--bn-green)', fontFamily: 'var(--fi-mono)' }}>100.135</span>
             <span style={{ fontSize: 11, color: 'var(--bn-t2)', fontFamily: 'var(--fi-mono)', marginLeft: 12 }}>≈ $100.135</span>
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 16 }}>
