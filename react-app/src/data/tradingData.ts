@@ -74,11 +74,11 @@ export const WATCHLIST:WatchItem[]=[
 ];
 
 export const OAS_DATA=[
-  {name:'UST 4.625',oas:0,  color:'#3b82f6'},{name:'MSFT 2.40',oas:22, color:'#3b82f6'},
-  {name:'AAPL 2.05',oas:18, color:'#3b82f6'},{name:'JNJ 3.40', oas:48, color:'#22d3ee'},
-  {name:'PG 3.00',  oas:52, color:'#22d3ee'},{name:'JPM 4.50', oas:58, color:'#22d3ee'},
-  {name:'MSFT 3.45',oas:85, color:'#ff8c42'},{name:'AAPL 4.10',oas:132,color:'#ff8c42'},
-  {name:'JPM 5.04', oas:98, color:'#ff8c42'},{name:'JPM 5.35', oas:125,color:'#ff4d6d'},
+  {name:'UST 4.625',oas:0,  color:'#c9cdd4'},{name:'MSFT 2.40',oas:22, color:'#c9cdd4'},
+  {name:'AAPL 2.05',oas:18, color:'#c9cdd4'},{name:'JNJ 3.40', oas:48, color:'#e1e4ea'},
+  {name:'PG 3.00',  oas:52, color:'#e1e4ea'},{name:'JPM 4.50', oas:58, color:'#e1e4ea'},
+  {name:'MSFT 3.45',oas:85, color:'#ff6b35'},{name:'AAPL 4.10',oas:132,color:'#ff6b35'},
+  {name:'JPM 5.04', oas:98, color:'#ff6b35'},{name:'JPM 5.35', oas:125,color:'#e32636'},
 ];
 export const SPREADS=[
   {label:'2s5s',  value:'-39 bp',  change:'+4',   up:true },

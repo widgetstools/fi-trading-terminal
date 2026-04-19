@@ -1,14 +1,14 @@
 // ─────────────────────────────────────────────────────────────
 //  FI Design System — Semantic Tokens
-//  Maps primitives to purpose-driven roles.
-//  Each color scheme (dark/light) gets its own mappings.
+//  Ferrari Luce variant.
 //
-//  Design intent:
-//    - Punchy, saturated accents — colors pop against neutral chrome.
-//    - No earthy tones or brown/copper. Warning is pure orange.
-//    - Dark: cool charcoal grounds, vivid accents.
-//    - Light: cool off-white (never cream), charcoal text, vivid
-//      accents that stay WCAG AA on the light ground.
+//  Intent:
+//    - Monochromatic luxury chrome: platinum/silver as the BRAND
+//      accent, reserving Rosso Corsa red for negative/sell semantics
+//      (where red naturally belongs in a trading terminal).
+//    - Jet-black-leaning dark surfaces for cinematic contrast.
+//    - Pure neutral light surfaces (no cream, no warmth).
+//    - Racing green for positive, vivid orange for warning.
 // ─────────────────────────────────────────────────────────────
 
 import { colors, typography, radius, spacing, opacity, transition } from './primitives';
@@ -16,31 +16,31 @@ import { colors, typography, radius, spacing, opacity, transition } from './prim
 // ── Color Scheme Type ──
 export interface ColorScheme {
   surface: {
-    ground:    string;  // page/app background
-    primary:   string;  // card/panel background
-    secondary: string;  // hover, header background
-    tertiary:  string;  // active/pressed, accent bg
+    ground:    string;
+    primary:   string;
+    secondary: string;
+    tertiary:  string;
   };
   text: {
-    primary:   string;  // main body text
-    secondary: string;  // labels, descriptions
-    muted:     string;  // captions, timestamps
-    faint:     string;  // disabled, placeholder
+    primary:   string;
+    secondary: string;
+    muted:     string;
+    faint:     string;
   };
   border: {
-    primary:   string;  // panel borders, dividers
-    secondary: string;  // interactive borders (inputs, buttons)
+    primary:   string;
+    secondary: string;
   };
   accent: {
-    positive:      string;  // buy, gain, success
+    positive:      string;
     positiveHover: string;
-    negative:      string;  // sell, loss, error
+    negative:      string;  // Rosso Corsa
     negativeHover: string;
-    warning:       string;  // caution, pending (pure orange, never brown)
-    info:          string;  // BRAND / primary / informational / links
+    warning:       string;  // vivid orange, never yellow
+    info:          string;  // BRAND — platinum/silver (Luce signature)
     infoHover:     string;
-    highlight:     string;  // emphasis, selected
-    purple:        string;  // tertiary accent
+    highlight:     string;
+    purple:        string;
   };
   action: {
     buyBg:    string;
@@ -71,123 +71,125 @@ export interface ColorScheme {
 }
 
 // ── Dark Scheme ─────────────────────────────────────────────
-// Deep cool charcoal chrome + vibrant saturated accents.
+// Jet-black chrome + platinum brand + Rosso Corsa sell. High-contrast
+// cinematic feel; reds only appear on loss/sell where they carry
+// semantic weight.
 export const dark: ColorScheme = {
   surface: {
-    ground:    colors.charcoal[975],  // #0a0e14
-    primary:   colors.charcoal[950],  // #121820 — card
-    secondary: colors.charcoal[925],  // #1a212b — hover/header
-    tertiary:  colors.charcoal[900],  // #242c38 — pressed
+    ground:    colors.charcoal[975],  // #0a0a0a — near-black
+    primary:   colors.charcoal[950],  // #141414 — card
+    secondary: colors.charcoal[925],  // #1e1e1e — hover/header
+    tertiary:  colors.charcoal[850],  // #2a2a2a — pressed
   },
   text: {
-    primary:   '#e6e9ef',             // warm off-white (never pure white)
-    secondary: '#a7b0bd',
-    muted:     colors.charcoal[500],  // #6b7280
-    faint:     colors.charcoal[700],  // #4d586a
+    primary:   '#f5f5f5',             // editorial white
+    secondary: '#b8b8b8',
+    muted:     colors.charcoal[500],  // #7a7a7a
+    faint:     colors.charcoal[700],  // #4a4a4a
   },
   border: {
-    primary:   colors.charcoal[850],  // #2e3744
-    secondary: colors.charcoal[800],  // #323b49
+    primary:   colors.charcoal[900],  // #252525 — subtle
+    secondary: colors.charcoal[800],  // #353535 — interactive
   },
   accent: {
-    positive:      colors.teal[400],   // #14d9a0 — vivid teal
-    positiveHover: colors.teal[500],   // #0fb88a
-    negative:      colors.red[400],    // #ff4d6d — vivid coral
-    negativeHover: colors.red[500],    // #e8304e
-    warning:       colors.orange[500], // #ff8c42 — pure orange
-    info:          colors.blue[500],   // #3b82f6 — punchy brand
-    infoHover:     colors.blue[600],   // #2563eb
-    highlight:     colors.cyan[400],   // #22d3ee — bright cyan
-    purple:        colors.purple[400], // #a855f7
+    positive:      colors.green[400],     // #00a676 — racing green
+    positiveHover: colors.green[500],     // #008a61
+    negative:      colors.red[400],       // #e32636 — ROSSO CORSA
+    negativeHover: colors.red[500],       // #c01020
+    warning:       colors.orange[500],    // #ff6b35 — vivid orange
+    info:          colors.platinum[300],  // #c9cdd4 — PLATINUM (brand)
+    infoHover:     colors.platinum[200],  // #e1e4ea
+    highlight:     colors.platinum[200],  // #e1e4ea — brighter silver
+    purple:        colors.purple[400],    // #8b5cf6
   },
   action: {
-    buyBg:    colors.teal[500],   // #0fb88a
+    buyBg:    colors.green[500],  // #008a61
     buyText:  '#ffffff',
-    sellBg:   colors.red[500],    // #e8304e
+    sellBg:   colors.red[400],    // #e32636 — Rosso Corsa
     sellText: '#ffffff',
   },
   state: {
-    focusRing:    colors.blue[500],
-    focusRingBg:  'rgba(59,130,246,0.30)',       // blue-500 @ 30%
-    disabledBg:   colors.charcoal[900],
+    focusRing:    colors.platinum[300],            // platinum focus halo
+    focusRingBg:  'rgba(201,205,212,0.28)',        // platinum @ 28%
+    disabledBg:   colors.charcoal[850],
     disabledFg:   colors.charcoal[700],
     hoverOverlay: 'rgba(255,255,255,0.05)',
   },
   overlay: {
-    positiveSoft:  'rgba(20,217,160,0.15)',  // teal-400 @ 15%
-    positiveRing:  'rgba(20,217,160,0.35)',
-    negativeSoft:  'rgba(255,77,109,0.15)',  // red-400 @ 15%
-    negativeRing:  'rgba(255,77,109,0.35)',
-    warningSoft:   'rgba(255,140,66,0.15)',  // orange-500 @ 15%
-    warningRing:   'rgba(255,140,66,0.38)',
-    infoSoft:      'rgba(59,130,246,0.15)',  // blue-500 @ 15%
-    infoRing:      'rgba(59,130,246,0.35)',
-    neutralSoft:   'rgba(107,114,128,0.20)', // charcoal-500 @ 20%
-    neutralRing:   'rgba(107,114,128,0.30)',
+    positiveSoft:  'rgba(0,166,118,0.14)',    // racing green @ 14%
+    positiveRing:  'rgba(0,166,118,0.35)',
+    negativeSoft:  'rgba(227,38,54,0.14)',    // Rosso Corsa @ 14%
+    negativeRing:  'rgba(227,38,54,0.38)',
+    warningSoft:   'rgba(255,107,53,0.14)',   // orange @ 14%
+    warningRing:   'rgba(255,107,53,0.38)',
+    infoSoft:      'rgba(201,205,212,0.12)',  // platinum @ 12%
+    infoRing:      'rgba(201,205,212,0.32)',
+    neutralSoft:   'rgba(122,122,122,0.18)',  // charcoal-500 @ 18%
+    neutralRing:   'rgba(122,122,122,0.28)',
   },
   scrollbar: colors.charcoal[800],
 };
 
 // ── Light Scheme ────────────────────────────────────────────
-// Cool off-white (NOT cream, NOT warm) + charcoal text + vivid
-// accents that pop without glare. WCAG AA across all text tiers.
+// Pure neutral off-white chrome + gunmetal brand + Ferrari red sell.
+// Clean, editorial, no warm tones anywhere.
 export const light: ColorScheme = {
   surface: {
-    ground:    colors.charcoal[50],   // #f3f5f9 — cool off-white
-    primary:   '#fbfcfd',             // soft paper-cool (not pure #fff)
-    secondary: colors.charcoal[100],  // #ebeef3
-    tertiary:  colors.charcoal[150],  // #dde2ea
+    ground:    colors.charcoal[50],   // #fafafa
+    primary:   '#ffffff',             // pure white cards
+    secondary: colors.charcoal[100],  // #f2f2f2
+    tertiary:  colors.charcoal[150],  // #e5e5e5
   },
   text: {
-    primary:   '#1a1f2e',             // deep cool charcoal (never pure black)
-    secondary: colors.charcoal[600],  // #4f5665
-    muted:     colors.charcoal[500],  // #6b7280 — AA on off-white
-    faint:     colors.charcoal[400],  // #9ca3af
+    primary:   '#1a1a1a',             // near-black, not pure
+    secondary: colors.charcoal[650],  // #4f4f4f
+    muted:     colors.charcoal[600],  // #6f6f6f — AA on off-white
+    faint:     colors.charcoal[400],  // #a0a0a0
   },
   border: {
-    primary:   colors.charcoal[200],  // #d9dee8
-    secondary: colors.charcoal[300],  // #c3cad7
+    primary:   colors.charcoal[200],  // #e2e2e2
+    secondary: colors.charcoal[300],  // #cccccc
   },
   accent: {
-    positive:      colors.teal[600],   // #0ea870 — vivid emerald
-    positiveHover: colors.teal[700],   // #0b8959
-    negative:      colors.red[600],    // #e02e47 — vivid pink-red
-    negativeHover: colors.red[700],    // #b81e37
-    warning:       colors.orange[600], // #e86a1c — vivid orange (no brown)
-    info:          colors.blue[600],   // #2563eb — punchy brand
-    infoHover:     colors.blue[700],   // #1d4ed8
-    highlight:     colors.cyan[500],   // #06b6d4
-    purple:        colors.purple[600], // #7c3aed
+    positive:      colors.green[600],     // #007f5c
+    positiveHover: colors.green[700],     // #006046
+    negative:      colors.red[600],       // #c8102e — Ferrari GT light
+    negativeHover: colors.red[700],       // #9e0821
+    warning:       colors.orange[600],    // #d15427
+    info:          colors.platinum[700],  // #4f5661 — GUNMETAL (brand)
+    infoHover:     colors.platinum[800],  // #34383f
+    highlight:     colors.platinum[600],  // #5a6370
+    purple:        colors.purple[600],    // #6d28d9
   },
   action: {
-    buyBg:    colors.teal[600],   // #0ea870
+    buyBg:    colors.green[600],  // #007f5c
     buyText:  '#ffffff',
-    sellBg:   colors.red[600],    // #e02e47
+    sellBg:   colors.red[600],    // #c8102e
     sellText: '#ffffff',
   },
   state: {
-    focusRing:    colors.blue[600],
-    focusRingBg:  'rgba(37,99,235,0.22)',       // blue-600 @ 22%
+    focusRing:    colors.platinum[700],            // gunmetal focus
+    focusRingBg:  'rgba(79,86,97,0.22)',           // gunmetal @ 22%
     disabledBg:   colors.charcoal[100],
     disabledFg:   colors.charcoal[400],
-    hoverOverlay: 'rgba(0,0,0,0.045)',
+    hoverOverlay: 'rgba(0,0,0,0.04)',
   },
   overlay: {
-    positiveSoft:  'rgba(14,168,112,0.12)',  // teal-600 @ 12%
-    positiveRing:  'rgba(14,168,112,0.32)',
-    negativeSoft:  'rgba(224,46,71,0.10)',   // red-600 @ 10%
-    negativeRing:  'rgba(224,46,71,0.32)',
-    warningSoft:   'rgba(232,106,28,0.12)',  // orange-600 @ 12%
-    warningRing:   'rgba(232,106,28,0.35)',
-    infoSoft:      'rgba(37,99,235,0.10)',   // blue-600 @ 10%
-    infoRing:      'rgba(37,99,235,0.32)',
-    neutralSoft:   'rgba(79,86,101,0.08)',   // charcoal-600 @ 8%
-    neutralRing:   'rgba(79,86,101,0.22)',
+    positiveSoft:  'rgba(0,127,92,0.10)',     // green-600 @ 10%
+    positiveRing:  'rgba(0,127,92,0.32)',
+    negativeSoft:  'rgba(200,16,46,0.10)',    // Ferrari GT @ 10%
+    negativeRing:  'rgba(200,16,46,0.32)',
+    warningSoft:   'rgba(209,84,39,0.12)',    // orange-600 @ 12%
+    warningRing:   'rgba(209,84,39,0.35)',
+    infoSoft:      'rgba(79,86,97,0.08)',     // gunmetal @ 8%
+    infoRing:      'rgba(79,86,97,0.25)',
+    neutralSoft:   'rgba(111,111,111,0.08)',  // charcoal-600 @ 8%
+    neutralRing:   'rgba(111,111,111,0.22)',
   },
-  scrollbar: '#c3cad7',
+  scrollbar: '#cccccc',
 };
 
-// ── Shared (non-theme-dependent) ──
+// ── Shared ──
 export const shared = {
   typography,
   radius,

@@ -1,97 +1,102 @@
 // ─────────────────────────────────────────────────────────────
 //  FI Design System — Primitive Tokens
-//  Raw palette, type scale, spacing, radius, opacity, timing.
-//  No semantic meaning — just values.
+//  Ferrari Luce-inspired palette. Raw values only — no semantic roles.
 //
 //  Palette direction:
-//    - Punchy, saturated accents. Nothing washed out.
-//    - No earthy tones, no browns. Warning is pure orange, not copper.
-//    - Cool-neutral charcoal for dark chrome and cool off-white
-//      for light chrome. No warm cream anywhere.
+//    - Monochromatic luxury chrome: near-black surfaces + platinum/
+//      silver accents, with Rosso Corsa red reserved for critical
+//      moments.
+//    - In a trading terminal, red is a sell/loss signal, so we assign
+//      platinum as the BRAND accent (replacing Luce's usual red brand
+//      role) and keep Ferrari red for the `negative` semantic only.
+//    - Racing green for positive. Vivid orange for warning. No yellow.
 // ─────────────────────────────────────────────────────────────
 
 export const colors = {
-  // Cool-neutral grayscale. No warm shift — surfaces read as clean
-  // cool chrome, letting the saturated accents carry all the color.
+  // Jet-black-leaning charcoal. Deeper than the previous palette to
+  // give the chrome a more cinematic, high-contrast Luce feel.
   charcoal: {
     0:   '#ffffff',
-    50:  '#f3f5f9',  // light theme ground (cool off-white)
-    100: '#ebeef3',  // light hover
-    150: '#dde2ea',  // light pressed
-    200: '#d9dee8',  // light border primary
-    300: '#c3cad7',  // light border secondary
-    400: '#9ca3af',  // light faint text
-    500: '#6b7280',  // muted text (both themes)
-    600: '#4f5665',  // light secondary text
-    700: '#4d586a',  // dark faint text
-    800: '#323b49',  // dark border secondary
-    850: '#2e3744',  // dark border primary
-    900: '#242c38',  // dark tertiary surface
-    925: '#1a212b',  // dark secondary surface
-    950: '#121820',  // dark primary surface (card)
-    975: '#0a0e14',  // dark ground
+    50:  '#fafafa',  // light theme ground
+    100: '#f2f2f2',  // light hover
+    150: '#e5e5e5',  // light pressed / border primary
+    200: '#e2e2e2',
+    300: '#cccccc',  // light border secondary
+    400: '#a0a0a0',  // light faint text
+    500: '#7a7a7a',  // muted text (both themes)
+    600: '#6f6f6f',
+    650: '#4f4f4f',  // light secondary text
+    700: '#4a4a4a',  // dark faint text
+    800: '#353535',  // dark border secondary
+    850: '#2a2a2a',  // dark tertiary surface
+    900: '#252525',  // dark border primary
+    925: '#1e1e1e',  // dark secondary surface
+    950: '#141414',  // dark primary surface (card)
+    975: '#0a0a0a',  // dark ground (near-black)
   },
-  // Vibrant teal-green — reads clearly positive, no neon haze.
-  teal: {
-    50:  '#e6fbf3',
-    100: '#c1f5de',
-    200: '#8cecc3',
-    300: '#4ee1a5',
-    400: '#14d9a0',  // dark theme positive (punchy)
-    500: '#0fb88a',  // dark hover / buy bg
-    600: '#0ea870',  // light theme positive
-    700: '#0b8959',  // light hover
-    800: '#086b47',
-    900: '#065234',
+  // Platinum / silver — BRAND accent. Premium metallic chrome, the
+  // signature Luce luxury cue.
+  platinum: {
+    50:  '#f6f7f9',
+    100: '#e8eaee',
+    200: '#e1e4ea',  // dark highlight / infoHover
+    300: '#c9cdd4',  // dark brand (primary)
+    400: '#9ba0ac',
+    500: '#6a717e',
+    600: '#5a6370',  // light highlight
+    700: '#4f5661',  // light brand
+    800: '#34383f',  // light brand hover
+    900: '#22252a',
   },
-  // Vivid coral-pink-red. Saturated but not fire-engine.
+  // Racing green — positive / buy / gain.
+  green: {
+    50:  '#e6f7f0',
+    100: '#b9e9d5',
+    200: '#82d7b3',
+    300: '#3fc28a',
+    400: '#00a676',  // dark positive
+    500: '#008a61',  // dark hover / buy bg
+    600: '#007f5c',  // light positive
+    700: '#006046',  // light hover
+    800: '#004832',
+    900: '#002f20',
+  },
+  // Rosso Corsa — the iconic Ferrari red. Reserved for negative /
+  // sell / loss only. Never used as brand in this trading variant.
   red: {
-    50:  '#ffe8ed',
-    100: '#ffc5d0',
-    200: '#ff94a7',
-    300: '#ff6c86',
-    400: '#ff4d6d',  // dark negative (punchy)
-    500: '#e8304e',  // dark hover / sell bg
-    600: '#e02e47',  // light negative
-    700: '#b81e37',  // light hover
-    800: '#91162b',
-    900: '#6e1020',
+    50:  '#ffe7ea',
+    100: '#ffbfc7',
+    200: '#ff8c9a',
+    300: '#fa5869',
+    400: '#e32636',  // dark negative (Rosso Corsa)
+    500: '#c01020',  // dark hover / sell bg
+    600: '#c8102e',  // light negative (Ferrari GT light-variant)
+    700: '#9e0821',  // light hover
+    800: '#7a0218',
+    900: '#5a0010',
   },
-  // PURE ORANGE — warning semantic. Deliberately NOT copper, NOT
-  // brown. Clearly distinct from red (hue ≈22°) and unmistakably
-  // orange (no yellow character).
+  // Vivid orange — warning only. Pure orange, never brown, never yellow.
   orange: {
-    300: '#ffc195',
-    400: '#ffa872',
-    500: '#ff8c42',  // dark warning (vivid)
-    600: '#e86a1c',  // dark hover / light warning
-    700: '#c75b18',  // light hover
+    300: '#ffb58e',
+    400: '#ff8d5e',
+    500: '#ff6b35',  // dark warning
+    600: '#d15427',  // light warning
+    700: '#a63f18',
   },
-  // Punchy saturated blue — brand accent. Replaces Binance yellow.
+  // Cold editorial blue — info semantic (secondary to brand platinum).
   blue: {
-    50:  '#eaf3ff',
-    100: '#d0e2ff',
-    200: '#a1c4ff',
-    300: '#6fa5fc',
-    400: '#60a5fa',
-    500: '#3b82f6',  // dark brand (punchy)
-    600: '#2563eb',  // light brand / dark hover
-    700: '#1d4ed8',  // light hover
+    300: '#7fa6e5',
+    400: '#5d85d0',
+    500: '#3e6fd6',  // dark info
+    600: '#2c4da3',  // light info
+    700: '#1f3a7f',
   },
-  // Bright cyan for highlights and selected states.
-  cyan: {
-    300: '#67e8f9',
-    400: '#22d3ee',  // dark highlight
-    500: '#06b6d4',  // light highlight
-    600: '#0891b2',
-    700: '#0e7490',
-  },
-  // Saturated purple — tertiary accent.
+  // Deep royal purple — tertiary accent, rarely used in Luce style.
   purple: {
-    300: '#c4b5fd',
-    400: '#a855f7',  // dark
-    500: '#9333ea',
-    600: '#7c3aed',  // light
+    300: '#c4a9f5',
+    400: '#8b5cf6',  // dark
+    500: '#7c3aed',
+    600: '#6d28d9',  // light
   },
 } as const;
 
@@ -101,10 +106,10 @@ export const typography = {
     sans: "'Geist', sans-serif",
   },
   fontSize: {
-    xs: '10px',  // column headers, badges, timestamps, captions
-    sm: '11px',  // body text, table cells, data values (DEFAULT)
-    md: '13px',  // section titles, nav tabs, CTA buttons
-    lg: '18px',  // KPI headline numbers
+    xs: '10px',
+    sm: '11px',
+    md: '13px',
+    lg: '18px',
   },
   fontWeight: {
     regular:  400,
@@ -168,9 +173,9 @@ export const transition = {
 
 export const shadow = {
   none: 'none',
-  sm:   '0 1px 2px rgba(0,0,0,0.15)',
-  md:   '0 2px 6px rgba(0,0,0,0.2)',
-  lg:   '0 4px 12px rgba(0,0,0,0.25)',
+  sm:   '0 1px 2px rgba(0,0,0,0.25)',
+  md:   '0 2px 8px rgba(0,0,0,0.35)',
+  lg:   '0 4px 16px rgba(0,0,0,0.45)',
 } as const;
 
 export const primitives = {

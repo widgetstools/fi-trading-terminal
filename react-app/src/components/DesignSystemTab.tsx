@@ -144,30 +144,30 @@ export function DesignSystemTab() {
         {/* Surface Colors */}
         <h3 style={S.subTitle}>Surface Colors</h3>
         <div style={S.row}>
-          <Swatch bg="var(--bn-bg)" label="--bn-bg" hex="D:#0a0e14 L:#f3f5f9" />
-          <Swatch bg="var(--bn-bg1)" label="--bn-bg1" hex="D:#121820 L:#fbfcfd" />
-          <Swatch bg="var(--bn-bg2)" label="--bn-bg2" hex="D:#1a212b L:#ebeef3" />
-          <Swatch bg="var(--bn-bg3)" label="--bn-bg3" hex="D:#242c38 L:#dde2ea" />
+          <Swatch bg="var(--bn-bg)" label="--bn-bg" hex="D:#0a0a0a L:#fafafa" />
+          <Swatch bg="var(--bn-bg1)" label="--bn-bg1" hex="D:#141414 L:#ffffff" />
+          <Swatch bg="var(--bn-bg2)" label="--bn-bg2" hex="D:#1e1e1e L:#f2f2f2" />
+          <Swatch bg="var(--bn-bg3)" label="--bn-bg3" hex="D:#2a2a2a L:#e5e5e5" />
         </div>
 
         {/* Text Colors */}
         <h3 style={S.subTitle}>Text Colors</h3>
-        <TextSample cssVar="var(--bn-t0)" label="--bn-t0" hex="D:#e6e9ef L:#1a1f2e" />
-        <TextSample cssVar="var(--bn-t1)" label="--bn-t1" hex="D:#a7b0bd L:#4f5665" />
-        <TextSample cssVar="var(--bn-t2)" label="--bn-t2" hex="D:#6b7280 L:#6b7280" />
-        <TextSample cssVar="var(--bn-t3)" label="--bn-t3" hex="D:#4d586a L:#9ca3af" />
+        <TextSample cssVar="var(--bn-t0)" label="--bn-t0" hex="D:#f5f5f5 L:#1a1a1a" />
+        <TextSample cssVar="var(--bn-t1)" label="--bn-t1" hex="D:#b8b8b8 L:#4f4f4f" />
+        <TextSample cssVar="var(--bn-t2)" label="--bn-t2" hex="D:#7a7a7a L:#6f6f6f" />
+        <TextSample cssVar="var(--bn-t3)" label="--bn-t3" hex="D:#4a4a4a L:#a0a0a0" />
 
         {/* Semantic Colors */}
         <h3 style={S.subTitle}>Semantic Colors</h3>
         <div style={S.row}>
-          <Swatch bg="var(--bn-green)" label="Green (Positive)" hex="D:#14d9a0 L:#0ea870" />
-          <Swatch bg="var(--bn-green2)" label="Green Hover" hex="D:#2fa88a L:#0b8959" />
-          <Swatch bg="var(--bn-red)" label="Red (Negative)" hex="D:#ff4d6d L:#e02e47" />
-          <Swatch bg="var(--bn-red2)" label="Red Hover" hex="D:#e8304e L:#b81e37" />
-          <Swatch bg="var(--bn-amber)" label="Orange (Warning)" hex="D:#ff8c42 L:#e86a1c" />
-          <Swatch bg="var(--bn-blue)" label="Blue (Brand)" hex="D:#3b82f6 L:#2563eb" />
-          <Swatch bg="var(--bn-cyan)" label="Cyan (Highlight)" hex="D:#22d3ee L:#06b6d4" />
-          <Swatch bg="var(--bn-purple)" label="Purple (Accent)" hex="D:#a855f7 L:#7c3aed" />
+          <Swatch bg="var(--bn-green)" label="Racing Green (Buy)" hex="D:#00a676 L:#007f5c" />
+          <Swatch bg="var(--bn-green2)" label="Green Hover" hex="D:#008a61 L:#006046" />
+          <Swatch bg="var(--bn-red)" label="Rosso Corsa (Sell)" hex="D:#e32636 L:#c8102e" />
+          <Swatch bg="var(--bn-red2)" label="Red Hover" hex="D:#c01020 L:#9e0821" />
+          <Swatch bg="var(--bn-amber)" label="Orange (Warning)" hex="D:#ff6b35 L:#d15427" />
+          <Swatch bg="var(--bn-blue)" label="Platinum (Brand)" hex="D:#c9cdd4 L:#4f5661" />
+          <Swatch bg="var(--bn-cyan)" label="Silver (Highlight)" hex="D:#e1e4ea L:#5a6370" />
+          <Swatch bg="var(--bn-purple)" label="Purple (Accent)" hex="D:#8b5cf6 L:#6d28d9" />
         </div>
 
         {/* Trading Colors */}
@@ -485,7 +485,7 @@ export function DesignSystemTab() {
             </div>
           ))}
           {/* Spread bar */}
-          <div style={{ display: 'flex', alignItems: 'center', padding: '6px 8px', borderTop: '1px solid var(--bn-border)', borderBottom: '1px solid var(--bn-border)', background: 'linear-gradient(90deg, rgba(20,217,160,0.08), var(--bn-bg2), rgba(255,77,109,0.08))' }}>
+          <div style={{ display: 'flex', alignItems: 'center', padding: '6px 8px', borderTop: '1px solid var(--bn-border)', borderBottom: '1px solid var(--bn-border)', background: 'linear-gradient(90deg, rgba(0,166,118,0.08), var(--bn-bg2), rgba(227,38,54,0.08))' }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--bn-green)', fontFamily: 'var(--fi-mono)' }}>100.135</span>
             <span style={{ fontSize: 11, color: 'var(--bn-t2)', fontFamily: 'var(--fi-mono)', marginLeft: 12 }}>≈ $100.135</span>
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 16 }}>
